@@ -4,6 +4,10 @@ node_modules/
 # Logs
 *.log
 npm-debug.log*
+*_output.txt
+verify_log.txt
+puppeteer_output.txt
+top_element.json
 
 # OS files
 .DS_Store
