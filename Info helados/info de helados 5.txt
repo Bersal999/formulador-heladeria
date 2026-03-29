@@ -1,0 +1,89 @@
+### 1️⃣ Lista de Azúcares Documentados
+
+*   **Sacarosa**
+    *   **Peso molecular:** 342 g/mol.
+    *   **Factor SE:** 1.0.
+    *   **PAC relativo:** 100.
+    *   **POD relativo:** 100.
+    *   **Impacto estructural:** Base estándar de sólidos, pero su exceso o uso exclusivo provoca cristalización a bajas temperaturas (textura arenosa o costra dura).
+    *   **Límite técnico recomendado:** Suele limitarse históricamente a que no más del 25-33% sea sustituido, aunque técnicamente se puede sustituir en su totalidad si se balancean los parámetros.
+*   **Dextrosa (Glucosa cristalina)**
+    *   **Peso molecular:** 180 g/mol.
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190.
+    *   **POD relativo:** 70 (otras fuentes citan 74 u 80).
+    *   **Impacto estructural:** Deprime el punto de congelación casi el doble que la sacarosa, haciendo el helado más blando. Evita la cristalización de la sacarosa. Posee alto poder antibacteriano.
+    *   **Límite técnico recomendado:** Mantener entre el 10% y el 30% del total de azúcares (mayor en sabores pesados/grasos, menor en ligeros).
+*   **Fructosa**
+    *   **Peso molecular:** 180 g/mol.
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190.
+    *   **POD relativo:** 170 (o 173).
+    *   **Impacto estructural:** Altamente soluble a bajas temperaturas, reduciendo el riesgo de cristalización. Produce helados muy blandos y dulces.
+    *   **Límite técnico recomendado:** Utilizado principalmente en helados dietéticos/bajo índice glucémico o sorbetes con bajo contenido de fruta para ablandar sin añadir exceso de sólidos.
+*   **Azúcar Invertido (Trimoline)**
+    *   **Peso molecular:** 212 g/mol (o 190).
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190 (o 160 en algunas tablas teóricas de FPD).
+    *   **POD relativo:** 130 (o 125).
+    *   **Higroscopicidad:** Alta capacidad para retener agua no congelable.
+    *   **Impacto estructural:** Anticristalizante, produce una textura extremadamente suave. Aporta humedad (se calcula con 75%-78% de sólidos y 22%-25% de agua).
+*   **Jarabe de Glucosa / Glucosa Atomizada (Varios DE)**
+    *   *Glucosa Atomizada 21 DE:* PAC = 20, POD = 10, Sólidos = 100%. Aporta cuerpo sin dulzor, ideal para retener alcohol. Límite: Hasta 20% (200g/kg) en sorbetes de licor.
+    *   *Glucosa Atomizada 38 DE:* PAC = 45, POD = 24.
+    *   *Jarabe de Glucosa 42 DE:* PM = 928. PAC = 90, POD = 50. Factor SE = 0.8.
+    *   *Jarabe de Glucosa 62 DE:* PAC = 120, POD = 64, Sólidos = 80%. Factor SE = 1.2.
+    *   **Impacto estructural:** Fracciones de alto peso molecular (bajo DE) aportan viscosidad, cuerpo y resistencia al derretimiento, limitando el crecimiento de cristales de hielo. Un exceso da textura gomosa (rubbery).
+*   **Lactosa (presente en leche en polvo)**
+    *   **Peso molecular:** 342 g/mol.
+    *   **Factor SE:** 1.0.
+    *   **PAC relativo:** 100.
+    *   **POD relativo:** 16.
+    *   **Higroscopicidad:** Absorbe 10 veces su peso en agua.
+    *   **Impacto estructural:** Un exceso produce un helado "seco" o textura arenosa por baja solubilidad.
+*   **Maltodextrina (ej. 18 DE)**
+    *   **Peso molecular:** ~1000 - 1100 g/mol.
+    *   **Factor SE:** 0.34.
+    *   **PAC relativo:** 30 - 35.
+    *   **POD relativo:** 5 - 15.
+    *   **Impacto estructural:** Sustituto de grasa, aporta volumen, cuerpo y viscosidad sin dulzor.
+*   **Alcoholes de Azúcar / Polioles (Ej. Eritritol, Xilitol)**
+    *   *Eritritol:* PM = 122. PAC = 280 (factor 2.8 FPD). POD = 0 - 70.
+    *   *Xilitol:* PM = 152. PAC = 190 (factor 1.9). Factor FPD = 2.25. POD = 100.
+    *   **Impacto estructural:** Bajo índice glucémico. El eritritol cristaliza fácilmente, pudiendo endurecer la matriz.
+
+### 2️⃣ Reglas Técnicas de Combinación
+
+*   **Combinación de Sacarosa con Dextrosa:** Se combinan para contrarrestar la cristalización de la sacarosa a bajas temperaturas. La mezcla permite ablandar el helado (por el alto PAC de la dextrosa) reduciendo simultáneamente el dulzor excesivo.
+*   **Sustitución Isodulce (Matrimonio de conveniencia):** Sustituir sacarosa por dextrosa y azúcar invertido a partes iguales (50/50). Como la dextrosa tiene POD 70 y el invertido 130, el promedio es 100 (igual que la sacarosa), manteniendo la dulzura idéntica, pero aumentando el PAC (ambos tienen 190) para lograr un helado más blando.
+*   **Uso de Glucosa para Cuerpo:** Los jarabes con bajo DE aportan polisacáridos de mayor peso molecular, lo que aumenta la viscosidad de la mezcla, proporciona resistencia térmica, cuerpo, y reduce la recristalización de hielo durante el almacenamiento.
+*   **Uso de Fructosa en Sorbetes:** Útil en sorbetes con bajo contenido de fruta (ej. limón) donde se necesita mucha capacidad anticongelante para evitar dureza, pero la dextrosa no aportaría suficiente dulzor.
+*   **Efecto por Exceso de Monosacáridos/Dextrosa:** Un exceso de dextrosa sin balancear aporta menos sólidos que la sacarosa a igualdad de dulzor, causando una sensación gélida en boca y riesgo de formación de cristales de hielo, además de requerir temperaturas de congelación demasiado bajas.
+*   **Comportamiento con Alcohol:** El alcohol es un anticongelante extremo (cada 1% de alcohol en 1 kg aporta 9 puntos de PAC). Para equilibrar, se debe eliminar la dextrosa y el azúcar invertido, usar sacarosa para dulzor, y obligatoriamente glucosa atomizada 21 DE o maltodextrina para aportar los sólidos necesarios y el almidón para retener el alcohol.
+
+### 3️⃣ Restricciones Técnicas Documentadas
+
+*   **Máximo % de Dextrosa:** Entre 10% y 30% del total de azúcares de la receta.
+*   **Límites de Jarabe de Maíz / Glucosa:** La cantidad máxima de sólidos de jarabe de maíz que se puede sustituir por sacarosa es aproximadamente un tercio (33%), o el 25% del total de azúcar.
+*   **Límites en Helados de Licor:** Glucosa atomizada 21 DE puede llegar hasta el 20% de la mezcla total en sorbetes de licor.
+*   **Límites Totales de Azúcar por Tipo de Producto:**
+    *   *Helado de Crema:* Entre 15% y 22% (ideal 17-19%).
+    *   *Sorbete:* Entre 25% y 32% (ideal 28-32%).
+    *   *Helado Savory (Salado):* Reducir azúcar al máximo usando dextrosa (aporta solo 7% de dulzor por cada 100g en 1 kg) y pequeñas cantidades de sacarosa para emulsionantes.
+*   **Efecto en Dureza:** Cada incremento en la concentración de azúcares de bajo peso molecular (fructosa, dextrosa) deprime la curva de congelación de forma no lineal, reduciendo el volumen de la fase de hielo a la temperatura de servicio, lo que resulta en un helado más blando y de fusión rápida.
+
+### 4️⃣ Variables Necesarias para Modelo Matemático
+
+*   **Variables Convertibles a Restricciones Matemáticas:**
+    *   *Balance de Masa (Sólidos Totales):* $ST = \sum (m_i \times \%Solidos_i)$.
+    *   *Dulzura Total (POD):* $POD_{Total} = \sum (m_i \times POD_i)$.
+    *   *Poder Anticongelante (PAC):* $PAC_{Total} = \sum (m_i \times PAC_i)$.
+    *   *Depresión del Punto de Congelación (FPD):* $SE = \sum (m_i \times SE_{factor})$. Utilizando la constante crioscópica y molalidad en la fracción de agua no congelada.
+*   **Parámetros Empíricos Actuales:**
+    *   El PAC del alcohol calculado heurísticamente como 9 puntos de PAC por cada 1% de volumen de alcohol por kg de mezcla.
+    *   El nivel de dulzor (POD) no tiene derivación termodinámica; es una estimación sensorial comparativa relativa a la sacarosa (=100).
+    *   El grado de "retención" del alcohol proporcionado por almidones (maltodextrinas/glucosas 21 DE) no tiene fórmula cuantitativa en los textos, solo una recomendación descriptiva.
+*   **Datos que Faltan para un Modelo Determinista Completo:**
+    *   *Curvas de Solubilidad Multicomponente:* No hay funciones matemáticas para predecir el límite de solubilidad y cristalización de la sacarosa (Punto Eutéctico $T_E$) cuando está mezclada con múltiples azúcares y a temperaturas de almacenamiento sub-cero (ej. -18°C).
+    *   *Modelado Reológico Predictivo:* Faltan ecuaciones que vinculen el Dextrosa Equivalente (DE) específico de un jarabe con la viscosidad sérica resultante (en Pa·s) y su impacto exacto en la tasa de derretimiento.
+    *   *Isotermas de Sorción:* Falta el calor isostérico de sorción ($\Delta H_s$) para calcular cómo las fibras y polisacáridos retienen agua libre bajo cero, lo que afecta el agua disponible para la congelación de los azúcares.

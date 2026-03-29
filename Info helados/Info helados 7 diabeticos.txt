@@ -1,0 +1,87 @@
+### 1️⃣ Modelo de Sinergia de Dulzor
+
+**Ecuaciones exactas y regresiones:**
+*   **Modelo de Beidler (Langmuir-like)** para Rebaudiósido M: $R = \frac{14.2 \cdot C}{265 + C}$.
+*   **Regresión Lineal** para g-Rebaudiósido A: $y = 142.36x + 1.3503$.
+*   **Regresión Lineal** para Eritritol puros: $y = 0.1884x - 1.1674$.
+*   **Índice de Interacción de Sühnel (Isobolas)** para sinergia de mezclas: $I = \sum \left(\frac{c_i}{C_i}\right)$.
+*   **Modelos Predictivos (Machine Learning)**: Perceptrón Multicapa (MLP) para mezclas binarias y Regresión de Vectores de Soporte (SVR) para mezclas ternarias.
+
+**Coeficientes y Parámetros:**
+*   **Índice $I$**: $I < 1$ (Sinergia / Superaditividad); $I = 1$ (Aditividad cero-interacción); $I > 1$ (Supresión / Antagonismo).
+
+**Rango válido:**
+*   Concentraciones de prueba en matrices acuosas del 1% al 10% Equivalencia de Sacarosa (SEV).
+
+**Error experimental:**
+*   Modelo MLP (Binario): $R^2 = 0.9828$.
+*   Modelo SVR (Ternario): $R^2 = 0.9825$.
+
+---
+
+### 2️⃣ Corrección Crioscópica para Polioles
+
+**Ecuación corregida para FPD real (Teoría de Flory-Huggins):**
+$$\frac{\mu_w}{RT} = \ln(\phi_w) + \left(1 - \frac{1}{\nu_s}\right)\phi_s + \left(1 - \frac{1}{\nu_g}\right)\phi_g + (\chi_{sw}\phi_s + \chi_{gw}\phi_g)(1 - \phi_w) - \chi_{sg}\phi_s\phi_g$$.
+*   $\mu_w$: Potencial químico del agua.
+*   $\phi_i$: Fracciones volumétricas de agua ($w$), carbohidrato ($s$), poliol ($g$).
+*   $\nu_i$: Volúmenes molares relativos.
+
+**Factor de actividad y parámetros de interacción ($\chi, \nu$):**
+*   **Xilitol**: $\chi_{gw} = -0.150$; $\nu = 8.4$.
+*   **Eritritol**: $\chi_{gw} = -0.080$; $\nu = 6.8$.
+*   **Ácido Cítrico**: $\chi_{gw} = 0.126$; $\chi_{sg} = -0.59$; $\nu = 10.6$.
+*   **Fructosa**: $\chi_{sg} = -0.28$; $\nu = 6.4$.
+
+**Ajuste recomendado:**
+*   Aplicar modelo de Flory-Huggins en lugar de Ley ideal de Raoult cuando la concentración de Sólidos Totales (ST) en la fase sérica residual supera el 20%.
+
+---
+
+### 3️⃣ Modelo de Estabilidad Subcero
+
+**Límites de saturación y fase a Temperatura de Servicio ($T_s = -18^\circ\text{C}$):**
+*   **Eritritol-Agua**: Punto Eutéctico $\approx -3.5^\circ\text{C}$; Límite $\approx 10\% \, w/w$; Estado = Cristalino (Sólido).
+*   **Xilitol-Agua**: Punto Eutéctico $-15.5^\circ\text{C}$; Límite $\approx 35\% \, w/w$; Estado = Metaestable (Serum).
+*   **Maltitol-Agua**: Límite $> 50\% \, w/w$; Estado = Vítreo (Amorfo a $< -20^\circ\text{C}$).
+
+**Relación concentración–cristalización (Cinética de primer orden):**
+$$\ln\left(\frac{c(t) - c_s}{c_0 - c_s}\right) = -k \cdot t$$.
+*   $k = 0.234 \, \text{h}^{-1}$ (para eritritol).
+
+**Parámetro programable de riesgo:**
+*   Condicional restrictivo: Si el eritritol formulado es $> 10-12\%$ de los ST, descontar del cómputo de PAC total, asumiendo su precipitación en matriz rígida.
+
+---
+
+### 4️⃣ Modelo Reológico
+
+**Ecuaciones concentración–viscosidad (Ley de Potencia y Arrhenius):**
+*   **Modelo para Inulina**: $\eta = a \cdot (X_s)^c \cdot \exp\left(\frac{E_a}{RT}\right)$.
+*   **Modelo paramétrico explícito**: $\eta = 0.8835 \cdot (X_s)^{0.0731} \cdot \exp\left(\frac{296.41}{T}\right)$.
+*   **Modelo de Fluido de Herschel-Bulkley (Fase Sérica)**: $\tau = \tau_0 + K \cdot \dot{\gamma}^n$.
+    *   $\tau_0$: Límite de fluencia (Pa).
+    *   $K$: Índice de consistencia ($Pa \cdot s^n$).
+    *   $n$: Índice de comportamiento de flujo.
+
+**Parámetros ajustables:**
+*   **Inulina (coeficientes térmicos)**: Energía de activación ($E_a/R$) = $296.410 \, \text{K}$; Constante $a = 0.8835 \, \text{mPa}\cdot\text{s}$; Constante $c = 0.0731 \, \%^{-1}$.
+*   **Impacto estructural de Inulina (6%)**: Incremento del *Overrun* proyectado = $+5\%$.
+*   **Dureza Instrumental (Newtons)**: Relación directa $\Delta Hard \propto \eta_{serum}$.
+
+**Supuestos:**
+*   La matriz muestra comportamiento Newtoniano ($n \approx 1$) bajo dilución a altas temperaturas y comportamiento pseudoplástico ($n < 1$) en la fase sérica concentrada subcero (Ej. $n = 0.63 - 0.83$ dependiendo de polisacáridos).
+
+**Rango válido:**
+*   **Alerta programable:** Desencadenar riesgo de inestabilidad térmica o fusión rápida en software si la estimación resulta en $\eta_{serum} < 50 \, \text{mPa}\cdot\text{s}$ interpolada a $T_s$.
+
+---
+
+### 5️⃣ Evaluación Final
+
+| Bloque Algorítmico | Directamente Programable | Requiere Calibración | Nivel de Confianza Científica |
+| :--- | :--- | :--- | :--- |
+| **1. Sinergia de Dulzor** | Sí (Ecuaciones de regresión e Índice Sühnel) / No (MLP/SVR) | Sí (Por sistema/matriz base) | **Alto** (Precisión $R^2 > 0.98$) |
+| **2. Corrección Crioscópica** | Sí (Ecuación termodinámica no ideal) | No (Parámetros fijos tabulados) | **Alto** (Teoría de fases concentradas validada) |
+| **3. Estabilidad Subcero** | Sí (Condicionales lógicos para IF > límite_solubilidad) | Sí (Dependiente de tasa/tiempo de congelación) | **Medio-Alto** (Cinética predictiva de primer orden) |
+| **4. Modelo Reológico** | Sí (Funciones de potencia/Arrhenius) | Sí (Ajuste de variables $K, n, \tau_0$) | **Medio** (Alta variabilidad empírica por hiperconcentración soluto-solvente) |

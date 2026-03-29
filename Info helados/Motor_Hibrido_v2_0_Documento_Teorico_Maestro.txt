@@ -1,0 +1,116 @@
+DOCUMENTO TEÓRICO MAESTRO MOTOR HÍBRIDO DE FORMULACIÓN HELADERA Versión
+v2.0 – Marco Científico Oficial Fecha: 2026-03-01
+
+============================================================ 1.
+NATURALEZA DEL SISTEMA HELADO
+============================================================ Un helado
+es un sistema coloidal multifásico parcialmente congelado, compuesto por
+fase sólida (hielo), fase líquida concentrada, fase grasa, fase gaseosa
+(aire) y red proteína-grasa.
+
+============================================================ 2.
+DEPRESIÓN DEL PUNTO DE CONGELACIÓN
+============================================================ Modelo
+adoptado:
+
+FPD_total = FPD_azúcares + FPD_sales
+
+FPD_az = -0.00009 C² - 0.0612 C C = (Equivalentes sacarosa × 100) / Agua
+líquida
+
+FPD_sales = (MSNF × 2.37) / Agua líquida
+
+Se resuelve iterativamente: FPD_total(W_liq) = T_objetivo
+
+Método oficial: Bisección Tolerancia: 0.01°C
+
+============================================================ 3. FRACCIÓN
+DE AGUA CONGELADA
+============================================================ Óptimo
+estructural: 70–75% agua congelada.
+
+% hielo = (W0 – W_liq) / W0
+
+============================================================ 4. PODER
+ANTICONGELANTE (PAC)
+============================================================ Basado en
+principios coligativos. Dependiente del peso molecular. No lineal
+respecto a temperatura real de servicio.
+
+============================================================ 5. PODER
+EDULCORANTE (POD)
+============================================================ Modelo
+fisiológico:
+
+POD_total = Σ (g_i × POD_i)
+
+Se puede ajustar por sinergia (modelo Sühnel). No es propiedad
+coligativa.
+
+============================================================ 6.
+CORRECCIÓN NO IDEAL
+============================================================ Aplicación
+de factor multiplicativo γ:
+
+FPD_corr = γ × FPD_ideal
+
+Se adopta modelo simplificado en v1. No eliminar esta corrección sin
+validación experimental.
+
+============================================================ 7.
+EUTÉCTICOS Y POLIOLES
+============================================================ Eritritol >
+12% ST → riesgo cristalización secundaria. Se penaliza estabilidad y PAC
+efectivo.
+
+============================================================ 8.
+ESTRUCTURA GRASA (SFI)
+============================================================ Requerido
+50–70% grasa cristalizada. Evaluado como índice estructural cualitativo.
+
+============================================================ 9. REOLOGÍA
+============================================================ η = a
+(X_s)^c exp(Ea/RT)
+
+Umbral crítico: η < 50 mPa·s → riesgo de fusión acelerada.
+
+============================================================ 10. MÓDULO
+METABÓLICO ============================================================
+IG = Σ(g_i × IG_i) / Σ(g_i) CG = (IG × carbohidrato_disponible)/100
+
+Validación obligatoria en modo diabético.
+
+============================================================ 11. IGE –
+ÍNDICE GLOBAL DE ESTABILIDAD
+============================================================ IGE = Σ
+(peso_i × subíndice_i)
+
+Integra: - Fracción hielo - Corrección γ - Eutéctico - SFI -
+Viscosidad - Sinergia - Metabólico
+
+============================================================ 12.
+SUPUESTOS DEL MODELO
+============================================================ -
+Equilibrio termodinámico aproximado. - Sistema parcialmente congelado. -
+No modela nucleación dinámica. - No modela recristalización post
+almacenamiento.
+
+============================================================ 13.
+REFERENCIAS TÉCNICAS INTERNACIONALES
+============================================================
+
+1.  Goff, H.D., Hartel, R.W. (2013). Ice Cream, 7th Edition.
+2.  Clarke, C. (2015). The Science of Ice Cream.
+3.  Marshall, R.T., Goff, H.D., Hartel, R.W. (2003). Ice Cream Science
+    and Technology.
+4.  Walstra, P. (2003). Dairy Science and Technology.
+5.  Bradley, R.L. (FPD modeling references).
+6.  Pickering, S.U. (Freezing point depression polynomial data).
+7.  Sühnel, J. (Sweetener synergy modeling).
+8.  Flory, P.J. (Polymer solution thermodynamics – Flory-Huggins model).
+
+============================================================ DECLARACIÓN
+FINAL ============================================================ Este
+documento constituye el marco científico oficial del Motor Híbrido de
+Formulación Heladera. Las ecuaciones y supuestos aquí descritos no deben
+ser reinterpretados ni simplificados sin validación técnica.

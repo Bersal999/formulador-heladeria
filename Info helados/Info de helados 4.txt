@@ -1,0 +1,148 @@
+### 1️⃣ Depresión Crioscópica
+
+Ecuación:
+$$FPD_{Total} = \left[ (-0.00009 \cdot C^2) - (0.0612 \cdot C) \right] + \left[ \frac{(MSNF + WS) \cdot 2.37}{W_{liq}} \right]$$
+
+Variables:
+*   $FPD_{Total}$: Depresión total del punto de congelación (°C)
+*   $W_{liq}$: Fracción de agua no congelada en la mezcla (g)
+*   $C$: Concentración de solutos en agua ($C = \frac{SE \cdot 100}{W_{liq}}$)
+*   $SE$: Equivalentes totales de sacarosa
+*   $MSNF$: Masa de sólidos lácteos no grasos (g)
+*   $WS$: Masa de sólidos de suero (g)
+
+Constantes:
+*   $2.37$: Constante crioscópica para sales lácteas (°C)
+*   $1.0$: Factor de conversión $SE$ para Sacarosa y Lactosa (añadida)
+*   $0.545$: Factor de conversión $SE$ para Lactosa en MSNF
+*   $0.765$: Factor de conversión $SE$ para Lactosa en WS
+*   $1.9$: Factor de conversión $SE$ para Fructosa y Dextrosa
+*   $1.8$: Factor de conversión $SE$ para JMAF (Jarabe de Maíz Alta Fructosa)
+*   $0.8$: Factor de conversión $SE$ para CSS 42DE
+*   $0.2$: Factor de conversión $SE$ para CSS 10DE
+
+Rango válido:
+0% a 55-60% de fracción de agua congelada.
+
+Error estimado:
+$< 1\%$ ($\pm 0.04$ °C) en el punto de congelación inicial; $\approx 5\%$ de desviación a temperaturas inferiores a -25 °C.
+
+---
+
+### 2️⃣ Fracción de Agua Congelada
+
+Procedimiento iterativo:
+1. Definir $W_{liq}$ inicial = masa total de agua en la mezcla.
+2. Calcular $SE$ global de la receta.
+3. Calcular concentración $C = \frac{SE \cdot 100}{W_{liq}}$.
+4. Aplicar ecuación $FPD_{Total}$.
+5. Si $FPD_{Total} > T_{target}$, reducir $W_{liq}$ en un valor de paso diferencial (ej. -0.1 g) y recalcular desde el paso 3.
+6. Detener iteración cuando $FPD_{Total} = T_{target}$.
+7. Calcular $\%$ Hielo = $\frac{W_{inicial} - W_{liq}}{W_{inicial}} \cdot 100$.
+
+T (°C) | % hielo (Referencia paramétrica: 40% Sólidos Totales, 12% Sacarosa)
+-3.06 °C | 10.0%
+-3.45 °C | 20.0%
+-4.01 °C | 30.0%
+-4.76 °C | 40.0%
+-5.87 °C | 50.0%
+-7.63 °C | 60.0%
+-10.79 °C | 70.0%
+-13.16 °C | 75.0%
+-16.61 °C | 80.0%
+
+Ecuación aproximada: Iteración numérica directa (no analítica polinómica).
+Supuestos: El hielo formado es agua pura. Equilibrio térmico y de volumen de fase constante alcanzado a cada diferencial de temperatura.
+
+---
+
+### 3️⃣ Solid Fat Index (SFI)
+
+Tabla numérica real de % grasa sólida a:
+*   **0 °C**: Grasa Láctea (AMF) = 60% | Manteca de Cacao = 95%
+*   **-5 °C**: Grasa Láctea (AMF) = 70% | Manteca de Cacao = 98%
+*   **-10 °C**: Grasa Láctea (AMF) = 81% | Manteca Cacao = 99%
+*   **-18 °C**: Grasa Láctea (AMF) = 93% | Manteca Cacao = 100%
+
+Método de medición utilizado:
+p-NMR (Resonancia Magnética Nuclear de pulso) y DSC (Calorimetría Diferencial de Barrido).
+
+Ecuación de ajuste:
+No documentada matemáticamente en la literatura provista (requiere interpolación polinómica o matriz de datos discretos por tipo de grasa).
+
+Margen de variación:
+Alta dependencia estacional/dietética en grasa láctea debido a la alteración del perfil de ácidos grasos (aumento de triglicéridos insaturados en pastoreo estival altera SFI a la baja).
+
+---
+
+### 4️⃣ Actividad de Agua (aw)
+
+Valores experimentales reales de aw en:
+*   **Helado crema (a 4°C, no congelado)**: 0.96 - 0.98
+*   **Sorbete (a 4°C, no congelado)**: 0.96 - 0.98
+
+Ecuación validada (estado congelado en equilibrio):
+$$a_w = \frac{P_i(T)}{P_w(T)}$$
+Donde $P_i$ es la presión de vapor sobre hielo y $P_w$ sobre agua superenfriada a temperatura $T$.
+
+Relación con fracción congelada:
+Valores tabulados teóricos (independientes de la receta base, dependientes solo de $T$ sub-cero):
+*   -5 °C = 0.953 aw
+*   -10 °C = 0.907 aw
+*   -15 °C = 0.864 aw
+*   -18 °C = 0.840 aw
+*   -20 °C = 0.823 aw
+
+---
+
+### 5️⃣ Efecto de Fibras y Cacao
+
+WHC cuantitativo (g agua/g sólido):
+*   Harina de algarroba: 80 - 100 g/g
+*   Salvado: 25 g/g
+*   Celulosa purificada: 5 - 10 g/g
+
+Datos experimentales de dureza vs % adición (PAC negativo / factor endurecedor):
+*   Sólido de cacao puro (no graso): -1.8 puntos PAC por gramo.
+*   Manteca de cacao: -0.9 puntos PAC por gramo.
+*   Grasa vegetal (frutos secos): -1.4 puntos PAC por gramo (pasta de avellana = -91% base 65% grasa).
+
+Impacto en viscosidad (Pa·s):
+*   Rango de 0.02 a 0.15 Pa·s (medido a 100 s⁻¹ y 4°C en mezclas bajas en grasa con 0.3% mezcla estabilizadora comercial).
+
+Modelo matemático propuesto:
+$$PAC_{Negativo} = (masa_{cacao\_puro} \cdot -1.8) + (masa_{manteca\_cacao} \cdot -0.9) + (masa_{grasa\_veg} \cdot -1.4)$$
+
+---
+
+### 6️⃣ Evaluación de Implementabilidad
+
+**Bloque 1: Depresión Crioscópica**
+*   ¿Es directamente programable? Sí.
+*   ¿Requiere calibración? No.
+*   ¿Es modelo ideal o empírico? Ideal (Termodinámico).
+*   Nivel de confianza científica: Alto (Grado A).
+
+**Bloque 2: Fracción de Agua Congelada**
+*   ¿Es directamente programable? Sí (requiere un solver iterativo / bucle numérico).
+*   ¿Requiere calibración? No para fracción < 60%.
+*   ¿Es modelo ideal o empírico? Ideal.
+*   Nivel de confianza científica: Alto (Grado A).
+
+**Bloque 3: Solid Fat Index (SFI)**
+*   ¿Es directamente programable? Sí, mediante lectura de matrices pre-tabuladas o interpolación.
+*   ¿Requiere calibración? Sí (depende de la especificación del proveedor de grasa).
+*   ¿Es modelo ideal o empírico? Empírico.
+*   Nivel de confianza científica: Medio (los datos fluctúan por origen).
+
+**Bloque 4: Actividad de Agua ($a_w$)**
+*   ¿Es directamente programable? Sí.
+*   ¿Requiere calibración? No en temperaturas de congelación (constante termodinámica).
+*   ¿Es modelo ideal o empírico? Ideal.
+*   Nivel de confianza científica: Alto.
+
+**Bloque 5: Efecto de Fibras y Cacao**
+*   ¿Es directamente programable? Sí (sumas y restas algebraicas en el motor de PAC).
+*   ¿Requiere calibración? Sí (los factores de impacto organoléptico requieren testeo final de "scoopability").
+*   ¿Es modelo ideal o empírico? Empírico (heurístico artesanal adaptado a matemática).
+*   Nivel de confianza científica: Medio / Bajo (Grado C - útil tecnológicamente pero carece de derivación termodinámica estricta).

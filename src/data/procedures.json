@@ -1,0 +1,45 @@
+{
+  "yogurt_de_autor": {
+    "nombre": "Yogurt de Autor (Metodología Artisanal)",
+    "pasos": [
+      { "titulo": "1. Preparación de Sólidos", "instruccion": "Mezcle la sacarosa, la dextrosa y el estabilizante en seco para asegurar una dispersión perfecta." },
+      { "titulo": "2. Calentamiento Base", "instruccion": "Caliente la leche y la nata hasta los 40ºC." },
+      { "titulo": "3. Incorporación y Pasteurización", "instruccion": "Añada la mezcla de azúcares y estabilizante. Siga calentando hasta alcanzar los 85ºC por 2 minutos." },
+      { "titulo": "4. Choque Térmico y Maduración", "instruccion": "Enfríe rápidamente a 4ºC y deje madurar en nevera entre 6 y 12 horas." },
+      { "titulo": "5. Enriquecimiento Frío", "instruccion": "Una vez madurada la base, añada el yogur natural y emulsione con túrmix hasta homogeneizar." },
+      { "titulo": "6. Mantecación", "instruccion": "Vierta en la mantecadora hasta alcanzar la textura ideal (-8ºC a -10ºC)." }
+    ]
+  },
+  "dulce_de_leche_imperial": {
+    "nombre": "Dulce de Leche Imperial (Metodología de Estrés)",
+    "pasos": [
+      { "titulo": "1. Pre-mezcla de Sólidos", "instruccion": "Mezcle leche en polvo, sacarosa y el estabilizante/neutro." },
+      { "titulo": "2. Hidratación a 40ºC", "instruccion": "Caliente la leche y la nata. Al llegar a los 40ºC, incorpore la mezcla de sólidos." },
+      { "titulo": "3. Fusión de Dulce de Leche", "instruccion": "Cuando la mezcla alcance los 50ºC, añada el dulce de leche para asegurar su correcta disolución sin degradar proteínas." },
+      { "titulo": "4. Pasteurización Alta", "instruccion": "Caliente hasta los 85ºC para completar el ciclo de seguridad microbiológica." },
+      { "titulo": "5. Maduración Crítica", "instruccion": "Enfríe rápidamente a 4ºC. Deje madurar entre 6 y 12 horas (vital para este sabor denso)." },
+      { "titulo": "6. Mantecado Final", "instruccion": "Vierta en la mantecadora y extraiga cuando la estructura sea firme." }
+    ]
+  },
+  "sorbete_premium_de_mango": {
+    "nombre": "Sorbete Premium de Mango (Técnica Suave y Aterciopelada)",
+    "pasos": [
+      { "titulo": "1. Base Sorbete", "instruccion": "Mezcle la mitad de la pulpa de mango con la dextrosa, maltodextrina y goma guar." },
+      { "titulo": "2. Activación Térmica (Soft)", "instruccion": "Lleve esta preparación a fuego lento SIN DEJAR QUE HIERVA para activar el estabilizante." },
+      { "titulo": "3. Emulsión de Fruta", "instruccion": "Integre el almíbar (jarabe de azúcar), el resto de la pulpa fría y el jugo de limón." },
+      { "titulo": "4. Reposo", "instruccion": "Deje reposar la mezcla en frío antes de mantecar para asentar los grados Brix." },
+      { "titulo": "5. Mantecación", "instruccion": "Vierta en la máquina hasta obtener una textura aterciopelada y extraiga de inmediato." }
+    ]
+  },
+  "gelato_de_pistacho": {
+    "nombre": "Gelato de Pistacho (Metodología Amorino Maestros)",
+    "pasos": [
+      { "titulo": "1. Mezcla Base", "instruccion": "Verter la nata y la leche en un cazo. Añadir el azúcar invertido (o miel) y el azúcar de caña." },
+      { "titulo": "2. Primera Cocción (45°C)", "instruccion": "Calentar a fuego lento. Al alcanzar los 45°C, incorporar el estabilizante y batir enérgicamente con brazo mecánico." },
+      { "titulo": "3. Pasteurización (85°C)", "instruccion": "Seguir calentando hasta los 85°C sin dejar que hierva para completar la activación del neutro." },
+      { "titulo": "4. Saborización y Emulsión", "instruccion": "Retirar del fuego, añadir la pasta de pistacho y la sal. Batir intensamente hasta homogeneizar la grasa del fruto seco." },
+      { "titulo": "5. Filtrado y Maduración", "instruccion": "Pasar por colador fino a un recipiente. Cubrir con film y dejar madurar en frigorífico 12 horas." },
+      { "titulo": "6. Mantecación", "instruccion": "Batir ligeramente la mezcla madurada y verter en la heladera hasta obtener la textura deseada." }
+    ]
+  }
+}

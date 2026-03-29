@@ -1,0 +1,1673 @@
+# ==============================================================================
+# EXTRACCIÓN DE CONTEXTO DE CÓDIGO
+# Directorio Base: Info helados
+# ==============================================================================
+
+
+================================================================================
+--- INICIO DEL ARCHIVO: Gap 1.txt ---
+================================================================================
+
+Como investigador senior en termodinámica de sistemas coloidales congelados, presento el siguiente análisis cuantitativo sobre el comportamiento eutéctico, límites de solubilidad y modelado termodinámico en sistemas azúcar-agua y poliol-agua, fundamentales para la cristalización y depresión crioscópica en helados. 
+
+Toda la información ha sido rigurosamente extraída de literatura científica revisada por pares y manuales técnicos reconocidos dentro del corpus provisto.
+
+---
+
+### 1. Comportamiento Eutéctico y Límites de Solubilidad (Bajas Temperaturas)
+
+La estabilidad de la fase no congelada (suero) en el helado depende de los límites de saturación de los azúcares. Cuando la concentración en la fase no congelada supera la solubilidad a una temperatura dada, se alcanza el punto eutéctico, donde el soluto y el hielo cristalizan simultáneamente.
+
+**Curvas Eutécticas para Sacáridos y Polioles:**
+A continuación, se detallan los valores numéricos críticos de concentración eutéctica/eutónica (% w/w) y temperatura eutéctica ($^\circ\text{C}$):
+*   **Sacarosa:** Concentración de 54.0% a 62.4% w/w; Temperatura eutéctica de -13.9 a -14.5 $^\circ\text{C}$. (Forma cristales anhidros).
+*   **Glucosa:** Concentración de 31.5% a 35.2% w/w; Temperatura eutéctica de -5.0 a -5.3 $^\circ\text{C}$.
+*   **Fructosa:** Concentración de 65.0% a 70.0% w/w; Temperatura eutéctica de -9.5 a -10.2 $^\circ\text{C}$.
+*   **Xilitol:** Concentración del 64.0% w/w; Temperatura eutéctica de -19.5 $^\circ\text{C}$.
+*   **Sorbitol:** Concentración del 68.0% w/w; Temperatura eutéctica de -18.2 $^\circ\text{C}$.
+
+### 2. Modelos Termodinámicos de No Idealidad
+
+En la formulación de helados, las concentraciones de azúcar en la fase de suero superan el 30%-60%, lo que invalida la aproximación ideal de Raoult. Para modelar la actividad de agua ($a_w$) y las interacciones soluto-solvente se emplea la **Teoría de Flory-Huggins (FH)**.
+
+**Ecuación Aplicable (Potencial Químico del Agua - FH):**
+$$\frac{\mu_w}{RT} = \ln(\phi_w) + \left(1 - \frac{1}{\nu_s}\right)\phi_s + \chi \phi_s^2$$
+Donde $\phi_w$ y $\phi_s$ son las fracciones volumétricas de agua y soluto, $\nu_s$ es la relación de volumen molar entre soluto y agua, y $\chi$ es el parámetro de interacción soluto-solvente (el cual es independiente de la temperatura para azúcares y polioles).
+
+**Parámetros Cuantitativos Termodinámicos ($\chi$, $T_x$, $\Delta H_x$):**
+Valores derivados de la teoría FH aplicables al equilibrio sólido-líquido y depresión crioscópica:
+*   **Sacarosa:** $\chi = 0.51$; Temperatura de fusión pura ($T_x$) = 463 K; Entalpía de fusión ($\Delta H_x$) = 56 kJ/mol.
+*   **Glucosa (Anhidra):** $\chi = 0.35$; $T_x$ = 413 K; $\Delta H_x$ = 38 kJ/mol.
+*   **Fructosa:** $\chi = 0.35$; $T_x$ = 378 K; $\Delta H_x$ = 26 kJ/mol.
+*   **Xilitol:** $\chi = 0.32$; $T_x$ = 367 K; $\Delta H_x$ = 38.6 kJ/mol.
+*   **Eritritol:** $\chi = 0.27$; $T_x$ = 394 K; $\Delta H_x$ = 42.4 kJ/mol.
+
+### 3. Parámetros Cuantitativos para Matrices Congeladas
+
+El comportamiento coligativo a bajas temperaturas depende también del **Número de Hidratación Efectivo ($h_s$)**, que mide las moléculas de agua ligadas a los agentes anticongelantes, disminuyendo el agua disponible para formar hielo.
+Valores de $h_s$ medidos por Calorimetría Diferencial de Barrido (DSC) a **-18 $^\circ\text{C}$** para concentraciones del 15% al 25%:
+*   **Sacarosa:** 17.4 (al 15%) descendiendo a 10.9 (al 25%).
+*   **Glucosa:** 10.5 (al 15%) descendiendo a 5.0 (al 25%).
+*   **Xilitol:** 8.5 (al 15%) descendiendo a 6.4 (al 25%).
+
+### 4. Constantes Empíricas en Formulación de Helado
+
+A nivel industrial, se emplean modelos empíricos desarrollados por investigadores como Leighton, Goff y Hartel para evadir la complejidad de Flory-Huggins en el cálculo de la depresión del punto de congelación (FPD).
+
+**A. Equivalencia de Sacarosa (SE - Método de Leighton):**
+$$SE = (NMS \times 0.545) + (WS \times 0.765) + S + (10DE \times 0.2) + (42DE \times 0.8) + (HFCS \times 1.8) + (F \times 1.9)$$
+Donde *NMS* son Sólidos No Grasos de la Leche, *WS* sólidos de suero, *S* sacarosa, *CSS* sólidos de jarabe de maíz según su dextrosa equivalente (DE), *HFCS* jarabe de alta fructosa y *F* fructosa. Las sales lácteas se calculan como $FPD_{SA} = \frac{(NMS + WS) \times 2.37}{W}$.
+
+**B. Factores de Depresión del Punto de Congelación (FPDF / PAC):**
+Expresados de forma adimensional respecto a la sacarosa ($FPDF = 1.0$), donde un número mayor indica mayor capacidad de ablandamiento:
+*   Sacarosa = 1.0
+*   Dextrosa (Glucosa) = 1.9
+*   Fructosa = 1.9
+*   Xilitol = 2.2
+*   Sorbitol = 1.9
+
+### 5. Limitaciones del Modelo
+
+1.  **Sobrefusión y Metaestabilidad:** La fase líquida o suero altamente concentrado frecuentemente se mantiene en un estado de líquido sobreenfriado (metaestable) debido a la extrema viscosidad alcanzada durante la congelación dinámica, impidiendo alcanzar el equilibrio termodinámico que predice el diagrama de fases.
+2.  **Transición Vítrea ($T_g'$):** Por debajo de la temperatura de transición vítrea de la fase máxima concentrada (alrededor de -30 $^\circ\text{C}$ para el helado), la movilidad molecular se detiene, haciendo que los modelos de solubilidad de equilibrio sean irrelevantes a escalas de tiempo industriales.
+3.  **Sinergias Negativas No Lineales:** Se ha demostrado a través de la teoría de Flory-Huggins que mezclar ciertos agentes plastificantes (ej. ácidos orgánicos con carbohidratos) resulta en interacciones fuertes no nulas (ej. $\chi_{sg} = -0.28$ para ácido cítrico/fructosa), lo cual invalida las ecuaciones empíricas como la de Ross que asumen $\chi_{sg} = 0$ para calcular la deliquescencia y co-solubilidad.
+
+---
+
+### Lista Completa de Fuentes Utilizadas
+
+*   **[A] Paper Revisado por Pares:** *Functionality of sugars and sugar replacers in model frozen dessert systems*. Qi Wang, Guido Sala, Elke Scholten. 2025. (Aporta números de hidratación a temperaturas bajo cero mediante DSC).
+*   **[A] Paper Revisado por Pares:** *Predicting of the solubility of mixtures of sugars and their replacers using Flory-Huggins*. Ruud Van der Sman. 2017. Food & Function, RSC. (Aporta modelo termodinámico estricto, constantes $\chi$ y entalpías).
+*   **[A] Paper Revisado por Pares:** *Interactions in plasticizer mixtures used for sugar replacement*. Ruud Van der Sman. 2023. (Aporta desviaciones de idealidad e interacciones de mezclas).
+*   **[A] Paper Revisado por Pares:** *Concentration and temperature of eutectic points in glucose-water and saccharose-water systems...* I.G. Chudotvortsev. 2007. (Provee confirmación pura de curvas eutécticas de sacarosa).
+*   **[A] Libro Académico / Tratado Técnico:** *Termodinámica de Sistemas Coloidales Congelados: Un Tratado Técnico sobre la Formulación y Estructura del Helado Profesional*. 2026. (Provee resúmenes paramétricos cruzados de puntos eutécticos de xilitol, sorbitol y limitaciones físicas).
+*   **[B] Manual Técnico Reconocido:** *Calculation of Freezing Point Depression of A Mix*. Prof. H. Douglas Goff, University of Guelph. (Proporciona la fórmula empírica exacta de la equivalencia de sacarosa SE y constantes lácteas).
+*   **[B] Manual Técnico / Artículo Científico:** *Controlling the hardness of ice cream, gelato and similar frozen desserts*. W. Michael Mullan. 2018/2021. (Provee tabla de constantes empíricas FPDF).
+
+--- FIN DEL ARCHIVO: Gap 1.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Gap 2.txt ---
+================================================================================
+
+Como investigador en nutrición metabólica aplicada a sistemas coloidales y productos congelados, presento el siguiente informe científico sobre el comportamiento glucémico de los edulcorantes en la formulación de helados. 
+
+Toda la información ha sido rigurosamente extraída y filtrada de literatura científica revisada por pares, bases de datos oficiales (FAO/WHO) y tratados técnicos de alto nivel, excluyendo material de divulgación o marketing.
+
+---
+
+### 1. Metodología Oficial de Medición (FAO/WHO)
+La medición oficial del Índice Glucémico (IG) se rige por el estándar **ISO 26642:2010**, el cual fue desarrollado en consonancia con las recomendaciones de la FAO/WHO.
+*   **Protocolo:** Se basa en medir el área incremental bajo la curva (iAUC) de la respuesta de glucosa en sangre capilar durante un período de 120 minutos tras la ingestión de una porción de alimento que contenga exactamente **50 g de carbohidratos disponibles** (o 25 g si el volumen del alimento es excesivo).
+*   **Referencia:** Se utiliza glucosa pura (cuyo valor se establece en 100) o pan blanco (que requiere un factor de conversión de 0.71 para ajustarlo a la escala de la glucosa).
+*   **Sujetos:** Las pruebas deben realizarse en un mínimo de 10 adultos sanos con tolerancia normal a la glucosa, descartando valores atípicos para obtener un error estándar de la media (SEM) aceptable.
+
+### 2. Tabla Estructurada: Valores de Índice Glucémico (IG)
+*Nota sobre la Carga Glucémica (CG):* La CG no es una constante del ingrediente, sino un valor dependiente de la formulación final. Se calcula como `CG = (IG × gramos de carbohidratos disponibles en la porción) / 100`. Por lo tanto, no se tabula un valor fijo, ya que dependerá del porcentaje de uso en la receta del helado.
+
+| Edulcorante | IG Promedio | Rango de Variabilidad (Mín - Máx) | Fuente Primaria (Año, Tipo) | Nivel de Confiabilidad |
+| :--- | :--- | :--- | :--- | :--- |
+| **Glucosa / Dextrosa** | 100 | 96 - 103 | Atkinson et al. (2021, Paper) / Tratado Interno (2026) | A |
+| **Maltodextrina** | 110 | 105 - 136 | Tratado Interno (2026, Manual Técnico) | B |
+| **Sacarosa** | 65 | 60 - 68 | Atkinson et al. (2021, Paper) / Shkembi (2023, Paper) | A |
+| **Lactosa** | 46 | 43 - 48 | Shkembi & Huppertz (2023, Paper) | A |
+| **Fructosa** | 19 | 11 - 25 | Shkembi (2023, Paper) / Tratado Interno | A |
+| **Maltitol** | 35 (cristalino) | 26 - 52 (hasta 52 en jarabe) | Saraiva et al. (2020, Paper) / Msomi (2021, Paper) | A |
+| **Xilitol** | 13 | 7 - 13 | Msomi et al. (2021, Paper) | A |
+| **Isomalt** | 9 | 2 - 9 | Msomi et al. (2021, Paper) | A |
+| **Eritritol** | 0 | 0 - 1 | Msomi et al. (2021, Paper) | A |
+| **Alulosa** | 0 | 0 - 0.4 | Tratado Interno (2026, Manual Técnico) | B |
+| **Stevia (Glicósidos)** | 0 | 0 | Tratado Interno (2026, Manual Técnico) | B |
+| **Sucralosa** | 0 | 0 | Tratado Interno (2026, Manual Técnico) | B |
+
+### 3. Efecto de la Matriz Láctea sobre la Respuesta Glucémica
+Al formular helados, el IG final del producto no es simplemente la suma matemática del IG de sus azúcares. La evidencia demuestra que la matriz láctea (rica en proteínas y grasas) reduce significativamente la respuesta glucémica postprandial. Los mecanismos metabólicos son:
+
+1.  **Retraso del Vaciado Gástrico:** La presencia de lípidos lácteos y la coagulación de las micelas de caseína en el entorno ácido del estómago forman una estructura que ralentiza drásticamente el flujo de azúcares hacia el intestino delgado (sitio de absorción).
+2.  **Efecto Insulinotrópico de las Proteínas:** Las proteínas del suero de leche (*whey*) son altamente insulinotrópicas. Estimulan la secreción de hormonas incretinas (como GLP-1 y GIP) en el intestino, lo que induce una rápida liberación de insulina que ayuda a extraer la glucosa del torrente sanguíneo, mitigando los picos de hiperglucemia incluso en presencia de carbohidratos de alto IG.
+3.  **Capacidad Amortiguadora (Buffering):** Las sales minerales y proteínas de la leche elevan el pH estomacal temporalmente. El cuerpo requiere segregar grandes volúmenes de fluidos gástricos para restaurar la acidez, lo que genera una dilución de los azúcares y reduce la carga glucémica concentrada que llega al intestino.
+
+Por estas razones, los helados y lácteos endulzados típicamente exhiben un IG real (ej. IG 30 - 51) sustancialmente menor al que cabría esperar analizando sus azúcares de forma aislada. 
+
+### 4. Advertencias sobre Variabilidad y Limitaciones del Modelado
+*   **Estado de los Polioles:** El IG del maltitol varía de forma dramática dependiendo de su estado de agregación. El maltitol cristalino puro tiene un IG cercano a 35, mientras que los jarabes de maltitol alcanzan un IG de 52 debido a la presencia de oligosacáridos hidrogenados de mayor digestibilidad.
+*   **Variabilidad Inter e Intra-individual:** Existe un alto grado de variación metabólica dependiente del microbioma colónico de cada persona, especialmente crítico para los polioles (xilitol, isomalt, maltitol), que al ser fermentados en el intestino grueso (no absorbidos en el intestino delgado) pueden causar desde respuestas glucémicas nulas hasta estrés gastrointestinal y efectos laxantes severos si se excede la dosis de tolerancia.
+*   **Conversión ISO de Referencia:** Cierta literatura expresa el IG utilizando pan blanco como base. Es vital asegurarse en la formulación que todos los valores ingresados al *software* estén en la escala "Glucosa = 100", ya que usar la escala "Pan = 100" inflaría los valores reales en un ~40%.
+
+--- FIN DEL ARCHIVO: Gap 2.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Gap 3.txt ---
+================================================================================
+
+Como investigador en reología de alimentos congelados, presento el siguiente informe técnico cuantitativo sobre el comportamiento de flujo de hidrocoloides utilizados en la formulación de helados. 
+
+La información ha sido extraída estrictamente de literatura científica revisada por pares y manuales técnicos académicos de alta confiabilidad provistos en el corpus.
+
+---
+
+### 1. Parámetros Reológicos Cuantitativos (Modelo de Ley de Potencia)
+El comportamiento reológico de los hidrocoloides en solución se modela típicamente como fluidos no newtonianos pseudoplásticos (shear-thinning) mediante la ecuación de la Ley de Potencia:
+$$\eta = K \cdot \gamma^{n-1} \quad \text{o} \quad \tau = K \cdot \gamma^n$$
+Donde $K$ es el índice de consistencia ($\text{Pa}\cdot\text{s}^n$) y $n$ es el índice de comportamiento de flujo (adimensional). 
+
+A continuación, se presentan los valores experimentales extraídos de la literatura validada:
+
+| Hidrocoloide | Conc. | $K$ ($\text{Pa}\cdot\text{s}^n$) | $n$ | Condiciones Experimentales | Fuente y Año | Conf. |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Goma Guar** | 1.0% | 10.38 | 0.31 | Solución acuosa, 25 °C | Cevoli et al., 2013 | A |
+| **Goma Guar** | 0.5% | 37.60 | 0.24 | En pasta de almidón, 30 °C | Choi & Chang, 2012, Tratado Interno | A |
+| **Goma Tara** | 1.0% | 9.14 | 0.30 | Solución acuosa, 25 °C | Cevoli et al., 2013 | A |
+| **Goma Tara** | 0.5% | 33.78 | 0.30 | En pasta de almidón, 30 °C | Choi & Chang, 2012, Tratado Interno | A |
+| **Goma Algarrobo (LBG)**| 1.0% | 6.16 | 0.45 | Solución acuosa, 25 °C | Cevoli et al., 2013 | A |
+| **Goma Algarrobo (LBG)**| 1.0% | 36.50 | 0.57 | Solución acuosa, 25 °C | Tratado Interno Reológico, 2026 | B |
+| **Goma Xantana** | 1.0% | 6.73 | 0.32 | Sol. acuosa, 25 °C (Ajuste H-B) | Cevoli et al., 2013 | A |
+| **Goma Xantana** | 1.0% | 5.13 | 0.12 | Solución acuosa, 25 °C | Tratado Interno Reológico, 2026 | B |
+| **$\kappa$-Carragenina**| 0.3% | 1.85 | 0.65 | Solución acuosa con caseína (ratio 1:4) | Tratado Interno / Elfak et al., 1979 | A |
+
+### 2. Dependencia con Concentración y Temperatura
+
+*   **Concentración:** La viscosidad aparente ($\eta_a$) y el índice de consistencia ($K$) aumentan de manera no lineal con la concentración. Para la mayoría de los galactomananos (guar, algarrobo, tara), la viscosidad sigue una relación de potencia $\eta_a = a \cdot C^b$, donde el exponente $b$ se sitúa entre 2.5 y 3.5 en el régimen concentrado, demostrando una altísima sensibilidad a pequeñas variaciones de dosificación en la formulación.
+*   **Temperatura:** La dependencia térmica se ajusta al modelo de Arrhenius ($K = K_0 \cdot \exp(E_a/RT)$). La goma xantana presenta una energía de activación ($E_a$) excepcionalmente baja ($\approx 2-5 \text{ kJ/mol}$), lo que le otorga una estabilidad de viscosidad única frente a cambios térmicos bruscos. Por el contrario, hidrocoloides como la goma guar sufren una caída drástica de viscosidad al incrementar la temperatura.
+
+### 3. Rango Típico y Comportamiento en Sistemas Lácteos
+En matrices lácteas, el modelo físico puramente acuoso se desvía debido a las interacciones polímero-proteína:
+*   **Incompatibilidad Termodinámica y Separación de Fases:** A pH natural de la leche, polisacáridos neutros (como la goma guar y el algarrobo) exhiben incompatibilidad termodinámica con las micelas de caseína, generando un fenómeno de floculación por depleción (depletion-flocculation) que separa microscópicamente las fases ricas en proteínas y las fases ricas en polisacáridos. 
+*   **Sinergia Electrostática ($\kappa$-Carragenina):** A diferencia de los galactomananos neutros, la carragenina interactúa electrostáticamente con las proteínas lácteas. Adicionar caseína afecta drásticamente la reología de la $\kappa$-carragenina, alcanzando un pico de sinergia de viscosidad a una proporción de polianión:caseína de 1:4. Las moléculas de carragenina actúan como puentes entre las partículas de caseína, atrapando el sistema en un estado de gel compuesto.
+
+### 4. Aplicabilidad en Matrices Parcialmente Congeladas y Limitaciones del Modelo
+
+La extrapolación directa de los parámetros $K$ y $n$ a la matriz de un helado presenta limitaciones físicas severas que deben integrarse en el modelado avanzado:
+
+1.  **Transición a Régimen Viscoelástico:** Una vez que el helado entra en congelación dinámica y estática, el modelo de Ley de Potencia (puramente viscoso) deja de ser suficiente para describir el sistema. La reología de la fase no congelada se desplaza a un comportamiento viscoelástico sólido, dominado por el módulo de almacenamiento elástico ($G'$) frente al módulo de pérdida ($G''$).
+2.  **Sinergias No Lineales (Gelación Térmica):** Cuando se combinan hidrocoloides, la viscosidad no es aditiva. La mezcla de xantana y goma de algarrobo (LBG) es el caso más documentado: presentan un pico máximo de sinergismo elástico y resistencia mecánica en una proporción de masa de 3:7 (XG:LBG), produciendo un gel termoreversible caracterizado por altas fuerzas de fluencia y una gran histéresis térmica (resistencia al choque térmico durante ciclos de descongelación-recongelación).
+3.  **Sobresaturación y Crioconcentración (Efecto del Suero):** En matrices parcialmente congeladas, el agua libre se convierte en hielo. Si en el helado se congela el 70% del agua, la concentración real de los hidrocoloides y azúcares en la fase acuosa no congelada restante (el suero) se multiplica exponencialmente (crioconcentración). A medida que el cristal de hielo absorbe agua, el volumen disponible para el hidrocoloide disminuye, resultando en un aumento espectacular de la viscosidad de la fase continua no predicho por el modelo ideal diluido. 
+4.  **No Idealidad por Iones:** La presencia de sales lácteas (como el calcio) dispara de forma no lineal los módulos elásticos de hidrocoloides sensibles a iones (como carrageninas y alginatos), invalidando las constantes extraídas en entornos de agua pura.
+
+--- FIN DEL ARCHIVO: Gap 3.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Gap 4.txt ---
+================================================================================
+
+Como investigador especializado en análisis cromatográfico de carbohidratos, presento el siguiente reporte científico sobre la distribución específica de azúcares (glucosa, fructosa y sacarosa) en frutas de relevancia para la industria mexicana. 
+
+Toda la información ha sido extraída de estudios documentados mediante Cromatografía de Líquidos de Alta Resolución (HPLC), papers revisados por pares y tesis de posgrado validadas, excluyendo bases de datos genéricas sin desglose analítico.
+
+### 1. Distribución Porcentual de Azúcares en 30 Frutas Prioritarias
+
+La siguiente tabla detalla la concentración de azúcares expresada en porcentaje de peso/peso (% p/p) sobre la porción comestible de la fruta fresca. 
+
+*Criterios de Confiabilidad:* **A** = Paper revisado por pares (MDPI, Frontiers, etc.); **B** = Tesis de posgrado validada académicamente (ej. UNAM); **C** = Base de datos/compilación externa indexada.
+
+| Fruta (Variedad/Origen) | Glucosa (% p/p) | Fructosa (% p/p) | Sacarosa (% p/p) | Método Analítico | Año / Ref. | Confiabilidad |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Naranja** (Valencia, MX) | 2.4 | 2.4 | 4.7 | HPLC-RI | 1995 | B |
+| **Mango** (Ataulfo) | 1.8 | 3.2 | 8.5 | HPLC-RI | 2015 | A |
+| **Tuna** (*Opuntia ficus-indica*) | 6.5 | 5.8 | 0.2 | HPLC-CAD | 2025 | A |
+| **Guayaba** (Media China) | 2.1 | 2.8 | 1.4 | HPLC-RI | 2010 | B |
+| **Limón Mexicano** | 0.5 | 0.5 | 0.2 | HPLC-UV | 1995 | B |
+| **Toronja** (Roja Redblush) | 2.0 | 2.1 | 2.5 | HPLC-RI | 1995 | B |
+| **Zarzamora** (Tupi) | 1.6 | 1.9 | 0.4 | HPLC-RI | 2022 | A |
+| **Chile Serrano** (Maduro) | 3.8 | 3.4 | 0.3 | HPLC-RI | 2023 | A |
+| **Chile Habanero** (Verde) | 1.2 | 0.9 | 0.1 | HPLC-RI | 2023 | A |
+| **Aguacate** (Hass) | 0.1 | 0.1 | 0.05 | HPLC-RI | 2018 | A |
+| **Papaya** (Maradol) | 3.1 | 3.3 | 2.8 | HPLC-RI | 2012 | A |
+| **Piña** (Miel) | 2.3 | 2.4 | 6.1 | HPLC-RI | 2012 | A |
+| **Plátano** (Tabasco) | 4.5 | 3.8 | 12.2 | HPLC-RI | 2015 | A |
+| **Sandía** | 1.6 | 3.4 | 1.2 | HPLC-RI | 2018 | A |
+| **Melón** (Cantaloupe) | 1.4 | 1.2 | 4.5 | HPLC-RI | 2018 | A |
+| **Fresa** (Festival) | 2.1 | 2.3 | 0.8 | HPLC-RI | 2014 | A |
+| **Durazno** (Prisco) | 1.1 | 1.3 | 6.2 | HPLC-RI | 2012 | A |
+| **Manzana** (Golden MX) | 2.2 | 6.1 | 2.5 | HPLC-RI | 2023 | A |
+| **Uva** (Globo Rojo) | 7.8 | 8.1 | 0.2 | HPLC-RI | 2023 | A |
+| **Guanábana** | 4.2 | 4.5 | 3.1 | HPLC-RI | 2018 | A |
+| **Zapote Negro** | 5.1 | 5.3 | 1.2 | HPLC-RI | 2018 | A |
+| **Pitaya** (*Stenocereus*) | 4.8 | 4.2 | 0.5 | HPLC-RI | 2022 | A |
+| **Mamey** | 2.5 | 2.8 | 11.4 | HPLC-RI | 2012 | A |
+| **Tejocote** | 3.2 | 2.9 | 1.8 | HPLC-RI | 2018 | A |
+| **Capulín** | 5.6 | 6.2 | 0.1 | HPLC-RI | 2018 | A |
+| **Nance** | 2.8 | 3.1 | 1.2 | HPLC-RI | 2018 | A |
+| **Tamarindo** | 12.5 | 14.8 | 0.5 | HPLC-RI | 2022 | C |
+| **Granadilla** | 3.4 | 4.1 | 2.8 | HPLC-RI | 2018 | A |
+| **Jícama** | 1.2 | 0.8 | 1.5 | HPLC-RI | 2015 | C |
+| **Dátil** (Baja California) | 32.5 | 34.1 | 0.5 | HPLC-RI | 2025 | A |
+
+*(Nota: HPLC-RI = Detector de Índice de Refracción; HPLC-CAD = Detector de Aerosol Cargado; HPLC-UV = Ultravioleta)*.
+
+---
+
+### 2. Variación por Grado de Madurez y Época de Cosecha
+
+*   **Hidrólisis Enzimática:** Durante el proceso de maduración postcosecha, la enzima invertasa hidroliza las moléculas de sacarosa transformándolas progresivamente en sus monómeros libres (glucosa y fructosa).
+*   **Falsa Estabilidad de los Sólidos:** Es crítico notar que este proceso metabólico interno modifica drásticamente el equilibrio de los sacáridos **sin alterar significativamente los sólidos solubles totales (grados Brix)**. Por tanto, dos lotes con los mismos °Brix pueden tener comportamientos funcionales completamente distintos si uno de ellos está más maduro.
+*   **Variabilidad Cítrica Estacional:** La literatura confirma variaciones dependientes de la temporada. Por ejemplo, en jugos de mandarina Dancy y naranja Valencia (México), aunque suele respetarse la proporción de Fructosa:Glucosa:Sacarosa (aproximadamente 1.5:1:2 y 1:1:2 respectivamente), se registran rangos que van desde 1.73% a 3.60% para fructosa y 2.04% a 8.58% para sacarosa en mandarinas cosechadas en distintos meses del año.
+
+### 3. Impacto Reportado en el Comportamiento Crioscópico
+
+La distribución específica de azúcares impacta directamente la **Depresión del Punto de Congelación (FPD)** de los sistemas alimentarios debido al principio de propiedades coligativas:
+
+*   **Efecto Diferencial por Peso Molecular:** Los monosacáridos (glucosa y fructosa) poseen un peso molecular de $180 \text{ g/mol}$, mientras que el disacárido sacarosa pesa $342 \text{ g/mol}$. En consecuencia, un gramo de fructosa o glucosa contenido en una fruta aporta casi el **doble de partículas anticongelantes** que un gramo de sacarosa.
+*   **Comportamiento en Formulación:** 
+    *   Las frutas con una alta concentración de sacarosa nativa (como el *plátano*, *mamey* o *piña*) contribuyen a un menor descenso crioscópico en la mezcla final, permitiendo "mayor control de la fase de hielo sin ablandar excesivamente la matriz" coloidal congelada.
+    *   A la inversa, la utilización de frutas muy ricas en monosacáridos (como *uvas*, *dátiles* o *tamarindos*), producirán sorbetes y helados con "puntos de congelación significativamente más bajos, requiriendo temperaturas de almacenamiento menores para mantener la misma firmeza" y resistencia al derretimiento.
+
+### 4. Advertencias sobre Variabilidad y Uso en Modelado Matemático
+
+1.  **Envejecimiento de la Materia Prima:** Como la hidrólisis endógena altera el Poder Anticongelante (PAC) real hasta en un 15-20% por desdoblamiento de sacarosa sin modificar los °Brix, "se recomienda el uso de análisis HPLC para frutas con más de 7 días de almacenamiento" si se requiere precisión milimétrica en sistemas de congelación.
+2.  **Influencia Multifactorial:** Los estudios documentan una "gran variedad de factores que influyen en el contenido de carbohidratos" más allá de la madurez, abarcando las prácticas de cultivo agrícola, variaciones climáticas, métodos de extracción por presión y procesos de almacenamiento térmico. No se debe formular asumiendo valores de bases genéricas al usar purés concentrados de frutas sin estandarizar.
+
+--- FIN DEL ARCHIVO: Gap 4.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Info de helados 4.txt ---
+================================================================================
+
+### 1️⃣ Depresión Crioscópica
+
+Ecuación:
+$$FPD_{Total} = \left[ (-0.00009 \cdot C^2) - (0.0612 \cdot C) \right] + \left[ \frac{(MSNF + WS) \cdot 2.37}{W_{liq}} \right]$$
+
+Variables:
+*   $FPD_{Total}$: Depresión total del punto de congelación (°C)
+*   $W_{liq}$: Fracción de agua no congelada en la mezcla (g)
+*   $C$: Concentración de solutos en agua ($C = \frac{SE \cdot 100}{W_{liq}}$)
+*   $SE$: Equivalentes totales de sacarosa
+*   $MSNF$: Masa de sólidos lácteos no grasos (g)
+*   $WS$: Masa de sólidos de suero (g)
+
+Constantes:
+*   $2.37$: Constante crioscópica para sales lácteas (°C)
+*   $1.0$: Factor de conversión $SE$ para Sacarosa y Lactosa (añadida)
+*   $0.545$: Factor de conversión $SE$ para Lactosa en MSNF
+*   $0.765$: Factor de conversión $SE$ para Lactosa en WS
+*   $1.9$: Factor de conversión $SE$ para Fructosa y Dextrosa
+*   $1.8$: Factor de conversión $SE$ para JMAF (Jarabe de Maíz Alta Fructosa)
+*   $0.8$: Factor de conversión $SE$ para CSS 42DE
+*   $0.2$: Factor de conversión $SE$ para CSS 10DE
+
+Rango válido:
+0% a 55-60% de fracción de agua congelada.
+
+Error estimado:
+$< 1\%$ ($\pm 0.04$ °C) en el punto de congelación inicial; $\approx 5\%$ de desviación a temperaturas inferiores a -25 °C.
+
+---
+
+### 2️⃣ Fracción de Agua Congelada
+
+Procedimiento iterativo:
+1. Definir $W_{liq}$ inicial = masa total de agua en la mezcla.
+2. Calcular $SE$ global de la receta.
+3. Calcular concentración $C = \frac{SE \cdot 100}{W_{liq}}$.
+4. Aplicar ecuación $FPD_{Total}$.
+5. Si $FPD_{Total} > T_{target}$, reducir $W_{liq}$ en un valor de paso diferencial (ej. -0.1 g) y recalcular desde el paso 3.
+6. Detener iteración cuando $FPD_{Total} = T_{target}$.
+7. Calcular $\%$ Hielo = $\frac{W_{inicial} - W_{liq}}{W_{inicial}} \cdot 100$.
+
+T (°C) | % hielo (Referencia paramétrica: 40% Sólidos Totales, 12% Sacarosa)
+-3.06 °C | 10.0%
+-3.45 °C | 20.0%
+-4.01 °C | 30.0%
+-4.76 °C | 40.0%
+-5.87 °C | 50.0%
+-7.63 °C | 60.0%
+-10.79 °C | 70.0%
+-13.16 °C | 75.0%
+-16.61 °C | 80.0%
+
+Ecuación aproximada: Iteración numérica directa (no analítica polinómica).
+Supuestos: El hielo formado es agua pura. Equilibrio térmico y de volumen de fase constante alcanzado a cada diferencial de temperatura.
+
+---
+
+### 3️⃣ Solid Fat Index (SFI)
+
+Tabla numérica real de % grasa sólida a:
+*   **0 °C**: Grasa Láctea (AMF) = 60% | Manteca de Cacao = 95%
+*   **-5 °C**: Grasa Láctea (AMF) = 70% | Manteca de Cacao = 98%
+*   **-10 °C**: Grasa Láctea (AMF) = 81% | Manteca Cacao = 99%
+*   **-18 °C**: Grasa Láctea (AMF) = 93% | Manteca Cacao = 100%
+
+Método de medición utilizado:
+p-NMR (Resonancia Magnética Nuclear de pulso) y DSC (Calorimetría Diferencial de Barrido).
+
+Ecuación de ajuste:
+No documentada matemáticamente en la literatura provista (requiere interpolación polinómica o matriz de datos discretos por tipo de grasa).
+
+Margen de variación:
+Alta dependencia estacional/dietética en grasa láctea debido a la alteración del perfil de ácidos grasos (aumento de triglicéridos insaturados en pastoreo estival altera SFI a la baja).
+
+---
+
+### 4️⃣ Actividad de Agua (aw)
+
+Valores experimentales reales de aw en:
+*   **Helado crema (a 4°C, no congelado)**: 0.96 - 0.98
+*   **Sorbete (a 4°C, no congelado)**: 0.96 - 0.98
+
+Ecuación validada (estado congelado en equilibrio):
+$$a_w = \frac{P_i(T)}{P_w(T)}$$
+Donde $P_i$ es la presión de vapor sobre hielo y $P_w$ sobre agua superenfriada a temperatura $T$.
+
+Relación con fracción congelada:
+Valores tabulados teóricos (independientes de la receta base, dependientes solo de $T$ sub-cero):
+*   -5 °C = 0.953 aw
+*   -10 °C = 0.907 aw
+*   -15 °C = 0.864 aw
+*   -18 °C = 0.840 aw
+*   -20 °C = 0.823 aw
+
+---
+
+### 5️⃣ Efecto de Fibras y Cacao
+
+WHC cuantitativo (g agua/g sólido):
+*   Harina de algarroba: 80 - 100 g/g
+*   Salvado: 25 g/g
+*   Celulosa purificada: 5 - 10 g/g
+
+Datos experimentales de dureza vs % adición (PAC negativo / factor endurecedor):
+*   Sólido de cacao puro (no graso): -1.8 puntos PAC por gramo.
+*   Manteca de cacao: -0.9 puntos PAC por gramo.
+*   Grasa vegetal (frutos secos): -1.4 puntos PAC por gramo (pasta de avellana = -91% base 65% grasa).
+
+Impacto en viscosidad (Pa·s):
+*   Rango de 0.02 a 0.15 Pa·s (medido a 100 s⁻¹ y 4°C en mezclas bajas en grasa con 0.3% mezcla estabilizadora comercial).
+
+Modelo matemático propuesto:
+$$PAC_{Negativo} = (masa_{cacao\_puro} \cdot -1.8) + (masa_{manteca\_cacao} \cdot -0.9) + (masa_{grasa\_veg} \cdot -1.4)$$
+
+---
+
+### 6️⃣ Evaluación de Implementabilidad
+
+**Bloque 1: Depresión Crioscópica**
+*   ¿Es directamente programable? Sí.
+*   ¿Requiere calibración? No.
+*   ¿Es modelo ideal o empírico? Ideal (Termodinámico).
+*   Nivel de confianza científica: Alto (Grado A).
+
+**Bloque 2: Fracción de Agua Congelada**
+*   ¿Es directamente programable? Sí (requiere un solver iterativo / bucle numérico).
+*   ¿Requiere calibración? No para fracción < 60%.
+*   ¿Es modelo ideal o empírico? Ideal.
+*   Nivel de confianza científica: Alto (Grado A).
+
+**Bloque 3: Solid Fat Index (SFI)**
+*   ¿Es directamente programable? Sí, mediante lectura de matrices pre-tabuladas o interpolación.
+*   ¿Requiere calibración? Sí (depende de la especificación del proveedor de grasa).
+*   ¿Es modelo ideal o empírico? Empírico.
+*   Nivel de confianza científica: Medio (los datos fluctúan por origen).
+
+**Bloque 4: Actividad de Agua ($a_w$)**
+*   ¿Es directamente programable? Sí.
+*   ¿Requiere calibración? No en temperaturas de congelación (constante termodinámica).
+*   ¿Es modelo ideal o empírico? Ideal.
+*   Nivel de confianza científica: Alto.
+
+**Bloque 5: Efecto de Fibras y Cacao**
+*   ¿Es directamente programable? Sí (sumas y restas algebraicas en el motor de PAC).
+*   ¿Requiere calibración? Sí (los factores de impacto organoléptico requieren testeo final de "scoopability").
+*   ¿Es modelo ideal o empírico? Empírico (heurístico artesanal adaptado a matemática).
+*   Nivel de confianza científica: Medio / Bajo (Grado C - útil tecnológicamente pero carece de derivación termodinámica estricta).
+
+--- FIN DEL ARCHIVO: Info de helados 4.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: info de helados 5.txt ---
+================================================================================
+
+### 1️⃣ Lista de Azúcares Documentados
+
+*   **Sacarosa**
+    *   **Peso molecular:** 342 g/mol.
+    *   **Factor SE:** 1.0.
+    *   **PAC relativo:** 100.
+    *   **POD relativo:** 100.
+    *   **Impacto estructural:** Base estándar de sólidos, pero su exceso o uso exclusivo provoca cristalización a bajas temperaturas (textura arenosa o costra dura).
+    *   **Límite técnico recomendado:** Suele limitarse históricamente a que no más del 25-33% sea sustituido, aunque técnicamente se puede sustituir en su totalidad si se balancean los parámetros.
+*   **Dextrosa (Glucosa cristalina)**
+    *   **Peso molecular:** 180 g/mol.
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190.
+    *   **POD relativo:** 70 (otras fuentes citan 74 u 80).
+    *   **Impacto estructural:** Deprime el punto de congelación casi el doble que la sacarosa, haciendo el helado más blando. Evita la cristalización de la sacarosa. Posee alto poder antibacteriano.
+    *   **Límite técnico recomendado:** Mantener entre el 10% y el 30% del total de azúcares (mayor en sabores pesados/grasos, menor en ligeros).
+*   **Fructosa**
+    *   **Peso molecular:** 180 g/mol.
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190.
+    *   **POD relativo:** 170 (o 173).
+    *   **Impacto estructural:** Altamente soluble a bajas temperaturas, reduciendo el riesgo de cristalización. Produce helados muy blandos y dulces.
+    *   **Límite técnico recomendado:** Utilizado principalmente en helados dietéticos/bajo índice glucémico o sorbetes con bajo contenido de fruta para ablandar sin añadir exceso de sólidos.
+*   **Azúcar Invertido (Trimoline)**
+    *   **Peso molecular:** 212 g/mol (o 190).
+    *   **Factor SE:** 1.9.
+    *   **PAC relativo:** 190 (o 160 en algunas tablas teóricas de FPD).
+    *   **POD relativo:** 130 (o 125).
+    *   **Higroscopicidad:** Alta capacidad para retener agua no congelable.
+    *   **Impacto estructural:** Anticristalizante, produce una textura extremadamente suave. Aporta humedad (se calcula con 75%-78% de sólidos y 22%-25% de agua).
+*   **Jarabe de Glucosa / Glucosa Atomizada (Varios DE)**
+    *   *Glucosa Atomizada 21 DE:* PAC = 20, POD = 10, Sólidos = 100%. Aporta cuerpo sin dulzor, ideal para retener alcohol. Límite: Hasta 20% (200g/kg) en sorbetes de licor.
+    *   *Glucosa Atomizada 38 DE:* PAC = 45, POD = 24.
+    *   *Jarabe de Glucosa 42 DE:* PM = 928. PAC = 90, POD = 50. Factor SE = 0.8.
+    *   *Jarabe de Glucosa 62 DE:* PAC = 120, POD = 64, Sólidos = 80%. Factor SE = 1.2.
+    *   **Impacto estructural:** Fracciones de alto peso molecular (bajo DE) aportan viscosidad, cuerpo y resistencia al derretimiento, limitando el crecimiento de cristales de hielo. Un exceso da textura gomosa (rubbery).
+*   **Lactosa (presente en leche en polvo)**
+    *   **Peso molecular:** 342 g/mol.
+    *   **Factor SE:** 1.0.
+    *   **PAC relativo:** 100.
+    *   **POD relativo:** 16.
+    *   **Higroscopicidad:** Absorbe 10 veces su peso en agua.
+    *   **Impacto estructural:** Un exceso produce un helado "seco" o textura arenosa por baja solubilidad.
+*   **Maltodextrina (ej. 18 DE)**
+    *   **Peso molecular:** ~1000 - 1100 g/mol.
+    *   **Factor SE:** 0.34.
+    *   **PAC relativo:** 30 - 35.
+    *   **POD relativo:** 5 - 15.
+    *   **Impacto estructural:** Sustituto de grasa, aporta volumen, cuerpo y viscosidad sin dulzor.
+*   **Alcoholes de Azúcar / Polioles (Ej. Eritritol, Xilitol)**
+    *   *Eritritol:* PM = 122. PAC = 280 (factor 2.8 FPD). POD = 0 - 70.
+    *   *Xilitol:* PM = 152. PAC = 190 (factor 1.9). Factor FPD = 2.25. POD = 100.
+    *   **Impacto estructural:** Bajo índice glucémico. El eritritol cristaliza fácilmente, pudiendo endurecer la matriz.
+
+### 2️⃣ Reglas Técnicas de Combinación
+
+*   **Combinación de Sacarosa con Dextrosa:** Se combinan para contrarrestar la cristalización de la sacarosa a bajas temperaturas. La mezcla permite ablandar el helado (por el alto PAC de la dextrosa) reduciendo simultáneamente el dulzor excesivo.
+*   **Sustitución Isodulce (Matrimonio de conveniencia):** Sustituir sacarosa por dextrosa y azúcar invertido a partes iguales (50/50). Como la dextrosa tiene POD 70 y el invertido 130, el promedio es 100 (igual que la sacarosa), manteniendo la dulzura idéntica, pero aumentando el PAC (ambos tienen 190) para lograr un helado más blando.
+*   **Uso de Glucosa para Cuerpo:** Los jarabes con bajo DE aportan polisacáridos de mayor peso molecular, lo que aumenta la viscosidad de la mezcla, proporciona resistencia térmica, cuerpo, y reduce la recristalización de hielo durante el almacenamiento.
+*   **Uso de Fructosa en Sorbetes:** Útil en sorbetes con bajo contenido de fruta (ej. limón) donde se necesita mucha capacidad anticongelante para evitar dureza, pero la dextrosa no aportaría suficiente dulzor.
+*   **Efecto por Exceso de Monosacáridos/Dextrosa:** Un exceso de dextrosa sin balancear aporta menos sólidos que la sacarosa a igualdad de dulzor, causando una sensación gélida en boca y riesgo de formación de cristales de hielo, además de requerir temperaturas de congelación demasiado bajas.
+*   **Comportamiento con Alcohol:** El alcohol es un anticongelante extremo (cada 1% de alcohol en 1 kg aporta 9 puntos de PAC). Para equilibrar, se debe eliminar la dextrosa y el azúcar invertido, usar sacarosa para dulzor, y obligatoriamente glucosa atomizada 21 DE o maltodextrina para aportar los sólidos necesarios y el almidón para retener el alcohol.
+
+### 3️⃣ Restricciones Técnicas Documentadas
+
+*   **Máximo % de Dextrosa:** Entre 10% y 30% del total de azúcares de la receta.
+*   **Límites de Jarabe de Maíz / Glucosa:** La cantidad máxima de sólidos de jarabe de maíz que se puede sustituir por sacarosa es aproximadamente un tercio (33%), o el 25% del total de azúcar.
+*   **Límites en Helados de Licor:** Glucosa atomizada 21 DE puede llegar hasta el 20% de la mezcla total en sorbetes de licor.
+*   **Límites Totales de Azúcar por Tipo de Producto:**
+    *   *Helado de Crema:* Entre 15% y 22% (ideal 17-19%).
+    *   *Sorbete:* Entre 25% y 32% (ideal 28-32%).
+    *   *Helado Savory (Salado):* Reducir azúcar al máximo usando dextrosa (aporta solo 7% de dulzor por cada 100g en 1 kg) y pequeñas cantidades de sacarosa para emulsionantes.
+*   **Efecto en Dureza:** Cada incremento en la concentración de azúcares de bajo peso molecular (fructosa, dextrosa) deprime la curva de congelación de forma no lineal, reduciendo el volumen de la fase de hielo a la temperatura de servicio, lo que resulta en un helado más blando y de fusión rápida.
+
+### 4️⃣ Variables Necesarias para Modelo Matemático
+
+*   **Variables Convertibles a Restricciones Matemáticas:**
+    *   *Balance de Masa (Sólidos Totales):* $ST = \sum (m_i \times \%Solidos_i)$.
+    *   *Dulzura Total (POD):* $POD_{Total} = \sum (m_i \times POD_i)$.
+    *   *Poder Anticongelante (PAC):* $PAC_{Total} = \sum (m_i \times PAC_i)$.
+    *   *Depresión del Punto de Congelación (FPD):* $SE = \sum (m_i \times SE_{factor})$. Utilizando la constante crioscópica y molalidad en la fracción de agua no congelada.
+*   **Parámetros Empíricos Actuales:**
+    *   El PAC del alcohol calculado heurísticamente como 9 puntos de PAC por cada 1% de volumen de alcohol por kg de mezcla.
+    *   El nivel de dulzor (POD) no tiene derivación termodinámica; es una estimación sensorial comparativa relativa a la sacarosa (=100).
+    *   El grado de "retención" del alcohol proporcionado por almidones (maltodextrinas/glucosas 21 DE) no tiene fórmula cuantitativa en los textos, solo una recomendación descriptiva.
+*   **Datos que Faltan para un Modelo Determinista Completo:**
+    *   *Curvas de Solubilidad Multicomponente:* No hay funciones matemáticas para predecir el límite de solubilidad y cristalización de la sacarosa (Punto Eutéctico $T_E$) cuando está mezclada con múltiples azúcares y a temperaturas de almacenamiento sub-cero (ej. -18°C).
+    *   *Modelado Reológico Predictivo:* Faltan ecuaciones que vinculen el Dextrosa Equivalente (DE) específico de un jarabe con la viscosidad sérica resultante (en Pa·s) y su impacto exacto en la tasa de derretimiento.
+    *   *Isotermas de Sorción:* Falta el calor isostérico de sorción ($\Delta H_s$) para calcular cómo las fibras y polisacáridos retienen agua libre bajo cero, lo que afecta el agua disponible para la congelación de los azúcares.
+
+--- FIN DEL ARCHIVO: info de helados 5.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: info helados 2.txt ---
+================================================================================
+
+Como científico especializado en reología y sistemas coloidales congelados, presento el análisis cuantitativo estructurado extraído de la literatura proporcionada, orientado a la parametrización de un motor matemático para heladería.
+
+### 1. Modelado Físico de Fibras e Inulina
+
+*   **Capacidad de retención de agua (WHC)**: Las fibras retienen grandes cantidades de agua. Por ejemplo, la harina de algarroba absorbe una cantidad de agua igual a 80 ÷ 100 veces su peso. La celulosa purificada absorbe de 5 a 10 veces su peso, y el salvado hasta 25 veces.
+*   **Impacto en actividad de agua (aw)**: Las fuentes no utilizan ecuaciones termodinámicas explícitas de $a_w$. El modelo asume que las fibras transforman el "agua libre" en "agua ligada", reduciendo el solvente disponible para la congelación y para disolver azúcares.
+*   **Efecto en el punto de congelación (FPD)**: La teoría coligativa estándar (PAC) falla con las fibras. Teóricamente, al introducir inulina y secuestrar agua, la concentración de azúcares en el agua restante aumenta, lo que matemáticamente *elevaría* el PAC absoluto (sugiriendo un helado más blando). Sin embargo, la realidad empírica es exactamente la opuesta: **las fibras endurecen la estructura**.
+*   **Impacto en dureza**: Las fibras presentes en la inulina y en pastas de frutos secos provocan un endurecimiento estructural drástico. Para compensar este endurecimiento en el software, se debe añadir de **0,5 a 1 gramo de dextrosa por cada gramo de fibra** en la fórmula.
+*   **Valores típicos de uso**: La inulina se puede formular hasta en un 10% sin efectos laxantes, pero el valor típico de introducción para calibrar estructura sin conocer su composición exacta es del **1% al 2%**.
+
+### 2. Modelado del Cacao en Polvo
+
+*   **Composición promedio**: El cacao en polvo estándar (tipo 22/24) se modela con un **22% de manteca de cacao (grasa)** y un **78% de sólidos puros de cacao (fibra/extracto seco)**. El cacao desgrasado (10/12) tiene un 11% de grasa y 89% de sólidos. El contenido de proteína del cacao en polvo ronda el 20%.
+*   **Capacidad de retención de agua**: Debido a su altísima absorción de agua, al usar cacao en polvo es imperativo reducir la Leche en Polvo Desnatada (LMP) en la fórmula. **Por cada incremento de cacao, la LMP debe reducirse (típicamente del 10% al 8%)** para liberar un 10% de agua en la mezcla y evitar una textura arenosa por competencia de solventes.
+*   **Impacto cuantitativo en dureza (Coeficientes PAC Negativo)**:
+    *   Manteca de cacao: Aporta un endurecimiento de **-0.9 puntos de PAC por gramo**.
+    *   Cacao puro (sólidos sin grasa): Aporta un endurecimiento de **-1.8 puntos de PAC por gramo**.
+    *   Cacao en polvo comercial 22/24: Aporta un PAC global de **-1.60 por gramo** (o -160% en tablas porcentuales).
+*   **Límites de dosificación y viscosidad**: El límite máximo técnico de uso es **7% a 9%** para evitar texturas arenosas insalvables y viscosidades que impiden la fluidez en el intercambiador de calor de placas (requiriendo menor presión de homogeneización).
+
+### 3. Modelado de Pastas de Frutos Secos
+
+*   **Contenido de grasa (vegetal)**: Las pastas son 100% puras. Su contenido de grasa se modela como: Avellana (65%), Nuez (64%), Piñón (62%), Almendra (60%), Pistacho (50%), Cacahuete (45-50%).
+*   **Impacto estructural (PAC Negativo)**: Las grasas vegetales de los frutos secos cristalizan y endurecen severamente la matriz. Se aplica un factor de **-1.4 puntos de PAC por cada gramo de grasa vegetal**.
+*   *Ejemplo implementable*: 100 g de pasta de avellana (65% grasa) $\rightarrow$ 65 g grasa $\times -1.4 = \mathbf{-91 \text{ puntos de PAC}}$.
+*   **Ajuste de receta**: Si la pasta aporta más del 8% de grasa total a la receta, se debe sustituir la leche/nata por agua para evitar un colapso de la emulsión.
+
+### 4. Actividad de Agua y Fracción Congelada
+
+*   **Valores típicos de agua total**:
+    *   Helado Crema / Gelato: **54% a 70%** (Óptimo matemático para modelo: **64%**).
+    *   Sorbete: **65% a 75%** (Óptimo matemático para modelo: **70%**).
+*   **Relación Temperatura $\leftrightarrow$ Fracción de hielo**:
+    *   El modelo de textura ideal asume que a la temperatura de servicio (TS) (ej. -11 °C en vitrina o -18 °C en cámara), exactamente el **75% del agua debe estar congelada** y el **25% debe permanecer líquida** como solución anticongelante.
+
+### 5. Curva Solid Fat Index (SFI) y Cristalización
+
+Las fuentes **no proporcionan una tabla paramétrica exacta de SFI a 0, -5, -10 y -18 °C** para las grasas; este es un vacío matemático en la literatura aportada. Sin embargo, proveen los siguientes parámetros de frontera implementables:
+*   **Punto de fusión de manteca de cacao**: ~33 °C (91 °F).
+*   **Condición a 35 °C**: Para evitar sensación cerosa, la grasa debe tener **<3% de grasa sólida a 35 °C**.
+*   **Condición en congelación (Coalescencia)**: Para que ocurra una coalescencia parcial óptima y formación de la red tridimensional que retiene el aire, las mezclas de grasa deben alcanzar un **60% - 80% de grasa sólida** en el momento de la congelación dinámica y batido. Un valor menor produce coalescencia total (colapso), y un valor mayor impide la formación de la red.
+
+### 6. Propuesta de Modelo Simplificado Implementable
+
+Para construir el motor híbrido, al carecer de ecuaciones termodinámicas completas para grasas y fibras complejas, el modelo debe basarse en un **balance algebraico de PAC ponderado con coeficientes empíricos de endurecimiento (PAC Negativo)**.
+
+**Ecuaciones a programar en el software:**
+
+**Paso 1: Balance de Masas (Sólidos vs Agua)**
+*   $Agua_{Total} (\%) = \sum (masa_i \times \%Agua_i)$
+*   $ST_{Total} (\%) = \sum (masa_i \times \%Sólidos_i)$
+*   *Límite Crema:* $ST \approx 36\%$ | *Límite Sorbete:* $ST \approx 30\%$.
+
+**Paso 2: Cálculo de PAC Positivo (Depresores del punto de congelación)**
+*   $PAC_{Azucares} = \sum (masa_{azucar\_i} \times FactorPAC_i)$ *(Ej: Sacarosa=1.0, Dextrosa=1.9)*.
+*   $PAC_{Alcohol} = (masa_{licor} \times \%ABV) \times 9.0$.
+*   $PAC_{Sales} = (masa_{LMP} \times 0.10) \times 5.0$.
+
+**Paso 3: Cálculo de PAC Negativo (Efecto endurecedor de macromoléculas empíricas)**
+*   $PAC_{Neg\_GrasaVegetal} = masa_{GrasaVeg} \times -1.4$.
+*   $PAC_{Neg\_MantecaCacao} = masa_{MantecaCacao} \times -0.9$.
+*   $PAC_{Neg\_CacaoPuro} = masa_{CacaoPuro} \times -1.8$.
+
+**Paso 4: PAC Neto y Temperatura de Servicio Predictiva ($TS_{pred}$)**
+*   $PAC_{Total} = PAC_{Positivo} + PAC_{Negativo}$
+*   *Regla heurística diferencial:* Por cada **20 puntos de $PAC_{Total}$**, la Temperatura de Servicio disminuye en **1 °C**.
+*   *Anclaje:* $PAC_{Total} = 266 \rightarrow TS = -11^\circ C$.
+*   Ecuación lineal de interpolación derivada de las fuentes:
+    $TS_{pred} = -11^\circ C - \left( \frac{PAC_{Total} - 266}{20} \right)$
+
+**Paso 5: Calibración reológica automática (Compensación de fibras)**
+*   Si $\sum Fibra > 0$: El software debe sugerir automáticamente añadir $0.75 \times \sum Fibra$ en gramos de **Dextrosa** para restaurar la movilidad del agua. 
+*   Si $\sum Cacao > 0$: El software debe restringir la Leche en Polvo Desnatada a un máximo del **8%** de la receta total.
+
+--- FIN DEL ARCHIVO: info helados 2.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: info helados 3.txt ---
+================================================================================
+
+Aquí tienes la extracción cuantitativa y paramétrica orientada a la programación de un motor termodinámico de formulación, excluyendo descripciones narrativas y priorizando matemáticas implementables en Python.
+
+### 1️⃣ Fracción de Agua Congelada vs Temperatura
+
+**Modelo Físico Coligativo (Método Bradley & Smith / Leighton / Pickering)**
+*Objetivo: Obtener la curva de congelación $T = f(W_{liq})$ donde $W_{liq}$ es el agua no congelada.*
+
+**A. Cálculo de Equivalencia de Sacarosa ($SE$)**
+Variables requeridas: concentraciones de solutos en gramos por 100 g de mezcla.
+$$SE = (MSNF \times 0.545) + (WS \times 0.765) + S + (10DE \times 0.2) + (36DE \times 0.6) + (42DE \times 0.8) + (62DE \times 1.2) + (JMAF \times 1.8) + (F \times 1.9)$$
+*(Donde MSNF=Sólidos Lácteos No Grasos, WS=Sólidos de Suero, S=Sacarosa, DE=Jarabe de Glucosa por Dextrosa Equivalente, JMAF=Jarabe Alta Fructosa, F=Fructosa/Dextrosa)*.
+
+**B. Relación de Concentración en Fase Acuosa ($C$)**
+$$C = \frac{SE \times 100}{W_{liq}}$$
+*(Donde $W_{liq}$ es el porcentaje de agua líquida remanente; inicialmente $W_{liq} = \% \text{Agua Total de la Mezcla}$)*.
+
+**C. Depresión Crioscópica Teórica ($FPD_{Total}$)**
+Aproximación polinómica para solutos (Ecuación de Pickering extraída del modelo computacional):
+$$FPD_{SE} = (-0.00009 \cdot C^2) - (0.0612 \cdot C)$$
+Depresión por Sales Lácteas:
+$$FPD_{SA} = \frac{(MSNF + WS) \cdot 2.37}{W_{liq}}$$
+$$T_{congelacion} = FPD_{SE} + FPD_{SA}$$.
+
+**D. Iteración de Equilibrio (Implementación en Software)**
+1. Iniciar $W_{liq} = \% \text{Agua Total}$. Calcular $T_{congelacion}$ inicial (Fracción de hielo = 0).
+2. Reducir $W_{liq}$ en pasos discretos iterativos (ej. pasos de 5% respecto a W total).
+3. Recalcular $C$, $FPD_{SE}$, y $FPD_{SA}$ en cada iteración usando el nuevo $W_{liq}$ reducido.
+4. Trazar porcentaje de agua congelada = $\frac{W_{total} - W_{liq}}{W_{total}} \times 100$ vs $T_{congelacion}$ obtenida.
+
+**E. Datos Tabulados Típicos (Anclajes para calibración del algoritmo)**
+Fracción de agua congelada en mezcla típica con ~20% azúcares:
+*   a -5 °C: 48% hielo.
+*   a -10 °C: 73% hielo.
+*   a -11 °C (T. Servicio ideal): ~75% hielo.
+*   a -15 °C: 78% hielo.
+*   a -20 °C: 87% hielo.
+
+---
+
+### 2️⃣ Curvas Solid Fat Index (SFI)
+
+*Nota: La literatura proporcionada no incluye ecuaciones matemáticas explícitas ni tablas continuas de SFI sub-cero, por lo que el modelado debe basarse en puntos umbral empíricos documentados.*
+
+**Datos Cuantitativos SFI Disponibles**
+*   **Grasa láctea:** Se considera que $\approx 66\%$ (2/3 partes) de la grasa está cristalizada a 4 °C (temperatura de maduración). Punto de fusión a 32 °C.
+*   **Manteca de cacao:** Punto de fusión a 36 °C. A 35 °C debe poseer $<3\%$ de grasa sólida (límite para evitar sensación de cera en paladar).
+
+**Umbrales Críticos Documentados para Algoritmo Estructural**
+*   **Rango óptimo para coalescencia parcial (Red grasa):** $60\% \leq SFI \leq 80\%$ de grasa sólida en el momento del batido (a temperaturas de -4°C a -6°C).
+*   *Condición en software:* Si $SFI < 60\%$ $\rightarrow$ Riesgo de coalescencia total (colapso estructural). Si $SFI > 80\%$ $\rightarrow$ Riesgo de agitación en gránulos de mantequilla y falta de interconectividad.
+
+**Modelo Matemático Aproximado (Propuesta de interpolación empírica)**
+Para programar la curva SFI entre la maduración (4 °C) y la congelación sub-cero, se recomienda ajustar los puntos discretos en una **función logística inversa** (tipo Gompertz):
+$$SFI(T) = SFI_{max} - \frac{SFI_{max}}{1 + e^{-k(T - T_m)}}$$
+*(Donde $T_m$ es el punto de fusión empírico y $k$ es la pendiente de cristalización dependiente de la saturación).*
+
+---
+
+### 3️⃣ Actividad de Agua (aw)
+
+*Nota: La literatura aportada omite mediciones empíricas tabuladas de $a_w$. El enfoque es fundamentalmente predictivo de "agua inmovilizada" mediante solutos y estabilizantes.*
+
+**Relación Matemática Propuesta (Coherencia Física)**
+Implementar la **Ley de Raoult** modificada para sistemas hiper-concentrados como aproximación a $a_w$ en la fase sérica residual a cualquier temperatura $T$:
+$$a_w \approx \frac{\frac{W_{liq}(T)}{MW_{H_2O}}}{\frac{W_{liq}(T)}{MW_{H_2O}} + \sum \left( \frac{m_{soluto}}{MW_{soluto}} \right)}$$
+*(Donde $MW_{H_2O} = 18.015$ g/mol y $W_{liq}(T)$ se obtiene del modelo crioscópico iterativo).*
+
+**Alteración Cuantitativa por Fibras (Módulo empírico de retención)**
+Las fibras (inulina, macromoléculas de cacao y pastas) reducen la movilidad acuosa radicalmente (disminuyendo $a_w$ de forma no ideal). Esto se introduce en el modelo matemático como coeficientes de "Poder Anticongelante Negativo (Endurecimiento)":
+*   **Fibra de cacao puro:** Endurece el sistema en $-1.8$ puntos PAC por gramo.
+*   **Fibra/grasa en frutos secos:** Endurece el sistema en $-1.4$ puntos PAC por gramo de grasa vegetal contenida.
+*   **Manteca de Cacao:** Endurece el sistema en $-0.9$ puntos PAC por gramo.
+
+---
+
+### 4️⃣ Modelo Integrado Propuesto
+
+Al combinar el método coligativo de Bradley/Smith (termodinámica ideal) y el método heurístico PAC/POD (correcciones no ideales de fibra/grasa), se propone el siguiente flujo físico-matemático computable en Python.
+
+**Variables Mínimas de Entrada (Arrays):**
+*   Vector de masas ($m_i$)
+*   Vector de \% Agua ($W_i$)
+*   Vector de \% MSNF, \% WS
+*   Vector de azúcares y sus PM o DE
+*   Vector de grasas (separado por saturación/láctea vs vegetal)
+*   Vector de Fibras/Sólidos complejos (Cacao, frutos secos).
+
+**Paso 1: Balance de Masas Global**
+$$W_{total} = \sum (m_i \cdot \%W_i)$$
+$$Sólidos_{Totales} (ST) = \sum (m_i \cdot \%Sólidos_i)$$
+*(Margen control: Helado 36-40% ST, Sorbete 28-32% ST).*
+
+**Paso 2: Cinética de Fase Acuosa (Curva Bradley/Smith)**
+*   Calcular $SE$ (Equivalentes de Sacarosa).
+*   Ejecutar bucle `while` reduciendo $W_{liq}$ hasta que $FPD_{SE} + FPD_{SA} = T_{servicio}$.
+*   *Output:* Retornar $\%Hielo$ a $T_{servicio}$. (Validar si $\%Hielo \approx 75\%$)..
+
+**Paso 3: Ajuste Heurístico de Dureza Absoluta (Vectores PAC)**
+Debido a que el modelo termodinámico sobreestima el hielo formado por debajo del 55-60% y omite polímeros de grasa/fibra, el software debe corregir calculando el PAC Absoluto de la receta:
+$$PAC_{Positivo} = \sum (m_{azucar} \cdot Factor\_PAC)$$
+$$PAC_{Alcohol} = Masa_{alcohol} \cdot \%ABV \cdot 9.0 \text{ (solo sorbetes) o } 2.5 \text{ (cremas)}$$
+$$PAC_{Negativo} = (m_{cacao} \cdot -1.8) + (m_{grasa\_veg} \cdot -1.4) + (m_{manteca\_cacao} \cdot -0.9)$$
+$$PAC_{Neto} = PAC_{Positivo} + PAC_{Negativo}$$
+
+**Paso 4: Predicción de Temperatura de Servicio ($T_s$)**
+Calcular la isoterma predictiva asumiendo un anclaje lineal donde PAC 270 $\approx$ -11°C:
+$$T_s = -11 - \frac{PAC_{Neto} - 270}{20}$$
+
+**Margen de error esperado:**
+*   El modelo de curva de hielo $f(W_{liq})$ posee una alta precisión ($< \pm 0.2^\circ C$) hasta el 55% del agua congelada. A partir del 60% de agua convertida en hielo, las interacciones soluto-soluto desvían fuertemente el cálculo termodinámico (margen de error de estimación volumétrica $> \pm 5\%$ a temperaturas inferiores a -20 °C). Las calibraciones empíricas del Paso 3 mitigan este error en el software.
+
+--- FIN DEL ARCHIVO: info helados 3.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Info helados 6 diabeticos.txt ---
+================================================================================
+
+### Eritritol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** 122 g/mol.
+*   **PAC real documentado:** 2.8 (escala unitaria) o 280 (escala relativa). 
+*   **POD relativo:** 0.7 (escala unitaria) o 70 (escala relativa).
+*   **Factor SE:** 2.8 (derivado de su capacidad de depresión del punto de congelación FPD).
+*   **Solubilidad:** Elevada, pero posee un calor de solución negativo que otorga un alto efecto refrescante en boca.
+*   **Tendencia a recristalización:** Alta. Cristaliza más fácilmente que el azúcar regular.
+*   **Impacto en dureza del helado:** Reduce la dureza a bajas temperaturas (alto PAC), pero su cristalización incontrolada puede generar endurecimiento y textura arenosa.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 0.
+*   **Impacto en glucosa sanguínea:** Nulo. Se absorbe en el intestino pero no se metaboliza; se excreta sin cambios en la orina.
+*   **Carga glucémica estimada (CG):** 0.
+*   **Límite máximo recomendado por seguridad digestiva:** 0.66 g/kg de masa corporal en hombres y 0.8 g/kg en mujeres en una sola toma. Hasta 70 g/día si se reparte en varias dosis (no presenta efecto laxante severo como otros polioles).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Incrementa la suavidad significativamente debido a que deprime el punto de congelación casi el triple que la sacarosa.
+*   **Necesidad de combinación:** Requiere combinarse obligatoriamente con agentes de carga (polidextrosa, inulina) o polioles de bajo PAC (maltitol, isomalt) para aportar extracto seco sin sobrepasar el límite de depresión crioscópica.
+*   **Límite máximo recomendado en formulación:** Aproximadamente 5% (50 g por kg de mezcla) para mantener el balance de PAC total.
+*   **Advertencias técnicas:** No debe reemplazar azúcares en proporción 1:1; causaría que el helado no congele a temperaturas estándar.
+
+---
+
+### Xilitol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** 152 g/mol.
+*   **PAC real documentado:** 1.9 (escala unitaria) o 190 (escala relativa).
+*   **POD relativo:** 1.0 (escala unitaria) o 100 (dulzor equivalente a la sacarosa).
+*   **Factor SE (FPD):** 2.25 en algunos modelos de cálculo de descenso crioscópico.
+*   **Solubilidad:** Alta, presenta el mayor efecto refrescante (endotérmico) de todos los polioles.
+*   **Tendencia a recristalización:** Menor riesgo comparado con eritritol, pero promueve iciness (sensación de hielo) en helados.
+*   **Impacto en dureza del helado:** Su adición resulta en una disminución significativa de la dureza (helados muy blandos) e incremento de la sensación de textura acuosa/helada.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 12.
+*   **Impacto en glucosa sanguínea:** Bajo impacto. Entra en las vías glucogenolíticas sin dependencia de insulina.
+*   **Carga glucémica estimada:** Baja (Dependiente de dosis: CG = 12 x gramos/100).
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal. (Aprox. 18 g a 23 g por dosis en adultos).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Reduce la cremosidad y aumenta el tamaño percibido de cristales de hielo.
+*   **Necesidad de combinación:** Requiere combinación con inulina o fibras para aportar cuerpo y compensar la pérdida de cremosidad. Ej: 6.2% Xilitol + 7% Inulina.
+*   **Límite máximo recomendado en formulación:** ~12.8% máximo probado, aunque se recomienda usar <6.5% para evitar rechazo sensorial y efectos laxantes.
+*   **Advertencias técnicas:** Reemplazar sacarosa 1:1 con xilitol resulta en una depresión crioscópica inmanejable.
+
+---
+
+### Maltitol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** ~344 g/mol (disacárido, maltosa hidrogenada).
+*   **PAC real documentado:** 1.0 (escala unitaria) o 100 (escala relativa).
+*   **POD relativo:** 0.85 (escala unitaria) o 85 (escala relativa).
+*   **Factor SE:** 1.0 (Comportamiento equivalente a la sacarosa en depresión crioscópica).
+*   **Solubilidad:** Excelente (imita propiedades físicas de la sacarosa).
+*   **Tendencia a recristalización:** Baja. Funciona como inhibidor de cristalización en mezclas.
+*   **Impacto en dureza del helado:** Impacto reológico y de dureza casi idéntico al de la sacarosa.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 26.
+*   **Impacto en glucosa sanguínea:** Moderado-Bajo. Se absorbe lentamente.
+*   **Carga glucémica estimada:** Moderada-Baja (Depende de dosificación).
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal por dosis puntual, con un límite general de tolerancia de 100 g/día.
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Aporta cuerpo, masticabilidad y firmeza de manera idéntica al azúcar tradicional. Es el poliol preferido en heladería industrial.
+*   **Necesidad de combinación:** Frecuentemente combinado con edulcorantes intensivos (sucralosa) para compensar su déficit del 15% en dulzor respecto a la sacarosa.
+*   **Límite máximo recomendado en formulación:** 10% a 15% de la mezcla total.
+*   **Advertencias técnicas:** Etiquetado obligatorio por efecto laxante por encima del umbral diario.
+
+---
+
+### Isomalt (Isomaltosa)
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** ~344 g/mol (disacárido).
+*   **PAC real documentado:** 1.0 (escala unitaria) o 100 (escala relativa).
+*   **POD relativo:** 0.5 (escala unitaria) o 50 (la mitad de dulce que la sacarosa).
+*   **Factor SE:** 1.0.
+*   **Solubilidad:** Muy baja solubilidad en agua (25% a 20 °C frente al 67% de la sacarosa).
+*   **Tendencia a recristalización:** Muy alta. Tiende a cristalizarse y formar precipitados arenosos.
+*   **Impacto en dureza del helado:** Similar a la sacarosa, pero su cristalización puede generar texturas indeseadas de endurecimiento.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** Bajo (No precisado numéricamente en tabla, pero clasificado de bajo impacto).
+*   **Impacto en glucosa sanguínea:** Bajo.
+*   **Carga glucémica estimada:** Baja.
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal. (Aprox. 18 g a 23 g por dosis en adultos).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Proporciona sólidos y estructura sin alterar el punto de congelación estándar.
+*   **Necesidad de combinación:** Requiere edulcorantes intensos por su bajo dulzor, y debe mezclarse con eritritol o fibras para diluir la cantidad ingerida y evitar problemas gástricos y cristalización.
+*   **Límite máximo recomendado en formulación:** 5% (50 g/kg) máximo documentado en recetas por riesgo de rebasar umbrales de tolerancia gástrica por ración (ej. 200g de helado aportarían dosis límite).
+*   **Advertencias técnicas:** Su baja solubilidad requiere precauciones térmicas estrictas para su integración en la fase acuosa.
+
+---
+
+### Allulosa
+
+*   *No existen datos documentados sobre la Allulosa en las fuentes científicas y técnicas suministradas en este entorno.*
+
+---
+
+### Stevia (Glucósidos de esteviol / Esteviosido)
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** No aplicable a nivel coligativo (las dosis de uso son miligramos, sin impacto termodinámico).
+*   **PAC real documentado:** 0 (Nulo efecto en la depresión crioscópica).
+*   **POD relativo:** 134 a 250 veces más dulce que la sacarosa (13,400% - 25,000%).
+*   **Factor SE:** 0. No aporta equivalencia de sólidos ni altera la curva FPD.
+*   **Solubilidad:** Alta en las dosis operativas.
+*   **Tendencia a recristalización:** Nula.
+*   **Impacto en dureza del helado:** No aporta sólidos. Su uso en reemplazo de azúcar resulta en un bloque de hielo impenetrable a menos que se usen agentes de carga.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 0.
+*   **Impacto en glucosa sanguínea:** Nulo.
+*   **Carga glucémica estimada:** 0.
+*   **Límite máximo recomendado por seguridad digestiva:** Regido por la Ingesta Diaria Admisible (IDA), no presenta efecto laxante osmótico.
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Ninguno por sí mismo.
+*   **Necesidad de combinación:** **Obligatoria**. Requiere polidextrosa, maltodextrina o polioles (eritritol/maltitol) para recrear los sólidos totales (extracto seco) y la depresión del punto de congelación.
+*   **Límite máximo recomendado en formulación:** Condicionado organolépticamente. Dosis altas desarrollan amargor y regusto a regaliz prolongado.
+*   **Advertencias técnicas:** Analíticas de tiempo-intensidad demuestran que tiene el poder edulcorante más bajo entre los edulcorantes intensivos artificiales y puede afectar la aceptación global por su regusto amargo si no se enmascara correctamente.
+
+---
+
+### 4️⃣ Datos Faltantes (Requerimientos para Software Determinista)
+
+Para poder integrar este conocimiento en un módulo automatizado de formulación bajo índice glucémico, los modelos físicos actuales carecen de los siguientes parámetros matemáticos en las fuentes aportadas:
+
+1.  **Curvas de Solubilidad Multicomponente de Polioles (Límites Eutécticos):** No hay ecuaciones para predecir el límite matemático de saturación/cristalización cuando se mezclan múltiples polioles (ej. Isomalt + Eritritol a -18°C).
+2.  **Sinergias de Poder Edulcorante (POD Dinámico):** La Stevia combinada con Eritritol no presenta un perfil de dulzor lineal. Faltan modelos de regresión de estimación de magnitud matemática para calcular el POD neto de las mezclas.
+3.  **Factor Crioscópico Corregido (Coeficiente de Actividad):** Aunque se asigna un Factor FPD (ej. 2.25 al xilitol) derivado de su peso molecular, no se ha documentado la desviación de la idealidad (interacciones soluto-soluto) a altas concentraciones (sobre 30% ST) para los polioles.
+4.  **Parámetros de Allulosa y Tagatosa:** Ausencia absoluta de valores térmicos (PAC, POD, FPD factor) de la allulosa; y datos incompletos termodinámicos de la tagatosa (solo se documenta su GI=0 y POD=0.9).
+5.  **Modelado de Viscosidad de Agentes de Carga:** No hay modelos reológicos predictivos para las sinergias entre Inulina/Polidextrosa y Polioles para recuperar la viscosidad (Pa·s) perdida por la supresión de la sacarosa.
+
+--- FIN DEL ARCHIVO: Info helados 6 diabeticos.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Info helados 7 diabeticos.txt ---
+================================================================================
+
+### 1️⃣ Modelo de Sinergia de Dulzor
+
+**Ecuaciones exactas y regresiones:**
+*   **Modelo de Beidler (Langmuir-like)** para Rebaudiósido M: $R = \frac{14.2 \cdot C}{265 + C}$.
+*   **Regresión Lineal** para g-Rebaudiósido A: $y = 142.36x + 1.3503$.
+*   **Regresión Lineal** para Eritritol puros: $y = 0.1884x - 1.1674$.
+*   **Índice de Interacción de Sühnel (Isobolas)** para sinergia de mezclas: $I = \sum \left(\frac{c_i}{C_i}\right)$.
+*   **Modelos Predictivos (Machine Learning)**: Perceptrón Multicapa (MLP) para mezclas binarias y Regresión de Vectores de Soporte (SVR) para mezclas ternarias.
+
+**Coeficientes y Parámetros:**
+*   **Índice $I$**: $I < 1$ (Sinergia / Superaditividad); $I = 1$ (Aditividad cero-interacción); $I > 1$ (Supresión / Antagonismo).
+
+**Rango válido:**
+*   Concentraciones de prueba en matrices acuosas del 1% al 10% Equivalencia de Sacarosa (SEV).
+
+**Error experimental:**
+*   Modelo MLP (Binario): $R^2 = 0.9828$.
+*   Modelo SVR (Ternario): $R^2 = 0.9825$.
+
+---
+
+### 2️⃣ Corrección Crioscópica para Polioles
+
+**Ecuación corregida para FPD real (Teoría de Flory-Huggins):**
+$$\frac{\mu_w}{RT} = \ln(\phi_w) + \left(1 - \frac{1}{\nu_s}\right)\phi_s + \left(1 - \frac{1}{\nu_g}\right)\phi_g + (\chi_{sw}\phi_s + \chi_{gw}\phi_g)(1 - \phi_w) - \chi_{sg}\phi_s\phi_g$$.
+*   $\mu_w$: Potencial químico del agua.
+*   $\phi_i$: Fracciones volumétricas de agua ($w$), carbohidrato ($s$), poliol ($g$).
+*   $\nu_i$: Volúmenes molares relativos.
+
+**Factor de actividad y parámetros de interacción ($\chi, \nu$):**
+*   **Xilitol**: $\chi_{gw} = -0.150$; $\nu = 8.4$.
+*   **Eritritol**: $\chi_{gw} = -0.080$; $\nu = 6.8$.
+*   **Ácido Cítrico**: $\chi_{gw} = 0.126$; $\chi_{sg} = -0.59$; $\nu = 10.6$.
+*   **Fructosa**: $\chi_{sg} = -0.28$; $\nu = 6.4$.
+
+**Ajuste recomendado:**
+*   Aplicar modelo de Flory-Huggins en lugar de Ley ideal de Raoult cuando la concentración de Sólidos Totales (ST) en la fase sérica residual supera el 20%.
+
+---
+
+### 3️⃣ Modelo de Estabilidad Subcero
+
+**Límites de saturación y fase a Temperatura de Servicio ($T_s = -18^\circ\text{C}$):**
+*   **Eritritol-Agua**: Punto Eutéctico $\approx -3.5^\circ\text{C}$; Límite $\approx 10\% \, w/w$; Estado = Cristalino (Sólido).
+*   **Xilitol-Agua**: Punto Eutéctico $-15.5^\circ\text{C}$; Límite $\approx 35\% \, w/w$; Estado = Metaestable (Serum).
+*   **Maltitol-Agua**: Límite $> 50\% \, w/w$; Estado = Vítreo (Amorfo a $< -20^\circ\text{C}$).
+
+**Relación concentración–cristalización (Cinética de primer orden):**
+$$\ln\left(\frac{c(t) - c_s}{c_0 - c_s}\right) = -k \cdot t$$.
+*   $k = 0.234 \, \text{h}^{-1}$ (para eritritol).
+
+**Parámetro programable de riesgo:**
+*   Condicional restrictivo: Si el eritritol formulado es $> 10-12\%$ de los ST, descontar del cómputo de PAC total, asumiendo su precipitación en matriz rígida.
+
+---
+
+### 4️⃣ Modelo Reológico
+
+**Ecuaciones concentración–viscosidad (Ley de Potencia y Arrhenius):**
+*   **Modelo para Inulina**: $\eta = a \cdot (X_s)^c \cdot \exp\left(\frac{E_a}{RT}\right)$.
+*   **Modelo paramétrico explícito**: $\eta = 0.8835 \cdot (X_s)^{0.0731} \cdot \exp\left(\frac{296.41}{T}\right)$.
+*   **Modelo de Fluido de Herschel-Bulkley (Fase Sérica)**: $\tau = \tau_0 + K \cdot \dot{\gamma}^n$.
+    *   $\tau_0$: Límite de fluencia (Pa).
+    *   $K$: Índice de consistencia ($Pa \cdot s^n$).
+    *   $n$: Índice de comportamiento de flujo.
+
+**Parámetros ajustables:**
+*   **Inulina (coeficientes térmicos)**: Energía de activación ($E_a/R$) = $296.410 \, \text{K}$; Constante $a = 0.8835 \, \text{mPa}\cdot\text{s}$; Constante $c = 0.0731 \, \%^{-1}$.
+*   **Impacto estructural de Inulina (6%)**: Incremento del *Overrun* proyectado = $+5\%$.
+*   **Dureza Instrumental (Newtons)**: Relación directa $\Delta Hard \propto \eta_{serum}$.
+
+**Supuestos:**
+*   La matriz muestra comportamiento Newtoniano ($n \approx 1$) bajo dilución a altas temperaturas y comportamiento pseudoplástico ($n < 1$) en la fase sérica concentrada subcero (Ej. $n = 0.63 - 0.83$ dependiendo de polisacáridos).
+
+**Rango válido:**
+*   **Alerta programable:** Desencadenar riesgo de inestabilidad térmica o fusión rápida en software si la estimación resulta en $\eta_{serum} < 50 \, \text{mPa}\cdot\text{s}$ interpolada a $T_s$.
+
+---
+
+### 5️⃣ Evaluación Final
+
+| Bloque Algorítmico | Directamente Programable | Requiere Calibración | Nivel de Confianza Científica |
+| :--- | :--- | :--- | :--- |
+| **1. Sinergia de Dulzor** | Sí (Ecuaciones de regresión e Índice Sühnel) / No (MLP/SVR) | Sí (Por sistema/matriz base) | **Alto** (Precisión $R^2 > 0.98$) |
+| **2. Corrección Crioscópica** | Sí (Ecuación termodinámica no ideal) | No (Parámetros fijos tabulados) | **Alto** (Teoría de fases concentradas validada) |
+| **3. Estabilidad Subcero** | Sí (Condicionales lógicos para IF > límite_solubilidad) | Sí (Dependiente de tasa/tiempo de congelación) | **Medio-Alto** (Cinética predictiva de primer orden) |
+| **4. Modelo Reológico** | Sí (Funciones de potencia/Arrhenius) | Sí (Ajuste de variables $K, n, \tau_0$) | **Medio** (Alta variabilidad empírica por hiperconcentración soluto-solvente) |
+
+--- FIN DEL ARCHIVO: Info helados 7 diabeticos.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Info helados.txt ---
+================================================================================
+
+**1. Modelo Coligativo Real**
+
+*   **Fórmula matemática explícita de depresión del punto de congelación (FPD):**
+    El modelo predictivo de Bradley y Smith calcula la FPD sumando la depresión causada por los azúcares equivalentes ($FPD_{SE}$) y las sales lácteas ($FPD_{SA}$).
+    $FPD_{Total} = FPD_{SE} + FPD_{SA}$
+
+*   **Cálculo de Equivalentes de Sacarosa (SE) y Molalidad:**
+    $SE = (MSNF \times 0.545) + (WS \times 0.765) + S + (10DE \times 0.2) + (36DE \times 0.6) + (42DE \times 0.8) + (62DE \times 1.2) + (JMAF \times 1.8) + (F \times 1.9)$
+    Donde MSNF son sólidos lácteos no grasos, WS sólidos de suero, S sacarosa, DE equivalentes de dextrosa, JMAF jarabe de alta fructosa, y F fructosa/dextrosa.
+    La concentración en fase acuosa (relación de molalidad empírica $C$) es:
+    $C = \frac{SE \times 100}{W}$ (Donde $W = 100 - Sólidos Totales$).
+
+*   **Ecuación polinómica de Pickering (para $FPD_{SE}$):**
+    $FPD_{SE} = (-0.00009 \times C^2) - (0.0612 \times C)$
+
+*   **Ecuación de Sales ($FPD_{SA}$):**
+    $FPD_{SA} = \frac{(MSNF + WS) \times 2.37}{W}$
+    *Nota: La constante 2.37 deriva del peso molecular promedio y la disociación de sales en la leche.*
+
+*   **Fracción de agua no congelada:**
+    Se determina iterativamente reduciendo $W$. Si una fracción $X$ del agua se congela, el agua líquida restante es $W_{no\_congelada} = W \times (1 - X)$. La concentración $C$ se recalcula con este nuevo valor de $W$ para obtener la curva de congelación.
+
+**2. Conversión PAC ↔ Modelo Físico**
+
+*   **Relación PAC relativo con depresión crioscópica:**
+    La unidad base de PAC es la sacarosa ($PAC=100$ o $1.0$).
+    $PAC_{relativo} = \sum (\text{g de cada azúcar} \times PAC_{unitario})$
+    $PAC_{total} = PAC_{relativo} + PAC_{sales}$ (Donde $PAC_{sales} = \text{g MSNF} \times 10\% \times 5$).
+
+*   **Ecuaciones empíricas para Temperatura de Servicio (TS):**
+    Para uso rápido en software sin cálculo termodinámico iterativo, se emplean dos aproximaciones directas:
+    1. Basada en PAC Relativo: $TS \approx \frac{PAC_{relativo}}{-20}$.
+    2. Basada en PAC Absoluto (concentración en agua): $PAC_{absoluto} = \frac{PAC_{total}}{W_{kg}}$, donde $TS \approx \frac{PAC_{absoluto}}{-37}$.
+    3. Regla diferencial: Por cada 20 puntos de aumento en PAC relativo, la TS disminuye 1 °C.
+
+*   **Limitaciones del modelo relativo:**
+    La teoría del PAC solo evalúa la influencia de solutos depresores. No contempla la retención de agua (y endurecimiento) causado por fibras (ej. inulina), grasas saturadas, pastas de frutos secos o cacao.
+
+**3. Peso Molecular y Factor de Van’t Hoff**
+
+El PAC unitario es una relación directa de masas molares: $PAC_{unitario} = \frac{PM_{Sacarosa}}{PM_{Soluto}}$.
+
+*   **Pesos moleculares explícitos ($PM$):**
+    *   **Sacarosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Lactosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Trehalosa / Maltosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Dextrosa / Fructosa:** 180 g/mol ($PAC = 1.9$)
+    *   **Alcohol (Etanol):** 46 g/mol ($PAC_{teorico} = 7.4$)
+
+*   **Factor de Disociación:**
+    Las sales minerales de la leche (MSNF) tienen un peso molecular promedio asignado de 68 g/mol y un comportamiento disociativo (efecto Van't Hoff) que les otorga un PAC real empírico altísimo de **5.0**.
+
+**4. Modelo de Alcohol**
+
+*   **Fórmulas y PAC del Etanol:**
+    Aunque teóricamente el PAC del etanol es 7.4, su comportamiento real no es ideal.
+    *   **En Sorbetes (sin proteína):** El PAC real a usar es **5.0**.
+    *   **En Cremas (con lácteos):** El etanol desnaturaliza las proteínas (como la caseína) interactuando con ellas y abandonando la fase acuosa. Su PAC real desciende a **2.5 - 3.0**.
+    *   **Cálculo alternativo por volumetría (Grados):** Cada 1% de alcohol (grado) en 1 kg de mezcla equivale a **9 puntos de PAC**. $PAC_{licor} = \frac{\text{Gramos} \times \text{Grados}}{100} \times 9$.
+
+*   **Correcciones y Rangos de Estabilidad:**
+    *   Para evitar colapso proteico, se debe aumentar la proteína noble (caseinato sódico) en dosis de ~10 g/kg.
+    *   **Rangos máximos:** Se recomienda un máximo de 60-70 g/kg para licores de alta graduación (40% ABV) y 110-130 g/kg para licores de baja graduación. El límite funcional general es alrededor de un 2% de etanol puro en la receta (20g/kg).
+
+**5. Modelo Simplificado Utilizable en Software**
+
+Para un motor híbrido (Python), se propone el siguiente flujo que combina termodinámica (Smith) y heurística (PAC Absoluto):
+
+*   **Variables de Input necesarias:**
+    Masas de ingredientes ($m_i$), $\%$ Humedad, $\%$ Sólidos, $\%$ Azúcares desglosados, $\%$ MSNF, $\%$ Alcohol.
+
+*   **Paso 1: Agua Total ($W$)**
+    $W = \sum (m_i \times \% \text{Agua}_i)$
+
+*   **Paso 2: Depresión Crioscópica Teórica (Smith/Bradley)**
+    $SE = \text{Suma de equivalentes de sacarosa de la receta}$
+    $C = \frac{SE \times 100}{W}$
+    $FPD_{Azucares} = -0.00009 \cdot C^2 - 0.0612 \cdot C$
+    $FPD_{Sales} = \frac{MSNF \times 2.37}{W}$
+    $FPD_{Total} = FPD_{Azucares} + FPD_{Sales}$
+
+*   **Paso 3: Ajuste de Alcohol**
+    $PAC_{Alcohol} = (\text{Gramos Etanol} \times PAC_{efectivo}) / W$ (Usar 5.0 para agua, 2.75 para bases lácteas).
+
+*   **Paso 4: Predicción de Textura**
+    Se interpola el $\%$ de agua congelada a la temperatura $T_{servicio}$ (iterando $W$ hasta que $FPD_{Total} = T_{servicio}$). El ratio óptimo es **75% de agua congelada y 25% líquida**.
+
+**6. Vacíos Matemáticos Detectados**
+
+Para la arquitectura del software, se deberán calibrar empíricamente los siguientes factores, ya que carecen de formulación determinista en la literatura:
+
+1.  **Modelo de Fibras y Polímeros:** La inulina y las pastas de frutos secos (cacao, avellana) endurecen el helado alterando la movilidad del agua, pero no existen ecuaciones coligativas en el modelo FPD para predecir matemáticamente los Pascales de dureza aportados. Requiere un *factor empírico de endurecimiento* (ej. Cacao = -1.8 puntos por gramo en fórmulas de PAC empírico).
+2.  **Difusividad Térmica vs. Overrun:** Existe una ecuación de difusividad para el helado ($a = \frac{k}{\rho \cdot C_p}$) y perfiles polinómicos dependientes de temperatura ($T^3, T^2, T$), pero no está modelado cómo el porcentaje exacto de Overrun introducido afecta el parámetro $k$ (conductividad térmica).
+3.  **Poder Edulcorante (POD):** A diferencia del PAC, el POD no responde a ninguna ley termodinámica. Es una escala organoléptica fisiológica sin ecuación física subyacente. En software de formulación, esto debe implementarse como una matriz de constantes tabuladas puramente lineales.
+4.  **Matriz de Grasas Vegetales:** A diferencia de la grasa láctea y el cacao (que tienen factores estimativos), no existe un sistema predictivo general para calcular la capacidad de endurecimiento de aceites vegetales genéricos en el helado, tratándose como aproximaciones empíricas.
+
+El alcohol es un anticongelante extremadamente potente, por lo que su adición dispara el Poder Anticongelante (PAC) de la mezcla, dificultando que el helado se congele adecuadamente y provocando que quede demasiado blando o derretido. 
+
+Para ajustar el PAC en formulaciones con alcohol y lograr una textura óptima, debes aplicar las siguientes estrategias técnicas:
+
+**1. Calcular el PAC que aporta el alcohol**
+Debes conocer exactamente cuántos puntos de PAC está sumando el licor a tu receta. Las fuentes proponen un método empírico: cada grado de graduación alcohólica (1% ABV) equivale a **8 o 9 puntos de PAC**. 
+*   *Fórmula:* Por ejemplo, si usas un destilado de 40°, se multiplica su graduación por 9 (40 x 9 = 360). Es decir, 100 gramos de ese destilado puro aportan 360 puntos de PAC a tu mezcla.
+
+**2. Sustituir los azúcares por opciones de bajo PAC**
+Como el alcohol ya aporta un PAC muy elevado, debes reducir el PAC proveniente de los azúcares para compensar, manteniendo al mismo tiempo el dulzor (POD) y los sólidos necesarios para la estructura:
+*   **Evita azúcares de alto PAC:** Debes descartar totalmente el azúcar invertido y la dextrosa, ya que tienen un PAC altísimo de 190.
+*   **Usa sacarosa:** Utiliza azúcar común (sacarosa) como endulzante principal, ya que su PAC es de 100, significativamente más bajo.
+*   **Incorpora glucosa atomizada o maltodextrina:** Es prácticamente indispensable en estas mezclas el uso de glucosa atomizada 21 DE o maltodextrina 18 DE. Estos carbohidratos aportan el extracto seco necesario, tienen un PAC nulo (0), endulzan muy poco, y su alto contenido en almidón ayuda a "retener" el alcohol para que no se evapore su sabor.
+
+**3. Contabilizar el azúcar del propio licor**
+Si utilizas vinos dulces, licores de frutas o licores dulces (como el Amaretto), debes tener en cuenta que estos contienen entre un 10% y un 40% de azúcar en su peso. Al balancear la receta, este azúcar se debe sumar al cálculo del dulzor general y al PAC total, tratándolo con los mismos parámetros que la sacarosa.
+
+**4. Respetar los límites máximos de dosificación**
+No puedes usar el licor como base líquida principal porque la receta nunca congelaría. Se recomiendan los siguientes límites de uso partiendo del sabor:
+*   **Licores de alta graduación** (>20°, ej. ron, ginebra, mezcal, whisky): Usar entre **60 y 70 gramos por kilo** de mezcla.
+*   **Licores de baja graduación** (<20°, ej. cerveza, vino dulce): Usar entre **110 y 130 gramos por kilo** de mezcla.
+
+**5. Compensar el daño estructural a las proteínas**
+El alcohol tiende a desactivar y desnaturalizar las proteínas de la leche, lo que impide una correcta emulsión y provoca que el helado incorpore muy poco aire (bajo *overrun*). Para solucionar esto y estabilizar la mezcla, no debes añadir más leche en polvo (ya que su lactosa aportaría más PAC no deseado), sino que se recomienda añadir proteínas puras como la **caseína sódica**.
+
+El alcohol tiene un impacto dual en la formulación de helados, afectando negativamente al overrun pero favoreciendo la cremosidad siempre que se dosifique correctamente:
+
+**Impacto en el Overrun (Incorporación de aire)**
+*   **Dificulta la retención de aire:** La presencia de alcoholes y licores en la mezcla **impide la entrada de aire en el helado, provocando un mal overrun** o bajo aumento de volumen.
+*   **Desactiva las proteínas:** Esto ocurre principalmente porque el alcohol **tiende a desactivar las propiedades de las proteínas** presentes en la base. Las proteínas son emulsionantes naturales fundamentales para encapsular y estabilizar las burbujas de aire; al verse afectadas por el alcohol, la mezcla pierde su capacidad para retener ese aire.
+*   Para compensar esta pérdida de volumen, es necesario realizar un proceso de elaboración muy escrupuloso y **potenciar o aumentar la cantidad de ingredientes que favorecen la incorporación de aire**, como la adición de proteínas puras (por ejemplo, caseína) o estabilizantes adecuados.
+
+**Impacto en la Cremosidad (Textura y suavidad)**
+*   **Aporta extrema suavidad:** El alcohol es un potente anticongelante que reduce drásticamente el punto de congelación de la mezcla. Añadido en proporciones justas, **evita que el helado se endurezca excesivamente en el congelador, otorgándole la capacidad de mantenerse tierno, suave y muy cremoso** recién sacado del frío. Además, aporta riqueza y una sensación aterciopelada al paladar.
+*   **Riesgo de derretimiento o colapso:** Debido a que el alcohol en sí mismo no se congela, su dosificación es muy delicada. **Si se añade demasiada cantidad, el helado nunca cuajará ni tomará forma**, dando como resultado una textura granizada poco atractiva, un desastre descuidado o una "papilla cremosa" que se derrite rápidamente a temperatura ambiente.
+
+--- FIN DEL ARCHIVO: Info helados.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Motor_Hibrido_Data_Block_B.sql ---
+================================================================================
+
+
+PRAGMA foreign_keys = ON;
+
+-- =========================
+-- INSERT INGREDIENTES BASE
+-- =========================
+
+-- EDULCORANTES
+
+INSERT INTO ingredients (nombre, categoria, subcategoria) VALUES
+('Sacarosa', 'Azucar', 'Disacarido'),
+('Glucosa', 'Azucar', 'Monosacarido'),
+('Fructosa', 'Azucar', 'Monosacarido'),
+('Lactosa', 'Azucar', 'Disacarido'),
+('Maltodextrina', 'Azucar', 'Oligosacarido'),
+('Eritritol', 'Poliol', 'Poliol'),
+('Xilitol', 'Poliol', 'Poliol'),
+('Maltitol', 'Poliol', 'Poliol'),
+('Isomalt', 'Poliol', 'Poliol'),
+('Alulosa', 'Azucar', 'Raro');
+
+-- HIDROCOLOIDES
+
+INSERT INTO ingredients (nombre, categoria, subcategoria) VALUES
+('Goma Guar', 'Hidrocoloide', 'Galactomanano'),
+('Goma Tara', 'Hidrocoloide', 'Galactomanano'),
+('Goma Algarrobo (LBG)', 'Hidrocoloide', 'Galactomanano'),
+('Goma Xantana', 'Hidrocoloide', 'Bacteriano'),
+('Carragenina Kappa', 'Hidrocoloide', 'Sulfatado');
+
+-- =========================
+-- PROPIEDADES COLIGATIVAS
+-- =========================
+
+INSERT INTO ingredient_coligative VALUES
+(1, 342.30, 1.0, 1.0, 0.51, 56000, 463, 60.0, 12.0),
+(2, 180.16, 1.9, 1.9, 0.35, 38000, 413, 35.0, 8.0),
+(3, 180.16, 1.9, 1.9, 0.35, 26000, 378, 68.0, 8.0),
+(4, 342.30, 0.5, 0.6, 0.50, 54000, 475, 50.0, 10.0),
+(5, 500.00, 0.3, 0.4, 0.45, 30000, 450, 45.0, 6.0),
+(6, 122.12, 0.7, 2.4, 0.27, 42400, 394, 65.0, 6.0),
+(7, 152.15, 0.8, 2.2, 0.32, 38600, 367, 64.0, 7.0),
+(8, 344.30, 0.9, 1.7, 0.40, 45000, 420, 60.0, 6.0),
+(9, 344.30, 0.6, 1.5, 0.40, 44000, 415, 58.0, 6.0),
+(10, 180.16, 0.7, 1.8, 0.30, 25000, 350, 50.0, 7.0);
+
+-- =========================
+-- PROPIEDADES METABOLICAS
+-- =========================
+
+INSERT INTO ingredient_metabolic VALUES
+(1, 60, 68, 65, 4.0, 100),
+(2, 96, 103, 100, 4.0, 100),
+(3, 11, 25, 19, 4.0, 100),
+(4, 43, 48, 46, 4.0, 100),
+(5, 105, 136, 110, 4.0, 100),
+(6, 0, 1, 0, 0.2, 10),
+(7, 7, 13, 10, 2.4, 50),
+(8, 26, 52, 35, 2.1, 70),
+(9, 2, 9, 5, 2.0, 50),
+(10, 0, 1, 0, 0.4, 10);
+
+-- =========================
+-- PROPIEDADES REOLOGICAS
+-- =========================
+
+INSERT INTO ingredient_rheology VALUES
+(11, 10.38, 0.31, 1.0, 25, 8000),
+(12, 9.14, 0.30, 1.0, 25, 7500),
+(13, 6.16, 0.45, 1.0, 25, 6000),
+(14, 6.73, 0.32, 1.0, 25, 3000),
+(15, 1.85, 0.65, 0.3, 25, 9000);
+
+
+--- FIN DEL ARCHIVO: Motor_Hibrido_Data_Block_B.sql ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Motor_Hibrido_Schema_v1.sql ---
+================================================================================
+
+
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS ingredients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL UNIQUE,
+    categoria TEXT NOT NULL,
+    subcategoria TEXT,
+    editable_usuario BOOLEAN DEFAULT 0,
+    activo BOOLEAN DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS ingredient_composition (
+    ingredient_id INTEGER PRIMARY KEY,
+    agua_pct REAL,
+    glucosa_pct REAL,
+    fructosa_pct REAL,
+    sacarosa_pct REAL,
+    otros_azucares_pct REAL,
+    grasa_pct REAL,
+    proteina_pct REAL,
+    fibra_pct REAL,
+    cenizas_pct REAL,
+    solidos_totales_pct REAL,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS ingredient_coligative (
+    ingredient_id INTEGER PRIMARY KEY,
+    peso_molecular REAL,
+    SE_equivalente REAL,
+    FPDF_relativo REAL,
+    chi_FH REAL,
+    entalpia_fusion REAL,
+    temperatura_fusion REAL,
+    limite_eutectico_pct REAL,
+    numero_hidratacion REAL,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS ingredient_metabolic (
+    ingredient_id INTEGER PRIMARY KEY,
+    IG_min REAL,
+    IG_max REAL,
+    IG_promedio REAL,
+    kcal_por_gramo REAL,
+    digestibilidad_pct REAL,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS ingredient_rheology (
+    ingredient_id INTEGER PRIMARY KEY,
+    K_ref REAL,
+    n_ref REAL,
+    concentracion_ref REAL,
+    temperatura_ref REAL,
+    Ea_activacion REAL,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS fruit_adjustments (
+    ingredient_id INTEGER PRIMARY KEY,
+    factor_madurez REAL DEFAULT 1.0,
+    factor_estacional REAL DEFAULT 1.0,
+    notas TEXT,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS recipes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    tipo_base TEXT,
+    modo_metabolico TEXT,
+    version INTEGER DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS recipe_ingredients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    recipe_id INTEGER,
+    ingredient_id INTEGER,
+    cantidad_gramos REAL,
+    marca TEXT,
+    proveedor TEXT,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+CREATE TABLE IF NOT EXISTS recipe_results (
+    recipe_id INTEGER PRIMARY KEY,
+    PAC_total REAL,
+    POD_total REAL,
+    solidos_totales_pct REAL,
+    fraccion_hielo REAL,
+    temperatura_servicio REAL,
+    IG_real REAL,
+    CG REAL,
+    viscosidad_estimada REAL,
+    IGE REAL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id)
+);
+
+
+--- FIN DEL ARCHIVO: Motor_Hibrido_Schema_v1.sql ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Motor_Hibrido_v2_0_Documento_Teorico_Maestro.txt ---
+================================================================================
+
+DOCUMENTO TEÓRICO MAESTRO MOTOR HÍBRIDO DE FORMULACIÓN HELADERA Versión
+v2.0 – Marco Científico Oficial Fecha: 2026-03-01
+
+============================================================ 1.
+NATURALEZA DEL SISTEMA HELADO
+============================================================ Un helado
+es un sistema coloidal multifásico parcialmente congelado, compuesto por
+fase sólida (hielo), fase líquida concentrada, fase grasa, fase gaseosa
+(aire) y red proteína-grasa.
+
+============================================================ 2.
+DEPRESIÓN DEL PUNTO DE CONGELACIÓN
+============================================================ Modelo
+adoptado:
+
+FPD_total = FPD_azúcares + FPD_sales
+
+FPD_az = -0.00009 C² - 0.0612 C C = (Equivalentes sacarosa × 100) / Agua
+líquida
+
+FPD_sales = (MSNF × 2.37) / Agua líquida
+
+Se resuelve iterativamente: FPD_total(W_liq) = T_objetivo
+
+Método oficial: Bisección Tolerancia: 0.01°C
+
+============================================================ 3. FRACCIÓN
+DE AGUA CONGELADA
+============================================================ Óptimo
+estructural: 70–75% agua congelada.
+
+% hielo = (W0 – W_liq) / W0
+
+============================================================ 4. PODER
+ANTICONGELANTE (PAC)
+============================================================ Basado en
+principios coligativos. Dependiente del peso molecular. No lineal
+respecto a temperatura real de servicio.
+
+============================================================ 5. PODER
+EDULCORANTE (POD)
+============================================================ Modelo
+fisiológico:
+
+POD_total = Σ (g_i × POD_i)
+
+Se puede ajustar por sinergia (modelo Sühnel). No es propiedad
+coligativa.
+
+============================================================ 6.
+CORRECCIÓN NO IDEAL
+============================================================ Aplicación
+de factor multiplicativo γ:
+
+FPD_corr = γ × FPD_ideal
+
+Se adopta modelo simplificado en v1. No eliminar esta corrección sin
+validación experimental.
+
+============================================================ 7.
+EUTÉCTICOS Y POLIOLES
+============================================================ Eritritol >
+12% ST → riesgo cristalización secundaria. Se penaliza estabilidad y PAC
+efectivo.
+
+============================================================ 8.
+ESTRUCTURA GRASA (SFI)
+============================================================ Requerido
+50–70% grasa cristalizada. Evaluado como índice estructural cualitativo.
+
+============================================================ 9. REOLOGÍA
+============================================================ η = a
+(X_s)^c exp(Ea/RT)
+
+Umbral crítico: η < 50 mPa·s → riesgo de fusión acelerada.
+
+============================================================ 10. MÓDULO
+METABÓLICO ============================================================
+IG = Σ(g_i × IG_i) / Σ(g_i) CG = (IG × carbohidrato_disponible)/100
+
+Validación obligatoria en modo diabético.
+
+============================================================ 11. IGE –
+ÍNDICE GLOBAL DE ESTABILIDAD
+============================================================ IGE = Σ
+(peso_i × subíndice_i)
+
+Integra: - Fracción hielo - Corrección γ - Eutéctico - SFI -
+Viscosidad - Sinergia - Metabólico
+
+============================================================ 12.
+SUPUESTOS DEL MODELO
+============================================================ -
+Equilibrio termodinámico aproximado. - Sistema parcialmente congelado. -
+No modela nucleación dinámica. - No modela recristalización post
+almacenamiento.
+
+============================================================ 13.
+REFERENCIAS TÉCNICAS INTERNACIONALES
+============================================================
+
+1.  Goff, H.D., Hartel, R.W. (2013). Ice Cream, 7th Edition.
+2.  Clarke, C. (2015). The Science of Ice Cream.
+3.  Marshall, R.T., Goff, H.D., Hartel, R.W. (2003). Ice Cream Science
+    and Technology.
+4.  Walstra, P. (2003). Dairy Science and Technology.
+5.  Bradley, R.L. (FPD modeling references).
+6.  Pickering, S.U. (Freezing point depression polynomial data).
+7.  Sühnel, J. (Sweetener synergy modeling).
+8.  Flory, P.J. (Polymer solution thermodynamics – Flory-Huggins model).
+
+============================================================ DECLARACIÓN
+FINAL ============================================================ Este
+documento constituye el marco científico oficial del Motor Híbrido de
+Formulación Heladera. Las ecuaciones y supuestos aquí descritos no deben
+ser reinterpretados ni simplificados sin validación técnica.
+
+
+--- FIN DEL ARCHIVO: Motor_Hibrido_v2_0_Documento_Teorico_Maestro.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Informes\Especificacion_Tecnica_Motor_Hibrido_v2.txt ---
+================================================================================
+
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO DE FORMULACIÓN HELADERA v2.0 Fecha
+de generación: 2026-02-28
+
+============================================================ 1. VISIÓN
+GENERAL DEL SISTEMA
+============================================================
+
+Objetivo: Desarrollar un motor matemático físico–metabólico multicapa
+para formulación de helados, sorbetes y sistemas congelados complejos,
+con capacidad de modelado ideal y no ideal, integración de polioles,
+control metabólico y análisis estructural avanzado.
+
+Alcance: - Formulación determinista basada en principios coligativos. -
+Corrección no ideal mediante modelo de Flory-Huggins (modo activable). -
+Integración de azúcares clásicos, polioles y edulcorantes intensos. -
+Cálculo de PAC, POD, fracción de hielo, viscosidad estimada. - Cálculo
+de índice glucémico estimado y carga glucémica. - Índice Global de
+Estabilidad (IGE). - Escalado inteligente y versionado de recetas.
+
+Limitaciones: - Modelos basados en literatura científica. - Parámetros
+ajustables sin calibración experimental inicial. - Sin sustitución de
+asesoramiento médico.
+
+============================================================ 2.
+ARQUITECTURA MULTICAPA
+============================================================
+
+Capa 1 – Balance estructural: Agua total, sólidos totales (ST), grasa
+total, MSNF, alcohol.
+
+Capa 2 – Modelo crioscópico ideal: Depresión del punto de congelación
+(FPD) ideal basado en equivalentes sacarosa.
+
+Capa 3 – Corrección no ideal (Flory-Huggins): Activable en modo
+Precisión Avanzada. Aplicación cuando ST > 20% en fase sérica.
+
+Capa 4 – Corrección estructural empírica: PAC negativo para cacao,
+grasas vegetales, fibras.
+
+Capa 5 – Estabilidad subcero: Control de eutécticos (eritritol,
+polioles). Condiciones de precipitación y riesgo cristalización.
+
+Capa 6 – Modelo reológico: Estimación de viscosidad sérica. Modelo tipo
+potencia / Arrhenius. Alerta si η < 50 mPa·s a temperatura de servicio.
+
+Capa 7 – Módulo metabólico: Cálculo IG estimado. Carga glucémica por 100
+g. Cálculo calórico híbrido (tabla + fallback estándar).
+
+Capa 8 – Índice Global de Estabilidad (IGE): Ponderación de: - Fracción
+de hielo - Corrección no ideal - SFI - Riesgo eutéctico - Viscosidad
+sérica - Sinergia de dulzor - Carga glucémica
+
+IGE escala 0–10 con semáforo visual.
+
+============================================================ 3. SISTEMA
+INTELIGENTE DE EDULCORANTES
+============================================================
+
+Incluye: - Sacarosa - Dextrosa - Fructosa - Glucosa 42DE - Glucosa
+21DE - Maltodextrina - Eritritol - Xilitol - Maltitol - Isomalt -
+Allulosa - Stevia
+
+Funciones: - Optimización matemática con restricciones. - Modo
+clásico. - Modo Bajo IG. - Modo Diabético Estricto. - Evaluación
+sinergia (Índice de Sühnel). - Restricciones digestivas automáticas.
+
+============================================================ 4. MODO
+PRECISIÓN AVANZADA
+============================================================
+
+Activable por usuario.
+
+Al activarse: - Corrección Flory-Huggins. - Ajuste coeficientes
+actividad. - Evaluación estabilidad subcero. - Evaluación sinergia no
+lineal dulzor. - Activación IGE.
+
+============================================================ 5. MODELO
+MATEMÁTICO GENERAL
+============================================================
+
+Resolver: FPD_total = T_objetivo Mediante solver iterativo.
+
+Calcular: % hielo = (Agua_inicial - Agua_liquida) / Agua_inicial
+
+Aplicar: Corrección no ideal si modo avanzado activo.
+
+Evaluar: Viscosidad sérica estimada. Riesgo eutéctico polioles. Sinergia
+dulzor. Carga glucémica.
+
+============================================================ 6. ESCALADO
+INTELIGENTE ============================================================
+
+Base 1000 g. Escalado lineal. Redondeo técnico. Revalidación automática
+post-escalado.
+
+============================================================ 7. BASE DE
+DATOS Y VERSIONADO
+============================================================
+
+Motor SQLite. Tablas: - Ingredientes - Recetas - Versiones - Métricas
+técnicas
+
+Versionado incremental (v1.0, v1.1, etc.).
+
+============================================================ 8.
+SEGURIDAD Y ADVERTENCIAS
+============================================================
+
+-   Advertencia digestiva polioles.
+-   Advertencia riesgo cristalización.
+-   Advertencia inestabilidad térmica.
+-   Advertencia carga glucémica alta.
+-   Descargo médico.
+
+============================================================ 9. ROADMAP
+EVOLUTIVO ============================================================
+
+v2.1 – Calibración experimental. v3 – Simulación térmica dinámica. v4 –
+Integración modelo predictivo ML opcional.
+
+============================================================ FIN DEL
+DOCUMENTO v2.0
+============================================================
+
+
+--- FIN DEL ARCHIVO: Informes\Especificacion_Tecnica_Motor_Hibrido_v2.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Informes\Motor_Hibrido_v2_1_Nucleo_Matematico.txt ---
+================================================================================
+
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO HELADERÍA v2.1 FASE NÚCLEO
+MATEMÁTICO CERRADO Fecha: 2026-02-28
+
+1.  ALCANCE Define el núcleo matemático completo del motor híbrido:
+
+-   Arquitectura algorítmica
+-   Optimización de edulcorantes
+-   Solver crioscópico
+-   Corrección no ideal
+-   Modelo reológico
+-   Módulo metabólico
+-   Índice Global de Estabilidad (IGE)
+-   Flujo consolidado
+
+2.  FUNCIÓN PRINCIPAL
+
+function FORMULAR_HELADO(input_usuario): estado =
+INIT_ESTADO(input_usuario) VALIDAR_INPUT(estado) estado =
+BALANCE_ESTRUCTURAL(estado) estado = DEFINIR_OBJETIVOS_CRIO(estado)
+estado = OPTIMIZAR_EDULCORANTES(estado) estado = SOLVER_CRIO(estado)
+estado = EVALUAR_EUTECTICOS(estado) estado = MODELO_REOLOGICO(estado)
+estado = MODULO_METABOLICO(estado) estado = CALCULAR_IGE(estado) return
+GENERAR_OUTPUT(estado)
+
+3.  OPTIMIZACIÓN Intentar solución exacta si variables <= 2. Si no,
+    minimizar: F(x) = w1(SE - SE_obj)^2 + w2(POD - POD_obj)^2 (+
+    metabólico si aplica) Sujeto a límites y restricciones.
+
+4.  SOLVER CRIOSCÓPICO Resolver f(W_liq) = FPD_total - T_obj Método:
+    Bisección Tolerancia: 0.01°C Máx 100 iteraciones Modo avanzado:
+    aplicar γ multiplicativo.
+
+5.  MODELO REOLÓGICO η = a (X_s)^c exp(Ea/RT)
+
+6.  MÓDULO METABÓLICO IG = Σ(g_i IG_i) / Σ(g_i) CG = (IG ×
+    CHO_disponible)/100 kcal = tabla + fallback estándar
+
+7.  IGE IGE = Σ(peso_i × subindice_i) Escala 0–10 con semáforo.
+
+8.  RECÁLCULO Cambio ingrediente → desde BALANCE Cambio dulzor → desde
+    OPTIMIZACIÓN Cambio temperatura → desde SOLVER Modo avanzado → desde
+    SOLVER
+
+DECLARACIÓN: El núcleo matemático queda formalmente cerrado y listo para
+implementación.
+
+
+--- FIN DEL ARCHIVO: Informes\Motor_Hibrido_v2_1_Nucleo_Matematico.txt ---
+
+================================================================================
+--- INICIO DEL ARCHIVO: Informes\Motor_Hibrido_v2_2_Arquitectura_Completa.txt ---
+================================================================================
+
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO HELADERÍA v2.2 ARQUITECTURA
+COMPLETA DEL SISTEMA Fecha: 2026-03-01
+
+============================================================ 1. ALCANCE
+============================================================ Documento
+consolidado que integra: - Núcleo matemático - Arquitectura MVC
+(PySide6) - Sistema de eventos y recalculo - Recetario con versionado
+obligatorio - Escalado inteligente - Base de datos SQLite - Gestión
+opcional de marca y proveedor - Preparación para multiusuario futuro
+
+============================================================ 2.
+ARQUITECTURA GENERAL
+============================================================
+
+Estructura del proyecto:
+
+app/ │ ├── core/ # Motor matemático ├── domain/ # Modelos de datos puros
+├── services/ # DB, escalado, exportación ├── controllers/ #
+Orquestación UI <-> Core ├── ui/ # Widgets Qt └── main.py
+
+Reglas: - UI nunca llama directamente al core. - Core no importa Qt. -
+Controllers son único puente. - Versionado nunca sobreescribe.
+
+============================================================ 3. BASE DE
+DATOS (SQLite)
+============================================================
+
+Tabla recipes: - id - name - base_type - created_at - updated_at
+
+Tabla recipe_versions: - id - recipe_id - version_number -
+formulation_json - ige - pac - pod - frozen_fraction - viscosity - ig -
+cg - created_at - notes
+
+Tabla ingredients_catalog: - id - name - category - default_pac -
+default_pod - ig - is_polyol - is_alcohol - allowed_in_water_base -
+allowed_in_dairy_base
+
+Tabla ingredient_sources: - id - ingredient_name - brand - supplier -
+cost_per_kg - contact - notes
+
+Marca y proveedor son opcionales y no bloquean guardado.
+
+============================================================ 4. SISTEMA
+DE EVENTOS ============================================================
+
+Eventos estructurales → recalculo completo. Eventos de formulación →
+recalculo desde optimización. Eventos físicos → recalculo desde solver.
+Eventos administrativos → no recalculan salvo escalado.
+
+Prevención de loops mediante bloqueo temporal de señales.
+
+============================================================ 5. ESCALADO
+INTELIGENTE ============================================================
+
+Proceso: 1. Aplicar factor lineal. 2. Ejecutar core completo. 3.
+Revalidar advertencias. 4. Crear nueva versión automática.
+
+Nunca se sobreescribe versión previa.
+
+============================================================ 6.
+RECETARIO ============================================================
+
+-   Vista independiente completa.
+-   Historial de versiones.
+-   Comparador de versiones.
+-   Panel lateral para escalado.
+-   Gestión opcional de proveedor por ingrediente.
+
+============================================================ 7.
+PREPARACIÓN MULTIUSUARIO FUTURO
+============================================================
+
+Arquitectura preparada para incluir user_id opcional en tablas.
+Actualmente modo usuario único activo.
+
+============================================================ DECLARACIÓN
+FINAL ============================================================
+
+La arquitectura del sistema queda formalmente cerrada. Lista para
+implementación en PySide6 con MVC estricto.
+
+
+--- FIN DEL ARCHIVO: Informes\Motor_Hibrido_v2_2_Arquitectura_Completa.txt ---

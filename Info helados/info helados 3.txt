@@ -1,0 +1,110 @@
+Aquí tienes la extracción cuantitativa y paramétrica orientada a la programación de un motor termodinámico de formulación, excluyendo descripciones narrativas y priorizando matemáticas implementables en Python.
+
+### 1️⃣ Fracción de Agua Congelada vs Temperatura
+
+**Modelo Físico Coligativo (Método Bradley & Smith / Leighton / Pickering)**
+*Objetivo: Obtener la curva de congelación $T = f(W_{liq})$ donde $W_{liq}$ es el agua no congelada.*
+
+**A. Cálculo de Equivalencia de Sacarosa ($SE$)**
+Variables requeridas: concentraciones de solutos en gramos por 100 g de mezcla.
+$$SE = (MSNF \times 0.545) + (WS \times 0.765) + S + (10DE \times 0.2) + (36DE \times 0.6) + (42DE \times 0.8) + (62DE \times 1.2) + (JMAF \times 1.8) + (F \times 1.9)$$
+*(Donde MSNF=Sólidos Lácteos No Grasos, WS=Sólidos de Suero, S=Sacarosa, DE=Jarabe de Glucosa por Dextrosa Equivalente, JMAF=Jarabe Alta Fructosa, F=Fructosa/Dextrosa)*.
+
+**B. Relación de Concentración en Fase Acuosa ($C$)**
+$$C = \frac{SE \times 100}{W_{liq}}$$
+*(Donde $W_{liq}$ es el porcentaje de agua líquida remanente; inicialmente $W_{liq} = \% \text{Agua Total de la Mezcla}$)*.
+
+**C. Depresión Crioscópica Teórica ($FPD_{Total}$)**
+Aproximación polinómica para solutos (Ecuación de Pickering extraída del modelo computacional):
+$$FPD_{SE} = (-0.00009 \cdot C^2) - (0.0612 \cdot C)$$
+Depresión por Sales Lácteas:
+$$FPD_{SA} = \frac{(MSNF + WS) \cdot 2.37}{W_{liq}}$$
+$$T_{congelacion} = FPD_{SE} + FPD_{SA}$$.
+
+**D. Iteración de Equilibrio (Implementación en Software)**
+1. Iniciar $W_{liq} = \% \text{Agua Total}$. Calcular $T_{congelacion}$ inicial (Fracción de hielo = 0).
+2. Reducir $W_{liq}$ en pasos discretos iterativos (ej. pasos de 5% respecto a W total).
+3. Recalcular $C$, $FPD_{SE}$, y $FPD_{SA}$ en cada iteración usando el nuevo $W_{liq}$ reducido.
+4. Trazar porcentaje de agua congelada = $\frac{W_{total} - W_{liq}}{W_{total}} \times 100$ vs $T_{congelacion}$ obtenida.
+
+**E. Datos Tabulados Típicos (Anclajes para calibración del algoritmo)**
+Fracción de agua congelada en mezcla típica con ~20% azúcares:
+*   a -5 °C: 48% hielo.
+*   a -10 °C: 73% hielo.
+*   a -11 °C (T. Servicio ideal): ~75% hielo.
+*   a -15 °C: 78% hielo.
+*   a -20 °C: 87% hielo.
+
+---
+
+### 2️⃣ Curvas Solid Fat Index (SFI)
+
+*Nota: La literatura proporcionada no incluye ecuaciones matemáticas explícitas ni tablas continuas de SFI sub-cero, por lo que el modelado debe basarse en puntos umbral empíricos documentados.*
+
+**Datos Cuantitativos SFI Disponibles**
+*   **Grasa láctea:** Se considera que $\approx 66\%$ (2/3 partes) de la grasa está cristalizada a 4 °C (temperatura de maduración). Punto de fusión a 32 °C.
+*   **Manteca de cacao:** Punto de fusión a 36 °C. A 35 °C debe poseer $<3\%$ de grasa sólida (límite para evitar sensación de cera en paladar).
+
+**Umbrales Críticos Documentados para Algoritmo Estructural**
+*   **Rango óptimo para coalescencia parcial (Red grasa):** $60\% \leq SFI \leq 80\%$ de grasa sólida en el momento del batido (a temperaturas de -4°C a -6°C).
+*   *Condición en software:* Si $SFI < 60\%$ $\rightarrow$ Riesgo de coalescencia total (colapso estructural). Si $SFI > 80\%$ $\rightarrow$ Riesgo de agitación en gránulos de mantequilla y falta de interconectividad.
+
+**Modelo Matemático Aproximado (Propuesta de interpolación empírica)**
+Para programar la curva SFI entre la maduración (4 °C) y la congelación sub-cero, se recomienda ajustar los puntos discretos en una **función logística inversa** (tipo Gompertz):
+$$SFI(T) = SFI_{max} - \frac{SFI_{max}}{1 + e^{-k(T - T_m)}}$$
+*(Donde $T_m$ es el punto de fusión empírico y $k$ es la pendiente de cristalización dependiente de la saturación).*
+
+---
+
+### 3️⃣ Actividad de Agua (aw)
+
+*Nota: La literatura aportada omite mediciones empíricas tabuladas de $a_w$. El enfoque es fundamentalmente predictivo de "agua inmovilizada" mediante solutos y estabilizantes.*
+
+**Relación Matemática Propuesta (Coherencia Física)**
+Implementar la **Ley de Raoult** modificada para sistemas hiper-concentrados como aproximación a $a_w$ en la fase sérica residual a cualquier temperatura $T$:
+$$a_w \approx \frac{\frac{W_{liq}(T)}{MW_{H_2O}}}{\frac{W_{liq}(T)}{MW_{H_2O}} + \sum \left( \frac{m_{soluto}}{MW_{soluto}} \right)}$$
+*(Donde $MW_{H_2O} = 18.015$ g/mol y $W_{liq}(T)$ se obtiene del modelo crioscópico iterativo).*
+
+**Alteración Cuantitativa por Fibras (Módulo empírico de retención)**
+Las fibras (inulina, macromoléculas de cacao y pastas) reducen la movilidad acuosa radicalmente (disminuyendo $a_w$ de forma no ideal). Esto se introduce en el modelo matemático como coeficientes de "Poder Anticongelante Negativo (Endurecimiento)":
+*   **Fibra de cacao puro:** Endurece el sistema en $-1.8$ puntos PAC por gramo.
+*   **Fibra/grasa en frutos secos:** Endurece el sistema en $-1.4$ puntos PAC por gramo de grasa vegetal contenida.
+*   **Manteca de Cacao:** Endurece el sistema en $-0.9$ puntos PAC por gramo.
+
+---
+
+### 4️⃣ Modelo Integrado Propuesto
+
+Al combinar el método coligativo de Bradley/Smith (termodinámica ideal) y el método heurístico PAC/POD (correcciones no ideales de fibra/grasa), se propone el siguiente flujo físico-matemático computable en Python.
+
+**Variables Mínimas de Entrada (Arrays):**
+*   Vector de masas ($m_i$)
+*   Vector de \% Agua ($W_i$)
+*   Vector de \% MSNF, \% WS
+*   Vector de azúcares y sus PM o DE
+*   Vector de grasas (separado por saturación/láctea vs vegetal)
+*   Vector de Fibras/Sólidos complejos (Cacao, frutos secos).
+
+**Paso 1: Balance de Masas Global**
+$$W_{total} = \sum (m_i \cdot \%W_i)$$
+$$Sólidos_{Totales} (ST) = \sum (m_i \cdot \%Sólidos_i)$$
+*(Margen control: Helado 36-40% ST, Sorbete 28-32% ST).*
+
+**Paso 2: Cinética de Fase Acuosa (Curva Bradley/Smith)**
+*   Calcular $SE$ (Equivalentes de Sacarosa).
+*   Ejecutar bucle `while` reduciendo $W_{liq}$ hasta que $FPD_{SE} + FPD_{SA} = T_{servicio}$.
+*   *Output:* Retornar $\%Hielo$ a $T_{servicio}$. (Validar si $\%Hielo \approx 75\%$)..
+
+**Paso 3: Ajuste Heurístico de Dureza Absoluta (Vectores PAC)**
+Debido a que el modelo termodinámico sobreestima el hielo formado por debajo del 55-60% y omite polímeros de grasa/fibra, el software debe corregir calculando el PAC Absoluto de la receta:
+$$PAC_{Positivo} = \sum (m_{azucar} \cdot Factor\_PAC)$$
+$$PAC_{Alcohol} = Masa_{alcohol} \cdot \%ABV \cdot 9.0 \text{ (solo sorbetes) o } 2.5 \text{ (cremas)}$$
+$$PAC_{Negativo} = (m_{cacao} \cdot -1.8) + (m_{grasa\_veg} \cdot -1.4) + (m_{manteca\_cacao} \cdot -0.9)$$
+$$PAC_{Neto} = PAC_{Positivo} + PAC_{Negativo}$$
+
+**Paso 4: Predicción de Temperatura de Servicio ($T_s$)**
+Calcular la isoterma predictiva asumiendo un anclaje lineal donde PAC 270 $\approx$ -11°C:
+$$T_s = -11 - \frac{PAC_{Neto} - 270}{20}$$
+
+**Margen de error esperado:**
+*   El modelo de curva de hielo $f(W_{liq})$ posee una alta precisión ($< \pm 0.2^\circ C$) hasta el 55% del agua congelada. A partir del 60% de agua convertida en hielo, las interacciones soluto-soluto desvían fuertemente el cálculo termodinámico (margen de error de estimación volumétrica $> \pm 5\%$ a temperaturas inferiores a -20 °C). Las calibraciones empíricas del Paso 3 mitigan este error en el software.

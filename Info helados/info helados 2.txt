@@ -1,0 +1,73 @@
+Como científico especializado en reología y sistemas coloidales congelados, presento el análisis cuantitativo estructurado extraído de la literatura proporcionada, orientado a la parametrización de un motor matemático para heladería.
+
+### 1. Modelado Físico de Fibras e Inulina
+
+*   **Capacidad de retención de agua (WHC)**: Las fibras retienen grandes cantidades de agua. Por ejemplo, la harina de algarroba absorbe una cantidad de agua igual a 80 ÷ 100 veces su peso. La celulosa purificada absorbe de 5 a 10 veces su peso, y el salvado hasta 25 veces.
+*   **Impacto en actividad de agua (aw)**: Las fuentes no utilizan ecuaciones termodinámicas explícitas de $a_w$. El modelo asume que las fibras transforman el "agua libre" en "agua ligada", reduciendo el solvente disponible para la congelación y para disolver azúcares.
+*   **Efecto en el punto de congelación (FPD)**: La teoría coligativa estándar (PAC) falla con las fibras. Teóricamente, al introducir inulina y secuestrar agua, la concentración de azúcares en el agua restante aumenta, lo que matemáticamente *elevaría* el PAC absoluto (sugiriendo un helado más blando). Sin embargo, la realidad empírica es exactamente la opuesta: **las fibras endurecen la estructura**.
+*   **Impacto en dureza**: Las fibras presentes en la inulina y en pastas de frutos secos provocan un endurecimiento estructural drástico. Para compensar este endurecimiento en el software, se debe añadir de **0,5 a 1 gramo de dextrosa por cada gramo de fibra** en la fórmula.
+*   **Valores típicos de uso**: La inulina se puede formular hasta en un 10% sin efectos laxantes, pero el valor típico de introducción para calibrar estructura sin conocer su composición exacta es del **1% al 2%**.
+
+### 2. Modelado del Cacao en Polvo
+
+*   **Composición promedio**: El cacao en polvo estándar (tipo 22/24) se modela con un **22% de manteca de cacao (grasa)** y un **78% de sólidos puros de cacao (fibra/extracto seco)**. El cacao desgrasado (10/12) tiene un 11% de grasa y 89% de sólidos. El contenido de proteína del cacao en polvo ronda el 20%.
+*   **Capacidad de retención de agua**: Debido a su altísima absorción de agua, al usar cacao en polvo es imperativo reducir la Leche en Polvo Desnatada (LMP) en la fórmula. **Por cada incremento de cacao, la LMP debe reducirse (típicamente del 10% al 8%)** para liberar un 10% de agua en la mezcla y evitar una textura arenosa por competencia de solventes.
+*   **Impacto cuantitativo en dureza (Coeficientes PAC Negativo)**:
+    *   Manteca de cacao: Aporta un endurecimiento de **-0.9 puntos de PAC por gramo**.
+    *   Cacao puro (sólidos sin grasa): Aporta un endurecimiento de **-1.8 puntos de PAC por gramo**.
+    *   Cacao en polvo comercial 22/24: Aporta un PAC global de **-1.60 por gramo** (o -160% en tablas porcentuales).
+*   **Límites de dosificación y viscosidad**: El límite máximo técnico de uso es **7% a 9%** para evitar texturas arenosas insalvables y viscosidades que impiden la fluidez en el intercambiador de calor de placas (requiriendo menor presión de homogeneización).
+
+### 3. Modelado de Pastas de Frutos Secos
+
+*   **Contenido de grasa (vegetal)**: Las pastas son 100% puras. Su contenido de grasa se modela como: Avellana (65%), Nuez (64%), Piñón (62%), Almendra (60%), Pistacho (50%), Cacahuete (45-50%).
+*   **Impacto estructural (PAC Negativo)**: Las grasas vegetales de los frutos secos cristalizan y endurecen severamente la matriz. Se aplica un factor de **-1.4 puntos de PAC por cada gramo de grasa vegetal**.
+*   *Ejemplo implementable*: 100 g de pasta de avellana (65% grasa) $\rightarrow$ 65 g grasa $\times -1.4 = \mathbf{-91 \text{ puntos de PAC}}$.
+*   **Ajuste de receta**: Si la pasta aporta más del 8% de grasa total a la receta, se debe sustituir la leche/nata por agua para evitar un colapso de la emulsión.
+
+### 4. Actividad de Agua y Fracción Congelada
+
+*   **Valores típicos de agua total**:
+    *   Helado Crema / Gelato: **54% a 70%** (Óptimo matemático para modelo: **64%**).
+    *   Sorbete: **65% a 75%** (Óptimo matemático para modelo: **70%**).
+*   **Relación Temperatura $\leftrightarrow$ Fracción de hielo**:
+    *   El modelo de textura ideal asume que a la temperatura de servicio (TS) (ej. -11 °C en vitrina o -18 °C en cámara), exactamente el **75% del agua debe estar congelada** y el **25% debe permanecer líquida** como solución anticongelante.
+
+### 5. Curva Solid Fat Index (SFI) y Cristalización
+
+Las fuentes **no proporcionan una tabla paramétrica exacta de SFI a 0, -5, -10 y -18 °C** para las grasas; este es un vacío matemático en la literatura aportada. Sin embargo, proveen los siguientes parámetros de frontera implementables:
+*   **Punto de fusión de manteca de cacao**: ~33 °C (91 °F).
+*   **Condición a 35 °C**: Para evitar sensación cerosa, la grasa debe tener **<3% de grasa sólida a 35 °C**.
+*   **Condición en congelación (Coalescencia)**: Para que ocurra una coalescencia parcial óptima y formación de la red tridimensional que retiene el aire, las mezclas de grasa deben alcanzar un **60% - 80% de grasa sólida** en el momento de la congelación dinámica y batido. Un valor menor produce coalescencia total (colapso), y un valor mayor impide la formación de la red.
+
+### 6. Propuesta de Modelo Simplificado Implementable
+
+Para construir el motor híbrido, al carecer de ecuaciones termodinámicas completas para grasas y fibras complejas, el modelo debe basarse en un **balance algebraico de PAC ponderado con coeficientes empíricos de endurecimiento (PAC Negativo)**.
+
+**Ecuaciones a programar en el software:**
+
+**Paso 1: Balance de Masas (Sólidos vs Agua)**
+*   $Agua_{Total} (\%) = \sum (masa_i \times \%Agua_i)$
+*   $ST_{Total} (\%) = \sum (masa_i \times \%Sólidos_i)$
+*   *Límite Crema:* $ST \approx 36\%$ | *Límite Sorbete:* $ST \approx 30\%$.
+
+**Paso 2: Cálculo de PAC Positivo (Depresores del punto de congelación)**
+*   $PAC_{Azucares} = \sum (masa_{azucar\_i} \times FactorPAC_i)$ *(Ej: Sacarosa=1.0, Dextrosa=1.9)*.
+*   $PAC_{Alcohol} = (masa_{licor} \times \%ABV) \times 9.0$.
+*   $PAC_{Sales} = (masa_{LMP} \times 0.10) \times 5.0$.
+
+**Paso 3: Cálculo de PAC Negativo (Efecto endurecedor de macromoléculas empíricas)**
+*   $PAC_{Neg\_GrasaVegetal} = masa_{GrasaVeg} \times -1.4$.
+*   $PAC_{Neg\_MantecaCacao} = masa_{MantecaCacao} \times -0.9$.
+*   $PAC_{Neg\_CacaoPuro} = masa_{CacaoPuro} \times -1.8$.
+
+**Paso 4: PAC Neto y Temperatura de Servicio Predictiva ($TS_{pred}$)**
+*   $PAC_{Total} = PAC_{Positivo} + PAC_{Negativo}$
+*   *Regla heurística diferencial:* Por cada **20 puntos de $PAC_{Total}$**, la Temperatura de Servicio disminuye en **1 °C**.
+*   *Anclaje:* $PAC_{Total} = 266 \rightarrow TS = -11^\circ C$.
+*   Ecuación lineal de interpolación derivada de las fuentes:
+    $TS_{pred} = -11^\circ C - \left( \frac{PAC_{Total} - 266}{20} \right)$
+
+**Paso 5: Calibración reológica automática (Compensación de fibras)**
+*   Si $\sum Fibra > 0$: El software debe sugerir automáticamente añadir $0.75 \times \sum Fibra$ en gramos de **Dextrosa** para restaurar la movilidad del agua. 
+*   Si $\sum Cacao > 0$: El software debe restringir la Leche en Polvo Desnatada a un máximo del **8%** de la receta total.

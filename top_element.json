@@ -1,0 +1,9 @@
+{
+  id: '',
+  className: 'p-6 px-10 border-b border-white/5 flex justify-between items-center bg-white/[0.02]',
+  tagName: 'DIV',
+  display: 'flex',
+  opacity: '1',
+  pointerEvents: 'auto',
+  zIndex: 'auto'
+}

@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus v8.0 | The Specialist Alchemist 🧙‍♂️🔮</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&family=Inter:wght@400;600&display=swap');
+        
+        :root {
+            --nexus-blue: #0ea5e9;
+            --nexus-blue-glow: rgba(14, 165, 233, 0.4);
+            --nexus-glass: rgba(15, 23, 42, 0.6);
+            --nexus-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .glass-panel {
+            background: var(--nexus-glass);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid var(--nexus-border);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .kpi-dock {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(40px);
+            border-top: 1px solid var(--nexus-border);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+        }
+
+        .btn-profile {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .btn-profile.active {
+            background: var(--nexus-blue);
+            color: white;
+            box-shadow: 0 0 20px var(--nexus-blue-glow);
+        }
+
+        .btn-profile:not(.active):hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-2px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { 
+            background: var(--nexus-blue); 
+            border-radius: 10px; 
+        }
+
+        .sidebar {
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 100;
+        }
+        .sidebar.hidden-left { transform: translateX(-100%); }
+        .sidebar.hidden-right { transform: translateX(100%); }
+
+        .glow-text { text-shadow: 0 0 20px var(--nexus-blue-glow); }
+        
+        /* Layout Grid */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        /* TOOLTIPS v6.5 */
+        [data-tooltip] { position: relative; cursor: help; }
+        [data-tooltip]:before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: pre-wrap;
+            width: 220px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            line-height: 1.4;
+            pointer-events: none;
+        }
+        [data-tooltip]:hover:before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* v8.7 UX Enhancements: Matrix Scroll & Collapsible */
+        .matrix-scroll-area {
+            max-height: 400px;
+            overflow-y: auto;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .matrix-scroll-area.collapsed {
+            max-height: 0px !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .btn-toggle-matrix {
+            transition: transform 0.4s ease;
+        }
+
+        .btn-toggle-matrix.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* v8.8 UX Enhancements: Explorer Zero-State */
+        .explorer-transition {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+
+    <!-- v9.5.4: Contenedor Principal Bloqueable -->
+    <div id="mainAppContainer" class="transition-all duration-1000">
+        <div class="workspace-grid">
+        <!-- HEADER MAESTRO (v6.6) -->
+        <header class="p-4 flex gap-6 justify-between items-center z-50">
+            <!-- Izquierda: Profile Selector & Temp Control & Nexus Seal -->
+            <div class="flex items-center gap-6 bg-black/40 border border-white/5 p-2 px-6 rounded-2xl w-fit">
+                <div class="flex flex-col">
+                    <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Perfil Maestro</label>
+                    <select id="selectPerfil" class="bg-transparent text-xs font-jakarta font-bold text-sky-400 outline-none cursor-pointer">
+                        <option value="" class="bg-slate-900" selected disabled>SELECCIONAR PERFIL...</option>
+                        <option value="gelato_leche" class="bg-slate-900">GELATO - BASE LECHE</option>
+                        <option value="gelato_agua" class="bg-slate-900">GELATO - BASE AGUA</option>
+                        <option value="sorbete" class="bg-slate-900">SORBETE - FRUTAL</option>
+                        <option value="yogurt" class="bg-slate-900">HELADO - YOGURT</option>
+                        <option value="mantecado" class="bg-slate-900">MANTECADO TRADICIONAL</option>
+                        <option value="soft" class="bg-slate-900">HELADO - SOFT SERVE</option>
+                        <option value="keto" class="bg-slate-900">HELADO - KETO / ZERO</option>
+                    </select>
+                </div>
+                
+                <div class="w-px h-8 bg-white/10"></div>
+
+                <div class="flex flex-col">
+                    <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Temp. Servicio</label>
+                    <div class="flex items-center gap-3">
+                        <input type="range" id="inputTemp" min="-18" max="-10" value="-14" step="1" 
+                               class="w-20 h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-sky-500">
+                        <span id="labelTemp" class="text-xs font-bold text-white">-14°C</span>
+                    </div>
+                </div>
+
+                <div class="w-px h-8 bg-white/10"></div>
+
+                <!-- NEXUS SEAL OF QUALITY (v6.3) -->
+                <div id="nexusSeal" class="flex items-center gap-3 group px-4 py-1.5 rounded-full border border-white/5 bg-white/5 transition-all">
+                    <div id="sealStatus" class="w-3 h-3 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
+                    <div class="flex flex-col">
+                        <span id="sealText" class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Inestable</span>
+                        <div id="sealScore" class="text-[10px] font-bold text-white/40">SC 0/100</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centro: Identificador de Receta Activa (v7.8) -->
+            <div id="activeRecipeIndicator" class="flex flex-col items-center px-8 py-3 bg-white/5 border border-white/5 rounded-[2rem] min-w-[200px] transition-all duration-500">
+                <span class="text-[8px] font-black text-slate-500 uppercase tracking-[0.3em] mb-1">Nexus Formula / ID</span>
+                <div class="flex items-center gap-3">
+                    <div class="w-1.5 h-1.5 rounded-full bg-slate-500" id="recipeStatusPulse"></div>
+                    <span id="activeRecipeName" class="text-[11px] font-jakarta font-bold text-slate-400 italic uppercase">Nueva Fórmula</span>
+                </div>
+            </div>
+
+            <!-- Derecha: Menú de Cápsulas (Sistema) -->
+            <div class="flex gap-3">
+                <!-- 💾 Guardar Fórmula -->
+                <button id="btnSaveRecipe" class="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 p-2.5 px-4 rounded-xl border border-emerald-500/20 transition-all flex items-center justify-center gap-2 group shadow-[0_0_10px_rgba(16,185,129,0.1)]" title="Guardar a la Bóveda">
+                    <span class="text-lg">💾</span>
+                    <span class="text-[10px] font-black uppercase tracking-tighter">Guardar</span>
+                </button>
+
+                <!-- 📄 Nueva Fórmula -->
+                <button id="btnNewRecipe" class="bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 p-2.5 px-4 rounded-xl border border-blue-500/20 transition-all flex items-center justify-center gap-2 group shadow-[0_0_10px_rgba(59,130,246,0.1)]" title="Nueva Fórmula (Limpiar)">
+                    <span class="text-lg">📄</span>
+                    <span class="text-[10px] font-black uppercase tracking-tighter">Nuevo</span>
+                </button>
+
+                <!-- 📁 Bóveda -->
+                <button id="btnToggleBoveda" class="bg-white/5 hover:bg-white/10 text-white/80 p-2.5 px-4 rounded-xl border border-white/5 transition-all flex items-center justify-center gap-2 group" title="Bóveda de Fórmulas">
+                    <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                    <span class="text-[10px] font-black uppercase tracking-tighter hidden md:inline">Bóveda</span>
+                </button>
+
+                <!-- ➕ Agregar Insumo -->
+                <button id="btnOpenExplorer" class="bg-sky-500 hover:bg-sky-400 p-2.5 px-5 rounded-xl text-white shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group" title="Explorador de Insumos">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                    <span class="text-[10px] font-black uppercase tracking-tighter">Agregar Insumo</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- FACTORY TOOLBAR (v7.0) 🏭 -->
+        <section class="px-4 pb-4">
+            <div class="bg-black/40 border border-white/5 p-4 px-8 rounded-2xl flex items-center justify-between backdrop-blur-md">
+                <div class="flex items-center gap-10">
+                    <!-- Control de Lote -->
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col">
+                            <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Cantidad Lote</label>
+                            <input type="number" id="inputBatchSize" value="1" step="0.5" min="0.1" 
+                                   class="bg-white/5 border border-white/10 rounded-lg p-2 w-24 text-center text-sm font-bold text-white outline-none focus:border-emerald-500/50 transition-all">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Unidad</label>
+                            <select id="selectBatchUnit" class="bg-white/5 border border-white/10 rounded-lg p-2 text-xs font-bold text-emerald-400 outline-none cursor-pointer">
+                                <option value="kg" class="bg-slate-900">KILOGRAMOS (Kg)</option>
+                                <option value="l" class="bg-slate-900">LITROS (Helado)</option>
+                                <option value="gal" class="bg-slate-900">GALONES (Helado)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="w-px h-10 bg-white/10"></div>
+
+                    <!-- Overrun (Aire) -->
+                    <div class="flex flex-col group relative">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
+                            Overrun Proyectado (Aire)
+                            <span class="text-sky-400/50 cursor-pointer hover:text-sky-400 transition-colors" onclick="DashboardUI.abrirGlosario('overrun')">ⓘ</span>
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input type="range" id="inputOverrun" min="0" max="100" value="0" step="0.5" 
+                                   class="w-32 h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-emerald-500">
+                            <div class="relative">
+                                <input type="number" id="inputOverrunValue" value="0" step="0.5" min="0" max="100"
+                                       class="bg-white/5 border border-white/10 rounded-lg p-1.5 w-16 text-center text-xs font-bold text-emerald-400 outline-none focus:border-emerald-500/50 transition-all">
+                                <span class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-emerald-500/50 font-bold pointer-events-none">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Digest -->
+                <div class="flex items-center gap-6 text-right">
+                    <div class="flex flex-col">
+                        <span class="text-[8px] font-black text-slate-500 uppercase tracking-widest">Masa de Pesado</span>
+                        <span id="displayMasaTotal" class="text-xl font-jakarta font-black text-white tracking-tighter">1,000.0 <span class="text-[10px] text-slate-500">g</span></span>
+                    </div>
+                    <div class="p-2 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AREA DE TRABAJO (MATRIZ) -->
+        <main class="flex-1 overflow-hidden p-6 relative flex flex-col gap-6">
+            <div id="matrixContainer" class="flex-1 flex flex-col bg-black/40 border border-white/5 rounded-[3rem] overflow-hidden backdrop-blur-md shadow-2xl relative group">
+                <!-- Header de la Matriz -->
+                <div class="p-6 px-10 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-xs font-black text-white uppercase tracking-widest flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.5)]"></span>
+                            Formulación de Helado de Autor
+                        </h2>
+                        <span class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Balance de Sólidos y Crioscopía en Tiempo Real</span>
+                    </div>
+                </div>
+
+                <!-- La FormulationMatrix.js inyectará el contenido aquí -->
+                <div id="matrixContentArea" class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
+                </div>
+            </div>
+
+            <!-- SMART ADVISOR (Sleek Panel) -->
+            <div id="smartAdvisorContainer" class="glass-panel p-6 rounded-3xl border-l-4 border-sky-500">
+                <div class="flex items-center gap-4 mb-2">
+                    <div class="w-8 h-8 bg-sky-500 text-white rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(14,165,233,0.3)]">🧪</div>
+                    <h3 class="text-[10px] md:text-xs font-jakarta font-bold uppercase tracking-widest text-sky-400">Guía de Ayuda: Nexus Advisory Center</h3>
+                </div>
+                <div id="smartAdvisorContent" class="text-xs text-slate-300 leading-relaxed font-medium">
+                    Analizando hato seleccionado... Esperando balance molecular.
+                </div>
+                <!-- v8.1: Botón de Transmutación Restaurado -->
+                <button onclick="DashboardUI.abrirAlquimia()" class="mt-4 w-full py-2 bg-violet-600/20 hover:bg-violet-600/40 text-violet-300 border border-violet-500/30 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(139,92,246,0.2)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] flex items-center justify-center gap-2">
+                    <span>✨</span> Transmutación Alquímica
+                </button>
+            </div>
+
+            <!-- ANALÍTICA AVANZADA (v7.0) 📉 -->
+            <section id="advancedAnalytics" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- PANEL: CURVA DE FRÍO -->
+                <div class="lg:col-span-2 bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col gap-4 backdrop-blur-sm relative overflow-hidden group">
+                    <div class="flex justify-between items-center relative z-10">
+                        <div class="flex flex-col">
+                            <h3 class="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
+                                Curva de Endurecimiento
+                                <span class="text-sky-400/50 cursor-pointer hover:text-sky-400 transition-colors" onclick="DashboardUI.abrirGlosario('curva_endurecimiento')">ⓘ</span>
+                            </h3>
+                            <span class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Textura vs Temperatura</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-1 bg-sky-500/10 text-sky-400 text-[8px] font-black rounded uppercase">Dinámico</span>
+                        </div>
+                    </div>
+
+                    <!-- Canvas del Gráfico -->
+                    <div id="freezeCurveContainer" class="flex-1 min-h-[220px] relative flex shadow-inner rounded-2xl bg-white/[0.02] border border-white/5 items-center justify-center">
+                        <svg id="freezeCurveSVG" class="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
+                            <!-- Se renderiza vía JS -->
+                        </svg>
+                        <div id="curveTooltip" class="absolute hidden bg-slate-900 border border-white/10 p-2 rounded text-[9px] text-white pointer-events-none z-20"></div>
+                    </div>
+
+                    <div class="flex justify-between text-[8px] font-black text-slate-600 uppercase tracking-widest px-2">
+                        <span>-25°C</span>
+                        <span>-18°C (Vitrina)</span>
+                        <span>-10°C (Servicio)</span>
+                        <span>0°C</span>
+                    </div>
+                </div>
+
+                <!-- PANEL: ESTABILIDAD ESTRUCTURAL -->
+                <div class="bg-black/40 border border-white/5 rounded-3xl p-6 flex flex-col gap-6 backdrop-blur-sm">
+                    <h3 class="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
+                        Estabilidad Estructural
+                        <span class="text-sky-400/50 cursor-pointer hover:text-sky-400 transition-colors" onclick="DashboardUI.abrirGlosario('resistencia_derretimiento')">ⓘ</span>
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-between text-[9px] font-black text-slate-400 uppercase tracking-widest items-center">
+                                <span class="flex items-center gap-1">
+                                    Agua Congelada
+                                    <span class="text-sky-500/50 cursor-pointer hover:text-sky-500 transition-colors" onclick="DashboardUI.abrirGlosario('agua_congelada')">ⓘ</span>
+                                </span>
+                                <span id="val-agua-congelada" class="text-white font-bold">0%</span>
+                            </div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div id="bar-agua-congelada" class="h-full bg-sky-500 transition-all duration-700" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-between text-[9px] font-black text-slate-400 uppercase tracking-widest items-center">
+                                <span class="flex items-center gap-1">
+                                    Concentración de Almíbar
+                                    <span class="text-sky-500/50 cursor-pointer hover:text-sky-500 transition-colors" onclick="DashboardUI.abrirGlosario('concentracion_almibar')">ⓘ</span>
+                                </span>
+                                <span id="val-concentracion" class="text-white font-bold">0%</span>
+                            </div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div id="bar-concentracion" class="h-full bg-amber-500 transition-all duration-700" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-between text-[9px] font-black text-slate-400 uppercase tracking-widest items-center">
+                                <span class="flex items-center gap-1">
+                                    Resistencia al Derretimiento
+                                    <span class="text-sky-500/50 cursor-pointer hover:text-sky-500 transition-colors" onclick="DashboardUI.abrirGlosario('resistencia_derretimiento')">ⓘ</span>
+                                </span>
+                                <span id="val-resistencia" class="text-white font-bold">Óptima</span>
+                            </div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div id="bar-resistencia" class="h-full bg-emerald-500 transition-all duration-700" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-[9px] text-slate-500 leading-relaxed italic font-medium">
+                        * Cálculos basados en la relación PAC/Sólidos y la temperatura de servicio objetivo.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- KPI DOCK (Molecular Gauges) -->
+        <footer id="kpiDock" class="kpi-dock p-4 md:p-6 px-6 md:px-10 flex flex-col xl:flex-row justify-between items-center gap-6 z-40 relative">
+            <div class="flex gap-4 md:gap-6 w-full xl:w-auto overflow-x-auto custom-scrollbar pb-2 items-center">
+                <!-- KPI: PAC -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('pac')" class="absolute top-3 right-3 text-white/20 hover:text-sky-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">PAC</span>
+                    <h3 id="kpi-pac" class="text-3xl md:text-4xl font-jakarta font-bold text-white tracking-tighter">0.0</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-sky-500/60 uppercase">Poder Anticongelante</div>
+                </div>
+
+                <!-- KPI: POD -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('pod')" class="absolute top-3 right-3 text-white/20 hover:text-sky-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">POD</span>
+                    <h3 id="kpi-pod" class="text-3xl md:text-4xl font-jakarta font-bold text-white tracking-tighter">0.0</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-amber-500/60 uppercase">Poder Dulcificante</div>
+                </div>
+
+                <!-- KPI: Agua Libre -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('agua_libre')" class="absolute top-3 right-3 text-white/20 hover:text-sky-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Agua Libre</span>
+                    <h3 id="kpi-agua-libre" class="text-3xl md:text-4xl font-jakarta font-bold text-sky-400 tracking-tighter">0.0%</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-sky-500/60 uppercase">Fase Líquida Real</div>
+                </div>
+
+                <!-- KPI: Índice Glucémico -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('ig')" class="absolute top-3 right-3 text-white/20 hover:text-emerald-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">IG</span>
+                    <h3 id="kpi-ig" class="text-3xl md:text-4xl font-jakarta font-bold text-emerald-400 tracking-tighter">0</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-emerald-500/60 uppercase">Impacto Metabólico</div>
+                </div>
+
+                <!-- KPI: SFI -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('sfi')" class="absolute top-3 right-3 text-white/20 hover:text-amber-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">SFI</span>
+                    <h3 id="kpi-sfi" class="text-3xl md:text-4xl font-jakarta font-bold text-amber-400 tracking-tighter">0.0%</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-amber-500/60 uppercase">Grasa Cristalizada</div>
+                </div>
+
+                <!-- KPI: PAC Negativo -->
+                <div class="glass-panel min-w-[120px] p-4 md:p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 group relative shrink-0">
+                    <button onclick="DashboardUI.abrirGlosario('pac_negativo')" class="absolute top-3 right-3 text-white/20 hover:text-rose-400 transition-colors">ⓘ</button>
+                    <span class="text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">PAC (-)</span>
+                    <h3 id="kpi-pac-neg" class="text-3xl md:text-4xl font-jakarta font-bold text-rose-400 tracking-tighter">0.0</h3>
+                    <div class="text-[8px] md:text-[9px] font-bold text-rose-500/60 uppercase">Efecto Endurecedor</div>
+                </div>
+
+                <!-- KPI: SÓLIDOS -->
+                <div class="glass-panel min-w-[150px] p-4 md:p-6 rounded-[2rem] flex flex-col justify-center gap-2 shrink-0 border border-white/5 relative group">
+                    <button onclick="DashboardUI.abrirGlosario('cuerpo_solidos')" class="absolute top-3 right-3 text-white/20 hover:text-slate-400 transition-colors">ⓘ</button>
+                    <p class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 mb-1">Cuerpo / Sólidos</p>
+                    <div class="flex flex-col gap-2">
+                        <span id="kpi-solidos" class="text-2xl md:text-3xl font-jakarta font-extrabold text-slate-300">0.0%</span>
+                        <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                            <div id="bar-solidos" class="h-full bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.5)] transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Masa Total Area -->
+            <div class="flex items-center gap-6 xl:border-l border-white/10 xl:pl-8 shrink-0">
+                <div class="text-right">
+                    <p class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 mb-1">Masa Total</p>
+                    <p id="kpi-peso" class="text-xl md:text-2xl font-bold font-jakarta text-white">0 g</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SIDEBAR BÓVEDA (v6.6) -->
+    <aside id="panelBoveda" class="sidebar hidden-left fixed inset-y-0 left-0 w-80 lg:w-96 glass-panel p-8 shadow-2xl flex flex-col gap-6 z-[100]">
+        <div class="flex justify-between items-center">
+            <h3 class="font-jakarta font-extrabold text-sm uppercase tracking-tighter">La <span class="text-emerald-400">Bóveda</span></h3>
+            <button id="btnCloseBoveda" class="text-2xl text-slate-500 hover:text-white transition-colors">×</button>
+        </div>
+        <p class="text-[10px] text-slate-400 leading-relaxed font-bold">Tu colección de Masterpieces. Carga tus formulaciones para editarlas o generar su proceso.</p>
+        
+        <div id="listaBoveda" class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-2">
+            <!-- Items de Bóveda -->
+        </div>
+    </aside>
+
+    <!-- SIDEBAR SHELF -->
+    <aside id="panelShelf" class="sidebar hidden-right fixed inset-y-0 right-0 w-80 glass-panel p-8 shadow-2xl flex flex-col gap-8">
+        <div class="flex justify-between items-center">
+            <h3 class="font-jakarta font-extrabold text-sm uppercase tracking-tighter">Shelf <span class="text-sky-400">Materia</span></h3>
+            <button id="btnCloseShelf" class="text-2xl text-slate-500">×</button>
+        </div>
+        <input type="text" id="inputBusquedaShelf" placeholder="FILTRAR..." class="bg-black/40 border border-white/10 p-4 rounded-xl text-[10px] font-bold uppercase tracking-widest outline-none focus:border-sky-500/50">
+        <div id="listaShelfItems" class="flex-1 overflow-y-auto custom-scrollbar space-y-3">
+            <!-- Items de Shelf -->
+        </div>
+    </aside>
+
+    <!-- MODAL EXPLORADOR DE INSUMOS (v6.2) -->
+    <div id="modalExplorer" class="fixed inset-0 z-[150] bg-black/60 backdrop-blur-3xl flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500">
+        <div class="glass-panel w-full max-w-5xl h-[80vh] rounded-[3rem] p-10 relative flex flex-col gap-8 shadow-[0_50px_100px_rgba(0,0,0,0.8)]">
+            <button id="btnCloseExplorer" class="absolute top-8 right-10 text-3xl text-slate-500 hover:text-white transition-all">×</button>
+            
+            <div class="flex justify-between items-end">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-2xl font-jakarta font-extrabold tracking-tighter">Explorador de Materia Prima</h2>
+                    <p class="text-[10px] font-black text-sky-400 uppercase tracking-[0.3em]">Catálogo de Insumos de Alta Pureza</p>
+                </div>
+                <button id="btnOpenForge" class="bg-emerald-500 hover:bg-emerald-400 text-white p-3 px-6 rounded-2xl flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95">
+                    <span class="text-xl">🌋</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest">Nueva Materia Prima</span>
+                </button>
+            </div>
+
+            <div class="flex gap-6 h-full overflow-hidden">
+                <!-- Categorías (Left) -->
+                <div id="explorerCategories" class="w-48 flex flex-col gap-2 border-r border-white/5 pr-6 max-h-[500px] overflow-y-auto custom-scrollbar">
+                    <!-- Dinámico -->
+                </div>
+
+                <!-- Grid de Insumos (Right) -->
+                <div class="flex-1 flex flex-col gap-4 overflow-hidden">
+                    <div class="relative">
+                        <input type="text" id="searchExplorer" placeholder="BUSCAR INSUMO O PARÁMETRO..." 
+                               class="w-full bg-white/5 border border-white/10 p-4 pl-12 rounded-2xl text-[10px] font-bold uppercase tracking-widest outline-none focus:border-sky-500/50">
+                        <svg class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    
+                    <div id="explorerGrid" class="flex-1 overflow-y-auto custom-scrollbar grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-10">
+                        <!-- Insumos dinámicos -->
+                    </div>
+
+                    <!-- v8.8: Placeholder de Bienvenida al Explorador -->
+                    <div id="explorerSelectionPlaceholder" class="flex-1 flex flex-col items-center justify-center gap-6 explorer-transition">
+                        <div class="relative group">
+                            <div class="absolute -inset-4 bg-sky-500/10 blur-2xl rounded-full group-hover:bg-sky-500/20 transition-all"></div>
+                            <img src="src/assets/nexus_explorer_placeholder.png" 
+                                 alt="Nexus Masterpiece" 
+                                 class="w-80 h-80 object-cover rounded-[3rem] border border-white/5 shadow-2xl relative z-10 transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                        <div class="text-center relative z-10">
+                            <h3 class="text-xl font-jakarta font-extrabold text-white tracking-tighter">Explorador Molecular Nexus</h3>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-2 px-10">
+                                Selecciona una categoría del panel izquierdo para liberar el potencial de la materia prima.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Controles de Paginación -->
+                    <div id="explorerPagination" class="flex justify-between items-center mt-4 border-t border-white/10 pt-4 hidden">
+                        <button id="btnPrevPage" class="bg-white/5 hover:bg-white/10 text-white/50 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all disabled:opacity-20">⟵ ANTERIOR</button>
+                        <div id="pageIndicator" class="text-xs font-black text-slate-400 tracking-widest">PÁGINA 1 DE 1</div>
+                        <button id="btnNextPage" class="bg-white/5 hover:bg-white/10 text-white/50 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all disabled:opacity-20">SIGUIENTE ⟶</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carrito de Selección Múltiple (Dock) -->
+            <div id="dockCarrito" class="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-3xl border-t border-sky-500/30 p-4 px-10 flex justify-between items-center transform translate-y-full transition-transform duration-500 shadow-[0_-20px_50px_rgba(0,0,0,0.8)] z-50 rounded-b-[3rem]">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-sky-500/20 text-sky-400 rounded-full flex items-center justify-center border border-sky-500/50">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Carrito de Carga</span>
+                        <div id="carritoItemsList" class="flex gap-2 mt-1 max-w-xl overflow-x-auto custom-scrollbar pb-1">
+                            <!-- Chips del carrito -->
+                        </div>
+                    </div>
+                </div>
+                <button id="btnInyectarCarrito" class="bg-sky-500 hover:bg-sky-400 text-white px-8 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all flex items-center gap-2">
+                    Inyectar Sistemas ⟶
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: LA FORJA (Laboratorio de Insumos v6.5) -->
+    <div id="modalForge" class="fixed inset-0 z-[200] bg-slate-950/80 backdrop-blur-3xl flex items-center justify-center p-4 md:p-6 opacity-0 pointer-events-none transition-all duration-500">
+        <div class="glass-panel w-full max-w-2xl p-8 rounded-[3rem] relative flex flex-col gap-6 border-emerald-500/20 shadow-[0_50px_100px_rgba(0,0,0,0.9)] max-h-[95vh] overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
+            
+            <header class="flex flex-col gap-1 relative shrink-0">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-3xl font-jakarta font-extrabold tracking-tighter text-white">La Forja de Insumos</h2>
+                    <div class="flex gap-2">
+                        <button type="button" id="btnSearchAI" class="group flex items-center gap-2 text-sky-400 hover:text-sky-300 font-bold text-[10px] uppercase tracking-widest transition-all">
+                            <span class="w-7 h-7 rounded-full bg-sky-500/10 group-hover:bg-sky-500/20 group-hover:scale-110 flex items-center justify-center text-sm border border-sky-500/30 transition-all">🤖</span> Investigar IA
+                        </button>
+                        <button type="button" id="btnHelpForge" class="group flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-[10px] uppercase tracking-widest transition-all">
+                            <span class="w-7 h-7 rounded-full bg-emerald-500/10 group-hover:bg-emerald-500/20 group-hover:scale-110 flex items-center justify-center text-sm border border-emerald-500/30 transition-all">?</span> Guía
+                        </button>
+                    </div>
+                </div>
+                <p class="text-emerald-400 font-black tracking-widest text-[10px] uppercase">Laboratorio de Alquimia Molecular</p>
+            </header>
+
+            <div class="overflow-y-auto custom-scrollbar pr-2 flex-1">
+                <form id="formForge" class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                    <div class="md:col-span-2">
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block">Nombre del Insumo</label>
+                        <input type="text" id="forgeName" required placeholder="Ej: Pistacho Puro Bronte" 
+                               class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold placeholder:text-white/10 outline-none focus:border-emerald-500/50 transition-all">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block">Categoría</label>
+                        <input type="text" id="forgeCategory" list="categoriasList" required placeholder="Selecciona o Escribe (Ej: ALCOHOLES)" class="w-full bg-slate-900 border border-white/10 p-4 rounded-xl text-sm font-bold text-slate-300 outline-none focus:border-emerald-500/50 uppercase">
+                        <datalist id="categoriasList">
+                            <option value="LECHES Y LÁCTEOS"></option>
+                            <option value="AZÚCARES"></option>
+                            <option value="GRASAS"></option>
+                            <option value="FRUTOS SECOS"></option>
+                            <option value="FRUTAS"></option>
+                            <option value="NEUTROS Y COMPLEMENTOS"></option>
+                            <option value="ALCOHOLES"></option>
+                        </datalist>
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Poder Anticongelante: Capacidad de retardar la formación de hielo.">PAC (Rel. Sacarosa)</label>
+                        <input type="number" id="forgePAC" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Poder Dulcificante: Percepción de dulzor comparada con la sacarosa.">POD (Rel. Sacarosa)</label>
+                        <input type="number" id="forgePOD" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Sólidos Lácteos No Grasos: Proteínas y lactosa de la leche.">SLNG (%)</label>
+                        <input type="number" id="forgeSLNG" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Contenido de proteína pura (Láctea o Vegetal).">Proteína (%)</label>
+                        <input type="number" id="forgeProtein" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Contenido de materia grasa bruta (Lípidos).">Materia Grasa (%)</label>
+                        <input type="number" id="forgeFat" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div>
+                        <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Contenido de agua libre en el ingrediente.">Agua (%)</label>
+                        <input type="number" id="forgeWater" required step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold outline-none focus:border-emerald-500/50">
+                    </div>
+
+                    <div class="md:col-span-2 mt-2 pt-4 border-t border-white/5">
+                        <h4 class="text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-4">Parámetros Extendidos (Fase 3)</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Índice Glucémico (0-100). Clave para formulación de diabéticos.">Índice Glucémico</label>
+                                <input type="number" id="forgeIG" step="1" value="0" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl text-xs font-bold outline-none focus:border-emerald-500/50">
+                            </div>
+                            <div>
+                                <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Porcentaje de Fibra. Afecta el endurecimiento de la mezcla.">Fibra / Inulina (%)</label>
+                                <input type="number" id="forgeFibra" step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl text-xs font-bold outline-none focus:border-emerald-500/50">
+                            </div>
+                            <div>
+                                <label class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2 block" data-tooltip="Graduación alcohólica (ABV). Afecta el punto de congelación dramáticamente.">Alcohol (% ABV)</label>
+                                <input type="number" id="forgeAlcohol" step="0.1" value="0.0" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl text-xs font-bold outline-none focus:border-emerald-500/50">
+                            </div>
+                        </div>
+                    <div class="md:col-span-2 mt-4 p-4 rounded-2xl bg-sky-500/5 border border-sky-500/20">
+                        <div class="flex justify-between items-center mb-3">
+                            <label class="text-[9px] font-black text-sky-400 uppercase tracking-widest">Cámara de Captura Molecular (Pegado IA)</label>
+                            <button type="button" id="btnSmartParse" class="text-[8px] font-black uppercase bg-sky-500/20 hover:bg-sky-500/40 text-sky-300 px-3 py-1 rounded-lg border border-sky-500/30 transition-all">Procesar Pegado ✨</button>
+                        </div>
+                        <textarea id="forgeRawPaste" placeholder="Pega aquí el resultado de la IA (tabla o lista)..." 
+                                class="w-full bg-slate-950/50 border border-white/5 p-3 rounded-xl text-[10px] font-mono text-sky-200 outline-none focus:border-sky-500/50 transition-all h-20 resize-none"></textarea>
+                    </div>
+
+                    <!-- BOTONES DE PIE DE PÁGINA (Footer Modal) -->
+                    <div class="md:col-span-2 pt-6 mt-4 flex justify-end border-t border-white/10">
+                        <div class="flex items-center gap-3 w-full md:w-auto">
+                            <button type="button" id="btnCloseForge" class="flex-1 md:flex-none px-6 py-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 font-black text-[10px] uppercase tracking-widest transition-all">Cerrar</button>
+                            <button type="submit" class="flex-1 md:flex-none bg-emerald-500 hover:bg-emerald-400 text-white font-black text-[10px] uppercase tracking-[0.2em] px-8 py-4 rounded-2xl transition-all shadow-[0_10px_30px_rgba(16,185,129,0.3)]">Registrar Insumo</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NEXUS HELP: LA FORJA -->
+    <div id="modalHelpForge" class="fixed inset-0 z-[250] bg-black/80 backdrop-blur-3xl flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500 hidden">
+        <div class="glass-panel w-full max-w-lg p-10 rounded-[3rem] relative shadow-[0_50px_100px_rgba(0,0,0,0.9)] overflow-hidden border-emerald-500/30">
+            <button type="button" id="btnCloseHelpForge" class="absolute top-6 right-8 text-2xl text-slate-500 hover:text-white transition-all">×</button>
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center text-xl">💡</div>
+                <h3 class="text-xl font-black text-white">Guía de Insumos</h3>
+            </div>
+            <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>Las etiquetas comerciales no siempre dan todos los datos. Busca la <strong>Tabla Nutrimental</strong> en el empaque trasero:</p>
+                <ul class="list-disc pl-5 space-y-2 text-slate-400">
+                    <li><strong class="text-white">Grasa:</strong> Copia "Grasas Totales".</li>
+                    <li><strong class="text-white">Azúcares:</strong> Úsalo como base para calcular el <strong class="text-amber-400">POD</strong>.</li>
+                    <li><strong class="text-white">Proteína:</strong> Cópiala directo de la tabla.</li>
+                    <li><strong class="text-white">Fibra:</strong> Búscalo como "Fibra Dietética".</li>
+                    <li><strong class="text-white">Agua:</strong> Si es polvo es 0%. Si es pasta, réstale a 100% la suma macro (Grasa+Carbo+Proteína).</li>
+                </ul>
+                <div class="bg-indigo-500/10 border border-indigo-500/20 p-4 rounded-2xl mt-4">
+                    <p class="text-[10px] uppercase font-black tracking-widest text-indigo-400 mb-2">🔍 Hack de Búsqueda Web:</p>
+                    <p class="text-[11px] text-slate-400">Si el empaque está incompleto, puedes buscar en Google usando comillas y la base de datos oficial:<br><br><code class="text-indigo-300 bg-black/50 p-1 rounded">"Nombre Ingrediente" USDA FoodData</code> o <code class="text-indigo-300 bg-black/50 p-1 rounded">"Nombre Ingrediente" filetype:pdf ficha técnica</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PROCESO WIZARD -->
+    <div id="modalProceso" class="fixed inset-0 z-[150] bg-black/80 backdrop-blur-3xl flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500">
+        <div class="glass-panel w-full max-w-4xl max-h-[90vh] flex flex-col p-8 md:p-10 rounded-[3rem] relative shadow-[0_50px_100px_rgba(0,0,0,0.9)] overflow-hidden border-sky-500/30">
+            <button type="button" id="btnCloseProceso" class="absolute top-6 right-8 text-2xl text-slate-500 hover:text-white transition-all z-10">×</button>
+            <div class="flex items-center gap-4 mb-8 shrink-0 relative">
+                <div class="w-12 h-12 bg-sky-500/20 border border-sky-500/40 rounded-full flex items-center justify-center text-xl">⚙️</div>
+                <div>
+                    <h3 class="text-3xl font-jakarta font-extrabold tracking-tighter text-white">Guía de Producción</h3>
+                    <p class="text-[10px] font-black text-sky-400 uppercase tracking-[0.3em] mt-1">Paso a Paso Interactivo</p>
+                </div>
+            </div>
+            <div id="procesoContenido" class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pr-4 relative">
+                <!-- Contenido dinámico -->
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/10 flex justify-end shrink-0 relative">
+                <button type="button" onclick="document.getElementById('btnCloseProceso').click()" class="bg-sky-500 hover:bg-sky-400 text-white font-black text-[10px] uppercase tracking-[0.2em] px-10 py-4 rounded-2xl transition-all shadow-[0_10px_30px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95">Cerrar y Regresar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: GUARDAR FÓRMULA (v7.6) -->
+    <div id="modalSaveRecipe" class="fixed inset-0 z-[250] bg-slate-950/80 backdrop-blur-3xl flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500">
+        <div class="glass-panel w-full max-w-md p-10 rounded-[3rem] relative flex flex-col gap-6 border-emerald-500/20 shadow-[0_50px_100_rgba(0,0,0,0.9)]">
+            <header class="flex flex-col gap-1 items-center text-center">
+                <div class="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center text-3xl mb-2 border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.2)]">💾</div>
+                <h2 class="text-2xl font-jakarta font-extrabold tracking-tighter text-white">Asegurar Masterpiece</h2>
+                <p class="text-emerald-400 font-black tracking-widest text-[9px] uppercase">Registro en Bóveda Nexus v7.6</p>
+            </header>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest block">Nombre de la Receta</label>
+                <input type="text" id="saveRecipeName" placeholder="Ej: Gelato de Pistacho Imperial" 
+                       class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-sm font-bold placeholder:text-white/10 outline-none focus:border-emerald-500/50 transition-all text-center">
+            </div>
+
+            <div class="flex flex-col gap-2 mt-2">
+                <button id="btnUpdateRecipe" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-[1.02] active:scale-95 hidden">
+                    Actualizar Existente ⟶
+                </button>
+                <button id="btnConfirmSave" class="w-full bg-amber-500 hover:bg-amber-400 text-white p-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all hover:scale-[1.02] active:scale-95">
+                    Guardar como Nuevo ⟶
+                </button>
+                <button id="btnCancelSave" class="w-full bg-white/5 hover:bg-white/10 text-slate-400 p-4 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Los scripts se han movido al final para asegurar carga completa del DOM -->
+
+
+
+    <!-- MODAL: GLOSARIO MAESTRO (v6.4) -->
+    <div id="modalGlosario" class="fixed inset-0 z-[100] flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-xl bg-black/60">
+        <div class="glass-panel w-full max-w-lg p-10 rounded-[3rem] border-white/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-sky-500/10 blur-[100px] rounded-full"></div>
+            
+            <header class="flex justify-between items-center mb-8 relative">
+                <div>
+                    <h2 id="glosarioTitulo" class="text-2xl font-jakarta font-bold text-white">Glosario Maestro</h2>
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Ciencia de la Formulación</p>
+                </div>
+                <button id="btnCloseGlosario" class="text-slate-500 hover:text-white transition-colors text-2xl">×</button>
+            </header>
+
+            <div id="glosarioContenido" class="space-y-6 relative">
+                <!-- Contenido dinámico -->
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-white/5 flex justify-center">
+                <button id="btnEntendidoGlosario" class="bg-sky-500 hover:bg-sky-400 text-white font-black text-[10px] uppercase tracking-[0.2em] px-10 py-4 rounded-full transition-all">Entendido, Maestro</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS CORE (v7.0) -->
+    <!-- MODAL ALQUIMIA PRO (v7.1) 🔮 -->
+    <div id="modalAlquimia" class="fixed inset-0 z-[300] bg-black/80 backdrop-blur-2xl flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500 hidden">
+        <div class="glass-panel w-full max-w-4xl p-10 rounded-[3rem] relative shadow-[0_50px_100px_rgba(0,0,0,0.9)] border-violet-500/30 overflow-hidden">
+            <!-- Background Glow -->
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-violet-600/20 blur-[100px] rounded-full"></div>
+            
+            <header class="flex flex-col mb-8 relative z-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-violet-500/20 border border-violet-500/40 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20_rgba(139,92,246,0.3)]">🔮</div>
+                    <h2 class="text-4xl font-jakarta font-extrabold tracking-tighter text-white">Transmutación Alquímica</h2>
+                </div>
+                <p class="text-violet-400 font-black tracking-widest text-[10px] uppercase mt-2">Propuesta de Balanceo de Alta Precisión</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 relative z-10">
+                <!-- Tabla de Cambios -->
+                <div class="lg:col-span-2 bg-white/5 rounded-3xl border border-white/10 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-white/10">
+                                <th class="p-4 text-[9px] font-black text-slate-500 uppercase tracking-widest">Ingrediente</th>
+                                <th class="p-4 text-[9px] font-black text-slate-500 uppercase tracking-widest text-center">Actual</th>
+                                <th class="p-4 text-[9px] font-black text-slate-500 uppercase tracking-widest text-center">Propuesta</th>
+                                <th class="p-4 text-[9px] font-black text-slate-500 uppercase tracking-widest text-center">Delta</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alchemyTableBody" class="text-sm font-bold text-slate-300">
+                            <!-- Inyectado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Resumen de Impacto -->
+                <div class="space-y-4">
+                    <div class="p-6 rounded-3xl bg-violet-500/10 border border-violet-500/20">
+                        <h4 class="text-[10px] font-black text-violet-400 uppercase tracking-widest mb-4 text-center">Impacto en Estructura</h4>
+                        <div id="alchemyImpactList" class="space-y-4">
+                            <!-- Inyectado dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- FASE 19: JUSTIFICACIÓN PEDAGÓGICA (v8.0) -->
+                    <div id="alchemyJustification" class="hidden p-6 rounded-3xl bg-amber-500/10 border border-amber-500/20">
+                        <h4 class="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                            <span class="w-5 h-5 bg-amber-500/20 rounded-full flex items-center justify-center text-[10px]">!</span> 
+                            Justificación Científica
+                        </h4>
+                        <div id="justificationList" class="space-y-3 text-[11px] text-slate-300 leading-relaxed font-medium">
+                            <!-- Inyectado dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="flex items-center justify-between pt-6 border-t border-white/10 relative z-10">
+                <button type="button" id="btnCancelAlchemy" class="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 font-black text-[10px] uppercase tracking-widest transition-all">Descartar</button>
+                <div class="flex items-center gap-3">
+                    <button type="button" id="btnSpecialistAlchemy" class="hidden bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 border border-amber-500/30 font-black text-[10px] uppercase tracking-[0.2em] px-8 py-5 rounded-2xl transition-all shadow-[0_15px_30px_rgba(245,158,11,0.1)]">🧙‍♂️ Sanar con Especialista</button>
+                    <button type="button" id="btnApplyAlchemy" class="bg-violet-600 hover:bg-violet-500 text-white font-black text-[10px] uppercase tracking-[0.2em] px-10 py-5 rounded-2xl transition-all shadow-[0_15px_40px_rgba(139,92,246,0.4)]">Transmutar Receta</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN DE SISTEMA (v7.1) -->
+    <div id="nexusToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[1000] px-8 py-4 bg-emerald-500 text-white font-bold text-sm rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-10">
+        <!-- Contenido dinámico -->
+    </div>
+
+    <!-- MODAL DE DIÁLOGO UNIVERSAL (v8.5: Nexus Dialogue System) 💎 -->
+    <div id="nexusConfirm" class="fixed inset-0 z-[800] flex items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 hidden">
+        <div class="w-full max-w-sm bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 shadow-2xl scale-90 transition-transform duration-300">
+            <div id="confirmIcon" class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 border border-white/10">🗑️</div>
+            <h3 id="confirmTitle" class="text-xl font-jakarta font-extrabold text-white text-center mb-2">¿Confirmar Acción?</h3>
+            <p id="confirmMessage" class="text-slate-400 text-xs text-center leading-relaxed mb-8 px-4 font-medium">Esta acción es irreversible y afectará los datos del sistema.</p>
+            <div class="flex gap-3">
+                <button id="btnNoConfirm" class="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 font-black text-[10px] uppercase tracking-widest transition-all">Cancelar</button>
+                <button id="btnYesConfirm" class="flex-1 py-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-rose-600/20">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="nexusAlert" class="fixed inset-0 z-[800] flex items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 hidden">
+        <div class="w-full max-w-sm bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 shadow-2xl scale-90 transition-transform duration-300">
+            <div id="alertIcon" class="w-16 h-16 bg-sky-500/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 border border-sky-500/20">⚠️</div>
+            <h3 id="alertTitle" class="text-xl font-jakarta font-extrabold text-white text-center mb-2">Atención Nexus</h3>
+            <p id="alertMessage" class="text-slate-400 text-xs text-center leading-relaxed mb-8 px-4 font-medium">Mensaje informativo del sistema.</p>
+            <button id="btnOkAlert" class="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-sky-600/20">Entendido ⟶</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE BÚSQUEDA IA (v8.2: Premium Bridge) 🤖 -->
+    <div id="modalAISearch" class="fixed inset-0 z-[600] flex items-center justify-center bg-slate-950/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300 hidden">
+        <div class="w-full max-w-md bg-slate-900 border border-sky-500/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(14,165,233,0.2)]">
+            <header class="text-center mb-6">
+                <div class="w-16 h-16 bg-sky-500/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 border border-sky-500/20">🤖</div>
+                <h3 class="text-2xl font-jakarta font-extrabold text-white tracking-tight">Investigación Molecular IA</h3>
+                <p class="text-sky-400 text-[10px] font-black uppercase tracking-widest mt-1">Configuración de búsqueda experta</p>
+            </header>
+
+            <div class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-2">Producto / Ingrediente</label>
+                    <input type="text" id="aiSearchProduct" placeholder="Ej: Pistacho Bronte, Avellana..." 
+                           class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-sm font-bold text-white outline-none focus:border-sky-500/50 transition-all">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-2">Marca (Opcional)</label>
+                    <input type="text" id="aiSearchBrand" placeholder="Ej: Ferrero, Fabbri, PreGel..." 
+                           class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-sm font-bold text-white outline-none focus:border-sky-500/50 transition-all">
+                </div>
+            </div>
+
+            <footer class="flex items-center gap-3 mt-8">
+                <button type="button" id="btnCancelAISearch" class="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 font-black text-[10px] uppercase tracking-widest transition-all">Cancelar</button>
+                <button type="button" id="btnConfirmAISearch" class="flex-1 py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-sky-600/20">Investigar 🧪</button>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module">
+        import AppController from './src/controllers/AppController.js';
+        import DashboardUI from './src/views/DashboardUI.js';
+
+        // Hacerlos disponibles para event handlers inline (onchange, onclick)
+        window.DashboardUI = DashboardUI;
+
+        async function init() {
+            if (window.nexusBooted) {
+                console.warn("🛡️ Nexus: Boot Sequence already executed. Aborting duplicate.");
+                return;
+            }
+            window.nexusBooted = true;
+            
+            console.log("🌐 Nexus Origin:", window.location.href);
+            try {
+                const controller = new AppController();
+                window.appController = controller; // Exposición global
+                
+                await controller.inicializarSistema();
+                DashboardUI.inicializar(controller);
+                console.log("🚀 Nexus v8.0 Specialist Ready: Bola de Mago On");
+            } catch (err) {
+                window.nexusBooted = false; // Reset on failure
+                console.error("❌ Nexus Boot Error:", err);
+            }
+        }
+
+        // Ejecutar inmediatamente
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+    </div> <!-- Fin de #mainAppContainer -->
+
+    <!-- v9.5.4: Llave de Arranque - Capa Global de Seguridad -->
+    <div id="dashboardSelectionPlaceholder" class="fixed inset-0 flex flex-col items-center justify-center bg-[#020617]/98 z-[150] transition-all duration-1000 p-8">
+        
+        <!-- ZERO STATE CINEMATIC BACKGROUND -->
+        <img src="/src/assets/nexus_dashboard_zero_state.png" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none mix-blend-screen z-0">
+
+        <!-- Grid de 4 Imágenes Cinemáticas -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-fade-in w-full max-w-5xl relative z-10">
+            <!-- 01. Classic -->
+            <div class="relative group cursor-pointer pointer-events-auto" onclick="DashboardUI.seleccionarCategoriaInicial('gelato_leche')">
+                <div class="absolute -inset-2 bg-gradient-to-r from-sky-500/30 to-blue-500/30 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-80 transition-all duration-1000"></div>
+                <img src="/src/assets/nexus_zero_state_v2.png" class="relative w-full aspect-square object-cover rounded-[2.5rem] shadow-2xl border border-white/10 ring-1 ring-white/20 group-hover:scale-105 transition-all duration-500">
+                <div class="absolute top-6 left-6 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                    <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">01. Classic</span>
+                </div>
+            </div>
+
+            <!-- 02. Alchemy -->
+            <div class="relative group cursor-pointer pointer-events-auto" onclick="DashboardUI.seleccionarCategoriaInicial('gelato_agua')">
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-80 transition-all duration-1000"></div>
+                <img src="/src/assets/nexus_nopal.png" class="relative w-full aspect-square object-cover rounded-[2.5rem] shadow-2xl border border-white/10 ring-1 ring-white/20 group-hover:scale-105 transition-all duration-500">
+                <div class="absolute top-6 left-6 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">02. Alchemy</span>
+                </div>
+            </div>
+
+            <!-- 03. Terroir -->
+            <div class="relative group cursor-pointer pointer-events-auto" onclick="DashboardUI.seleccionarCategoriaInicial('sorbete')">
+                <div class="absolute -inset-2 bg-gradient-to-r from-amber-500/30 to-orange-500/30 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-80 transition-all duration-1000"></div>
+                <img src="/src/assets/nexus_pistacho.png" class="relative w-full aspect-square object-cover rounded-[2.5rem] shadow-2xl border border-white/10 ring-1 ring-white/20 group-hover:scale-105 transition-all duration-500">
+                <div class="absolute top-6 left-6 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">03. Terroir</span>
+                </div>
+            </div>
+
+            <!-- 04. Essence -->
+            <div class="relative group cursor-pointer pointer-events-auto" onclick="DashboardUI.seleccionarCategoriaInicial('soft')">
+                <div class="absolute -inset-2 bg-gradient-to-r from-rose-500/30 to-red-500/30 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-80 transition-all duration-1000"></div>
+                <img src="/src/assets/nexus_sandia.png" class="relative w-full aspect-square object-cover rounded-[2.5rem] shadow-2xl border border-white/10 ring-1 ring-white/20 group-hover:scale-[1.02] transition-transform duration-700">
+                <div class="absolute top-6 left-6 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">04. Essence</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal de Arranque -->
+        <div class="flex flex-col items-center gap-8 w-full max-w-2xl text-center">
+            <h1 class="text-5xl font-jakarta font-black text-white tracking-[0.4em] uppercase mb-2 glow-text animate-fade-in">Nexus Engine</h1>
+            <p class="text-sky-400/60 text-[11px] font-black tracking-[0.6em] uppercase mb-8">SISTEMA BLOQUEADO • SELECCIONA UNA PRIORIDAD DE FORMULACIÓN</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-slide-up">
+                <!-- Selector de Categoría (Llave Primaria) -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-sky-500/30 to-emerald-500/30 rounded-2xl blur opacity-25"></div>
+                    <select id="zeroStateCategorySelect" 
+                            onchange="if(this.value) { DashboardUI.seleccionarCategoriaInicial(this.value); }"
+                            class="relative w-full bg-[#0a0f1e]/80 border border-white/10 rounded-2xl px-6 py-5 text-white font-bold tracking-tight appearance-none cursor-pointer focus:outline-none focus:border-sky-500/50 transition-all hover:bg-[#0a0f1e] pointer-events-auto">
+                        <option value="" disabled selected>— ELEGIR CATEGORÍA MAESTRA —</option>
+                        <option value="gelato_leche">GELATO ARTESANO (LECHE)</option>
+                        <option value="gelato_agua">GELATO VEGANO (AGUA)</option>
+                        <option value="sorbete">SORBETE FRUTAL PURO</option>
+                        <option value="soft">SOFT SERVE / EXTRUSIÓN</option>
+                        <option value="yogurt">HELADO DE YOGURT</option>
+                        <option value="mantecado">MANTECADO TRADICIONAL</option>
+                        <option value="keto">KETO / ZERO SUM</option>
+                    </select>
+                </div>
+
+                <!-- Botón de Bóveda (Llave Directa) -->
+                <button onclick="DashboardUI.abrirMiniBoveda()" 
+                        class="p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-sky-500/10 hover:border-sky-500/50 transition-all group flex items-center justify-center gap-4 pointer-events-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-500 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span class="text-sm font-black text-white uppercase tracking-widest">Acceder a Bóveda</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- v9.5.4: Mini-Bóveda Paginada -->
+    <div id="miniVaultModal" class="fixed inset-0 z-[300] hidden flex items-center justify-center bg-black/80 backdrop-blur-xl transition-all duration-500 opacity-0 pointer-events-none">
+        <div class="w-full max-w-3xl glass-panel rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(14,165,233,0.1)] border-white/10 transform scale-95 transition-transform duration-500" id="miniVaultContent">
+            <!-- Header Modal -->
+            <div class="px-10 py-8 border-b border-white/5 flex justify-between items-center bg-white/5">
+                <div>
+                    <h3 class="text-2xl font-black text-white tracking-widest uppercase">Bóveda Nexus</h3>
+                    <p class="text-[10px] text-slate-500 font-bold tracking-[0.3em] uppercase">Registro Histórico de Fórmulas</p>
+                </div>
+                <button onclick="DashboardUI.cerrarMiniBoveda()" class="p-3 bg-white/5 rounded-full hover:bg-white/10 transition-all text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Buscador -->
+            <div class="p-8 pb-4">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-sky-500/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <input type="text" id="miniVaultSearch" placeholder="Buscar fórmula por nombre..." 
+                           class="relative w-full bg-[#020617] border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-sky-500/50 transition-all">
+                </div>
+            </div>
+
+            <!-- Lista de Recetas -->
+            <div class="px-8 pb-8 min-h-[400px]">
+                <div id="miniVaultList" class="space-y-3">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+
+            <!-- Footer con Paginación -->
+            <div class="px-10 py-6 border-t border-white/5 bg-white/5 flex justify-between items-center">
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest" id="miniVaultPageInfo">
+                    Página 1 de 1
+                </div>
+                <div class="flex gap-4">
+                    <button id="miniVaultPrev" class="px-6 py-2 bg-white/5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-all">Anterior</button>
+                    <button id="miniVaultNext" class="px-6 py-2 bg-white/5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white/10 disabled:opacity-30 disabled:pointer-events-none transition-all">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- v6.3: Modal Mensajes (Toast) -->
+    <div id="nexusToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[1000] px-8 py-4 bg-emerald-500 text-white font-bold text-sm rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-10">
+        <!-- Contenido dinámico -->
+    </div>
+</body>
+</html>

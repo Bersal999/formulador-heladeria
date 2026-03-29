@@ -1,0 +1,123 @@
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO DE FORMULACIÓN HELADERA v2.0 Fecha
+de generación: 2026-02-28
+
+============================================================ 1. VISIÓN
+GENERAL DEL SISTEMA
+============================================================
+
+Objetivo: Desarrollar un motor matemático físico–metabólico multicapa
+para formulación de helados, sorbetes y sistemas congelados complejos,
+con capacidad de modelado ideal y no ideal, integración de polioles,
+control metabólico y análisis estructural avanzado.
+
+Alcance: - Formulación determinista basada en principios coligativos. -
+Corrección no ideal mediante modelo de Flory-Huggins (modo activable). -
+Integración de azúcares clásicos, polioles y edulcorantes intensos. -
+Cálculo de PAC, POD, fracción de hielo, viscosidad estimada. - Cálculo
+de índice glucémico estimado y carga glucémica. - Índice Global de
+Estabilidad (IGE). - Escalado inteligente y versionado de recetas.
+
+Limitaciones: - Modelos basados en literatura científica. - Parámetros
+ajustables sin calibración experimental inicial. - Sin sustitución de
+asesoramiento médico.
+
+============================================================ 2.
+ARQUITECTURA MULTICAPA
+============================================================
+
+Capa 1 – Balance estructural: Agua total, sólidos totales (ST), grasa
+total, MSNF, alcohol.
+
+Capa 2 – Modelo crioscópico ideal: Depresión del punto de congelación
+(FPD) ideal basado en equivalentes sacarosa.
+
+Capa 3 – Corrección no ideal (Flory-Huggins): Activable en modo
+Precisión Avanzada. Aplicación cuando ST > 20% en fase sérica.
+
+Capa 4 – Corrección estructural empírica: PAC negativo para cacao,
+grasas vegetales, fibras.
+
+Capa 5 – Estabilidad subcero: Control de eutécticos (eritritol,
+polioles). Condiciones de precipitación y riesgo cristalización.
+
+Capa 6 – Modelo reológico: Estimación de viscosidad sérica. Modelo tipo
+potencia / Arrhenius. Alerta si η < 50 mPa·s a temperatura de servicio.
+
+Capa 7 – Módulo metabólico: Cálculo IG estimado. Carga glucémica por 100
+g. Cálculo calórico híbrido (tabla + fallback estándar).
+
+Capa 8 – Índice Global de Estabilidad (IGE): Ponderación de: - Fracción
+de hielo - Corrección no ideal - SFI - Riesgo eutéctico - Viscosidad
+sérica - Sinergia de dulzor - Carga glucémica
+
+IGE escala 0–10 con semáforo visual.
+
+============================================================ 3. SISTEMA
+INTELIGENTE DE EDULCORANTES
+============================================================
+
+Incluye: - Sacarosa - Dextrosa - Fructosa - Glucosa 42DE - Glucosa
+21DE - Maltodextrina - Eritritol - Xilitol - Maltitol - Isomalt -
+Allulosa - Stevia
+
+Funciones: - Optimización matemática con restricciones. - Modo
+clásico. - Modo Bajo IG. - Modo Diabético Estricto. - Evaluación
+sinergia (Índice de Sühnel). - Restricciones digestivas automáticas.
+
+============================================================ 4. MODO
+PRECISIÓN AVANZADA
+============================================================
+
+Activable por usuario.
+
+Al activarse: - Corrección Flory-Huggins. - Ajuste coeficientes
+actividad. - Evaluación estabilidad subcero. - Evaluación sinergia no
+lineal dulzor. - Activación IGE.
+
+============================================================ 5. MODELO
+MATEMÁTICO GENERAL
+============================================================
+
+Resolver: FPD_total = T_objetivo Mediante solver iterativo.
+
+Calcular: % hielo = (Agua_inicial - Agua_liquida) / Agua_inicial
+
+Aplicar: Corrección no ideal si modo avanzado activo.
+
+Evaluar: Viscosidad sérica estimada. Riesgo eutéctico polioles. Sinergia
+dulzor. Carga glucémica.
+
+============================================================ 6. ESCALADO
+INTELIGENTE ============================================================
+
+Base 1000 g. Escalado lineal. Redondeo técnico. Revalidación automática
+post-escalado.
+
+============================================================ 7. BASE DE
+DATOS Y VERSIONADO
+============================================================
+
+Motor SQLite. Tablas: - Ingredientes - Recetas - Versiones - Métricas
+técnicas
+
+Versionado incremental (v1.0, v1.1, etc.).
+
+============================================================ 8.
+SEGURIDAD Y ADVERTENCIAS
+============================================================
+
+-   Advertencia digestiva polioles.
+-   Advertencia riesgo cristalización.
+-   Advertencia inestabilidad térmica.
+-   Advertencia carga glucémica alta.
+-   Descargo médico.
+
+============================================================ 9. ROADMAP
+EVOLUTIVO ============================================================
+
+v2.1 – Calibración experimental. v3 – Simulación térmica dinámica. v4 –
+Integración modelo predictivo ML opcional.
+
+============================================================ FIN DEL
+DOCUMENTO v2.0
+============================================================

@@ -1,0 +1,11 @@
+{
+  "name": "formulador-heladeria",
+  "version": "3.0.0",
+  "description": "Motor Híbrido v3.0 - Enterprise PWA",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}

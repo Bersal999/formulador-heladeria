@@ -1,0 +1,80 @@
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO HELADERÍA v2.2 ARQUITECTURA
+COMPLETA DEL SISTEMA Fecha: 2026-03-01
+
+============================================================ 1. ALCANCE
+============================================================ Documento
+consolidado que integra: - Núcleo matemático - Arquitectura MVC
+(PySide6) - Sistema de eventos y recalculo - Recetario con versionado
+obligatorio - Escalado inteligente - Base de datos SQLite - Gestión
+opcional de marca y proveedor - Preparación para multiusuario futuro
+
+============================================================ 2.
+ARQUITECTURA GENERAL
+============================================================
+
+Estructura del proyecto:
+
+app/ │ ├── core/ # Motor matemático ├── domain/ # Modelos de datos puros
+├── services/ # DB, escalado, exportación ├── controllers/ #
+Orquestación UI <-> Core ├── ui/ # Widgets Qt └── main.py
+
+Reglas: - UI nunca llama directamente al core. - Core no importa Qt. -
+Controllers son único puente. - Versionado nunca sobreescribe.
+
+============================================================ 3. BASE DE
+DATOS (SQLite)
+============================================================
+
+Tabla recipes: - id - name - base_type - created_at - updated_at
+
+Tabla recipe_versions: - id - recipe_id - version_number -
+formulation_json - ige - pac - pod - frozen_fraction - viscosity - ig -
+cg - created_at - notes
+
+Tabla ingredients_catalog: - id - name - category - default_pac -
+default_pod - ig - is_polyol - is_alcohol - allowed_in_water_base -
+allowed_in_dairy_base
+
+Tabla ingredient_sources: - id - ingredient_name - brand - supplier -
+cost_per_kg - contact - notes
+
+Marca y proveedor son opcionales y no bloquean guardado.
+
+============================================================ 4. SISTEMA
+DE EVENTOS ============================================================
+
+Eventos estructurales → recalculo completo. Eventos de formulación →
+recalculo desde optimización. Eventos físicos → recalculo desde solver.
+Eventos administrativos → no recalculan salvo escalado.
+
+Prevención de loops mediante bloqueo temporal de señales.
+
+============================================================ 5. ESCALADO
+INTELIGENTE ============================================================
+
+Proceso: 1. Aplicar factor lineal. 2. Ejecutar core completo. 3.
+Revalidar advertencias. 4. Crear nueva versión automática.
+
+Nunca se sobreescribe versión previa.
+
+============================================================ 6.
+RECETARIO ============================================================
+
+-   Vista independiente completa.
+-   Historial de versiones.
+-   Comparador de versiones.
+-   Panel lateral para escalado.
+-   Gestión opcional de proveedor por ingrediente.
+
+============================================================ 7.
+PREPARACIÓN MULTIUSUARIO FUTURO
+============================================================
+
+Arquitectura preparada para incluir user_id opcional en tablas.
+Actualmente modo usuario único activo.
+
+============================================================ DECLARACIÓN
+FINAL ============================================================
+
+La arquitectura del sistema queda formalmente cerrada. Lista para
+implementación en PySide6 con MVC estricto.

@@ -1,0 +1,45 @@
+ESPECIFICACIÓN TÉCNICA MOTOR HÍBRIDO HELADERÍA v2.1 FASE NÚCLEO
+MATEMÁTICO CERRADO Fecha: 2026-02-28
+
+1.  ALCANCE Define el núcleo matemático completo del motor híbrido:
+
+-   Arquitectura algorítmica
+-   Optimización de edulcorantes
+-   Solver crioscópico
+-   Corrección no ideal
+-   Modelo reológico
+-   Módulo metabólico
+-   Índice Global de Estabilidad (IGE)
+-   Flujo consolidado
+
+2.  FUNCIÓN PRINCIPAL
+
+function FORMULAR_HELADO(input_usuario): estado =
+INIT_ESTADO(input_usuario) VALIDAR_INPUT(estado) estado =
+BALANCE_ESTRUCTURAL(estado) estado = DEFINIR_OBJETIVOS_CRIO(estado)
+estado = OPTIMIZAR_EDULCORANTES(estado) estado = SOLVER_CRIO(estado)
+estado = EVALUAR_EUTECTICOS(estado) estado = MODELO_REOLOGICO(estado)
+estado = MODULO_METABOLICO(estado) estado = CALCULAR_IGE(estado) return
+GENERAR_OUTPUT(estado)
+
+3.  OPTIMIZACIÓN Intentar solución exacta si variables <= 2. Si no,
+    minimizar: F(x) = w1(SE - SE_obj)^2 + w2(POD - POD_obj)^2 (+
+    metabólico si aplica) Sujeto a límites y restricciones.
+
+4.  SOLVER CRIOSCÓPICO Resolver f(W_liq) = FPD_total - T_obj Método:
+    Bisección Tolerancia: 0.01°C Máx 100 iteraciones Modo avanzado:
+    aplicar γ multiplicativo.
+
+5.  MODELO REOLÓGICO η = a (X_s)^c exp(Ea/RT)
+
+6.  MÓDULO METABÓLICO IG = Σ(g_i IG_i) / Σ(g_i) CG = (IG ×
+    CHO_disponible)/100 kcal = tabla + fallback estándar
+
+7.  IGE IGE = Σ(peso_i × subindice_i) Escala 0–10 con semáforo.
+
+8.  RECÁLCULO Cambio ingrediente → desde BALANCE Cambio dulzor → desde
+    OPTIMIZACIÓN Cambio temperatura → desde SOLVER Modo avanzado → desde
+    SOLVER
+
+DECLARACIÓN: El núcleo matemático queda formalmente cerrado y listo para
+implementación.

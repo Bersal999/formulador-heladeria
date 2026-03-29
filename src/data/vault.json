@@ -1,0 +1,200 @@
+{
+  "Yogurt de Autor": {
+    "ingredientes": [
+      {
+        "id": "leche_entera",
+        "nombre": "Leche Entera",
+        "cantidad": 600
+      },
+      {
+        "id": "yogurt_natural",
+        "nombre": "Yogurt Natural",
+        "cantidad": 250
+      },
+      {
+        "id": "sacarosa",
+        "nombre": "Sacarosa",
+        "cantidad": 120
+      },
+      {
+        "id": "leche_polvo_desnatada",
+        "nombre": "Leche en Polvo Desnatada",
+        "cantidad": 30
+      }
+    ],
+    "perfil": "yogurt",
+    "fecha": "2026-03-26T21:30:00.000Z"
+  },
+  "Dulce de Leche Imperial": {
+    "ingredientes": [
+      {
+        "id": "leche_entera",
+        "nombre": "Leche Entera",
+        "cantidad": 500
+      },
+      {
+        "id": "nata_35",
+        "nombre": "Nata 35% MG",
+        "cantidad": 150
+      },
+      {
+        "id": "dulce_de_leche",
+        "nombre": "Dulce de Leche",
+        "cantidad": 250
+      },
+      {
+        "id": "sacarosa",
+        "nombre": "Sacarosa",
+        "cantidad": 100
+      }
+    ],
+    "perfil": "gelato_leche",
+    "fecha": "2026-03-26T21:40:00.000Z"
+  },
+  "Sorbete Premium de Mango": {
+    "ingredientes": [
+      {
+        "id": "mango_fresco",
+        "nombre": "Mango Fresco",
+        "cantidad": 450
+      },
+      {
+        "id": "jarabe_azucar_50",
+        "nombre": "Jarabe de Azúcar (50%)",
+        "cantidad": 300
+      },
+      {
+        "id": "limon_jugo",
+        "nombre": "Jugo de Limón Mexicano",
+        "cantidad": 30
+      },
+      {
+        "id": "agua_destilada",
+        "nombre": "Agua de Proceso",
+        "cantidad": 220
+      }
+    ],
+    "perfil": "sorbete",
+    "fecha": "2026-03-26T21:50:00.000Z"
+  },
+  "Helado de Pistacho": {
+    "ingredientes": [
+      {
+        "id": "leche_entera",
+        "nombre": "Leche Entera",
+        "cantidad": 400
+      },
+      {
+        "id": "nata_35_m.g.",
+        "nombre": "Nata 35% MG",
+        "cantidad": 350
+      },
+      {
+        "id": "azucar_moreno",
+        "nombre": "Azúcar de Caña",
+        "cantidad": 80
+      },
+      {
+        "id": "azucar_invertido",
+        "nombre": "Azúcar Invertido",
+        "cantidad": 50
+      },
+      {
+        "id": "pasta_pistacho_100",
+        "nombre": "Pasta de Pistacho 100%",
+        "cantidad": 140
+      },
+      {
+        "id": "estabilizante_neutro_5",
+        "nombre": "Estabilizante Neutro 5",
+        "cantidad": 10
+      },
+      {
+        "id": "flor_de_sal",
+        "nombre": "Flor de Sal de Guérande",
+        "cantidad": 2
+      }
+    ],
+    "perfil": "gelato_leche",
+    "fecha": "2026-03-26T23:30:00.000Z",
+    "procedimientoId": "gelato_de_pistacho"
+  },
+  "HELADO DE DULCE DE LECHE": {
+    "receta": [
+      {
+        "id": "custom_1774631724601",
+        "peso": 11.5
+      },
+      {
+        "id": "custom_1774631210318",
+        "peso": 6.5
+      },
+      {
+        "id": "dextrosa",
+        "peso": 2
+      },
+      {
+        "id": "dulce_de_leche",
+        "peso": 30
+      },
+      {
+        "id": "custom_1774637670129",
+        "peso": 16
+      },
+      {
+        "id": "goma_guar",
+        "peso": 0.034999999999999996
+      },
+      {
+        "id": "leche_en_polvo_entera",
+        "peso": 1.6
+      },
+      {
+        "id": "leche_entera",
+        "peso": 75
+      },
+      {
+        "id": "custom_1774632700260",
+        "peso": 0.095
+      },
+      {
+        "id": "maltodextrina_18_de",
+        "peso": 1.5
+      }
+    ],
+    "perfil": "gelato_leche",
+    "fecha": "2026-03-27T18:56:17.131Z",
+    "procedimientoId": null
+  },
+  "RECETA VERIFICACION v8.2": {
+    "receta": [
+      {
+        "id": "jarabe_de_glucosa_42_de",
+        "peso": 4
+      },
+      {
+        "id": "leche_en_polvo_desnatada",
+        "peso": 4
+      },
+      {
+        "id": "leche_entera",
+        "peso": 65
+      },
+      {
+        "id": "nata_35_m.g.",
+        "peso": 10
+      },
+      {
+        "id": "sacarosa",
+        "peso": 16
+      },
+      {
+        "id": "sacarosa",
+        "peso": 10
+      }
+    ],
+    "perfil": "gelato_leche",
+    "fecha": "2026-03-27T19:06:21.460Z",
+    "procedimientoId": null
+  }
+}

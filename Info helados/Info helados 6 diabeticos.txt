@@ -1,0 +1,140 @@
+### Eritritol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** 122 g/mol.
+*   **PAC real documentado:** 2.8 (escala unitaria) o 280 (escala relativa). 
+*   **POD relativo:** 0.7 (escala unitaria) o 70 (escala relativa).
+*   **Factor SE:** 2.8 (derivado de su capacidad de depresión del punto de congelación FPD).
+*   **Solubilidad:** Elevada, pero posee un calor de solución negativo que otorga un alto efecto refrescante en boca.
+*   **Tendencia a recristalización:** Alta. Cristaliza más fácilmente que el azúcar regular.
+*   **Impacto en dureza del helado:** Reduce la dureza a bajas temperaturas (alto PAC), pero su cristalización incontrolada puede generar endurecimiento y textura arenosa.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 0.
+*   **Impacto en glucosa sanguínea:** Nulo. Se absorbe en el intestino pero no se metaboliza; se excreta sin cambios en la orina.
+*   **Carga glucémica estimada (CG):** 0.
+*   **Límite máximo recomendado por seguridad digestiva:** 0.66 g/kg de masa corporal en hombres y 0.8 g/kg en mujeres en una sola toma. Hasta 70 g/día si se reparte en varias dosis (no presenta efecto laxante severo como otros polioles).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Incrementa la suavidad significativamente debido a que deprime el punto de congelación casi el triple que la sacarosa.
+*   **Necesidad de combinación:** Requiere combinarse obligatoriamente con agentes de carga (polidextrosa, inulina) o polioles de bajo PAC (maltitol, isomalt) para aportar extracto seco sin sobrepasar el límite de depresión crioscópica.
+*   **Límite máximo recomendado en formulación:** Aproximadamente 5% (50 g por kg de mezcla) para mantener el balance de PAC total.
+*   **Advertencias técnicas:** No debe reemplazar azúcares en proporción 1:1; causaría que el helado no congele a temperaturas estándar.
+
+---
+
+### Xilitol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** 152 g/mol.
+*   **PAC real documentado:** 1.9 (escala unitaria) o 190 (escala relativa).
+*   **POD relativo:** 1.0 (escala unitaria) o 100 (dulzor equivalente a la sacarosa).
+*   **Factor SE (FPD):** 2.25 en algunos modelos de cálculo de descenso crioscópico.
+*   **Solubilidad:** Alta, presenta el mayor efecto refrescante (endotérmico) de todos los polioles.
+*   **Tendencia a recristalización:** Menor riesgo comparado con eritritol, pero promueve iciness (sensación de hielo) en helados.
+*   **Impacto en dureza del helado:** Su adición resulta en una disminución significativa de la dureza (helados muy blandos) e incremento de la sensación de textura acuosa/helada.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 12.
+*   **Impacto en glucosa sanguínea:** Bajo impacto. Entra en las vías glucogenolíticas sin dependencia de insulina.
+*   **Carga glucémica estimada:** Baja (Dependiente de dosis: CG = 12 x gramos/100).
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal. (Aprox. 18 g a 23 g por dosis en adultos).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Reduce la cremosidad y aumenta el tamaño percibido de cristales de hielo.
+*   **Necesidad de combinación:** Requiere combinación con inulina o fibras para aportar cuerpo y compensar la pérdida de cremosidad. Ej: 6.2% Xilitol + 7% Inulina.
+*   **Límite máximo recomendado en formulación:** ~12.8% máximo probado, aunque se recomienda usar <6.5% para evitar rechazo sensorial y efectos laxantes.
+*   **Advertencias técnicas:** Reemplazar sacarosa 1:1 con xilitol resulta en una depresión crioscópica inmanejable.
+
+---
+
+### Maltitol
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** ~344 g/mol (disacárido, maltosa hidrogenada).
+*   **PAC real documentado:** 1.0 (escala unitaria) o 100 (escala relativa).
+*   **POD relativo:** 0.85 (escala unitaria) o 85 (escala relativa).
+*   **Factor SE:** 1.0 (Comportamiento equivalente a la sacarosa en depresión crioscópica).
+*   **Solubilidad:** Excelente (imita propiedades físicas de la sacarosa).
+*   **Tendencia a recristalización:** Baja. Funciona como inhibidor de cristalización en mezclas.
+*   **Impacto en dureza del helado:** Impacto reológico y de dureza casi idéntico al de la sacarosa.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 26.
+*   **Impacto en glucosa sanguínea:** Moderado-Bajo. Se absorbe lentamente.
+*   **Carga glucémica estimada:** Moderada-Baja (Depende de dosificación).
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal por dosis puntual, con un límite general de tolerancia de 100 g/día.
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Aporta cuerpo, masticabilidad y firmeza de manera idéntica al azúcar tradicional. Es el poliol preferido en heladería industrial.
+*   **Necesidad de combinación:** Frecuentemente combinado con edulcorantes intensivos (sucralosa) para compensar su déficit del 15% en dulzor respecto a la sacarosa.
+*   **Límite máximo recomendado en formulación:** 10% a 15% de la mezcla total.
+*   **Advertencias técnicas:** Etiquetado obligatorio por efecto laxante por encima del umbral diario.
+
+---
+
+### Isomalt (Isomaltosa)
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** ~344 g/mol (disacárido).
+*   **PAC real documentado:** 1.0 (escala unitaria) o 100 (escala relativa).
+*   **POD relativo:** 0.5 (escala unitaria) o 50 (la mitad de dulce que la sacarosa).
+*   **Factor SE:** 1.0.
+*   **Solubilidad:** Muy baja solubilidad en agua (25% a 20 °C frente al 67% de la sacarosa).
+*   **Tendencia a recristalización:** Muy alta. Tiende a cristalizarse y formar precipitados arenosos.
+*   **Impacto en dureza del helado:** Similar a la sacarosa, pero su cristalización puede generar texturas indeseadas de endurecimiento.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** Bajo (No precisado numéricamente en tabla, pero clasificado de bajo impacto).
+*   **Impacto en glucosa sanguínea:** Bajo.
+*   **Carga glucémica estimada:** Baja.
+*   **Límite máximo recomendado por seguridad digestiva:** 0.3 g/kg de masa corporal. (Aprox. 18 g a 23 g por dosis en adultos).
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Proporciona sólidos y estructura sin alterar el punto de congelación estándar.
+*   **Necesidad de combinación:** Requiere edulcorantes intensos por su bajo dulzor, y debe mezclarse con eritritol o fibras para diluir la cantidad ingerida y evitar problemas gástricos y cristalización.
+*   **Límite máximo recomendado en formulación:** 5% (50 g/kg) máximo documentado en recetas por riesgo de rebasar umbrales de tolerancia gástrica por ración (ej. 200g de helado aportarían dosis límite).
+*   **Advertencias técnicas:** Su baja solubilidad requiere precauciones térmicas estrictas para su integración en la fase acuosa.
+
+---
+
+### Allulosa
+
+*   *No existen datos documentados sobre la Allulosa en las fuentes científicas y técnicas suministradas en este entorno.*
+
+---
+
+### Stevia (Glucósidos de esteviol / Esteviosido)
+
+**1️⃣ Propiedades Fisicoquímicas**
+*   **Peso molecular:** No aplicable a nivel coligativo (las dosis de uso son miligramos, sin impacto termodinámico).
+*   **PAC real documentado:** 0 (Nulo efecto en la depresión crioscópica).
+*   **POD relativo:** 134 a 250 veces más dulce que la sacarosa (13,400% - 25,000%).
+*   **Factor SE:** 0. No aporta equivalencia de sólidos ni altera la curva FPD.
+*   **Solubilidad:** Alta en las dosis operativas.
+*   **Tendencia a recristalización:** Nula.
+*   **Impacto en dureza del helado:** No aporta sólidos. Su uso en reemplazo de azúcar resulta en un bloque de hielo impenetrable a menos que se usen agentes de carga.
+
+**2️⃣ Propiedades Metabólicas**
+*   **Índice glucémico (GI):** 0.
+*   **Impacto en glucosa sanguínea:** Nulo.
+*   **Carga glucémica estimada:** 0.
+*   **Límite máximo recomendado por seguridad digestiva:** Regido por la Ingesta Diaria Admisible (IDA), no presenta efecto laxante osmótico.
+
+**3️⃣ Comportamiento en Helados**
+*   **Impacto en textura:** Ninguno por sí mismo.
+*   **Necesidad de combinación:** **Obligatoria**. Requiere polidextrosa, maltodextrina o polioles (eritritol/maltitol) para recrear los sólidos totales (extracto seco) y la depresión del punto de congelación.
+*   **Límite máximo recomendado en formulación:** Condicionado organolépticamente. Dosis altas desarrollan amargor y regusto a regaliz prolongado.
+*   **Advertencias técnicas:** Analíticas de tiempo-intensidad demuestran que tiene el poder edulcorante más bajo entre los edulcorantes intensivos artificiales y puede afectar la aceptación global por su regusto amargo si no se enmascara correctamente.
+
+---
+
+### 4️⃣ Datos Faltantes (Requerimientos para Software Determinista)
+
+Para poder integrar este conocimiento en un módulo automatizado de formulación bajo índice glucémico, los modelos físicos actuales carecen de los siguientes parámetros matemáticos en las fuentes aportadas:
+
+1.  **Curvas de Solubilidad Multicomponente de Polioles (Límites Eutécticos):** No hay ecuaciones para predecir el límite matemático de saturación/cristalización cuando se mezclan múltiples polioles (ej. Isomalt + Eritritol a -18°C).
+2.  **Sinergias de Poder Edulcorante (POD Dinámico):** La Stevia combinada con Eritritol no presenta un perfil de dulzor lineal. Faltan modelos de regresión de estimación de magnitud matemática para calcular el POD neto de las mezclas.
+3.  **Factor Crioscópico Corregido (Coeficiente de Actividad):** Aunque se asigna un Factor FPD (ej. 2.25 al xilitol) derivado de su peso molecular, no se ha documentado la desviación de la idealidad (interacciones soluto-soluto) a altas concentraciones (sobre 30% ST) para los polioles.
+4.  **Parámetros de Allulosa y Tagatosa:** Ausencia absoluta de valores térmicos (PAC, POD, FPD factor) de la allulosa; y datos incompletos termodinámicos de la tagatosa (solo se documenta su GI=0 y POD=0.9).
+5.  **Modelado de Viscosidad de Agentes de Carga:** No hay modelos reológicos predictivos para las sinergias entre Inulina/Polidextrosa y Polioles para recuperar la viscosidad (Pa·s) perdida por la supresión de la sacarosa.

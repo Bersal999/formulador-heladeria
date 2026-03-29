@@ -1,0 +1,131 @@
+**1. Modelo Coligativo Real**
+
+*   **Fórmula matemática explícita de depresión del punto de congelación (FPD):**
+    El modelo predictivo de Bradley y Smith calcula la FPD sumando la depresión causada por los azúcares equivalentes ($FPD_{SE}$) y las sales lácteas ($FPD_{SA}$).
+    $FPD_{Total} = FPD_{SE} + FPD_{SA}$
+
+*   **Cálculo de Equivalentes de Sacarosa (SE) y Molalidad:**
+    $SE = (MSNF \times 0.545) + (WS \times 0.765) + S + (10DE \times 0.2) + (36DE \times 0.6) + (42DE \times 0.8) + (62DE \times 1.2) + (JMAF \times 1.8) + (F \times 1.9)$
+    Donde MSNF son sólidos lácteos no grasos, WS sólidos de suero, S sacarosa, DE equivalentes de dextrosa, JMAF jarabe de alta fructosa, y F fructosa/dextrosa.
+    La concentración en fase acuosa (relación de molalidad empírica $C$) es:
+    $C = \frac{SE \times 100}{W}$ (Donde $W = 100 - Sólidos Totales$).
+
+*   **Ecuación polinómica de Pickering (para $FPD_{SE}$):**
+    $FPD_{SE} = (-0.00009 \times C^2) - (0.0612 \times C)$
+
+*   **Ecuación de Sales ($FPD_{SA}$):**
+    $FPD_{SA} = \frac{(MSNF + WS) \times 2.37}{W}$
+    *Nota: La constante 2.37 deriva del peso molecular promedio y la disociación de sales en la leche.*
+
+*   **Fracción de agua no congelada:**
+    Se determina iterativamente reduciendo $W$. Si una fracción $X$ del agua se congela, el agua líquida restante es $W_{no\_congelada} = W \times (1 - X)$. La concentración $C$ se recalcula con este nuevo valor de $W$ para obtener la curva de congelación.
+
+**2. Conversión PAC ↔ Modelo Físico**
+
+*   **Relación PAC relativo con depresión crioscópica:**
+    La unidad base de PAC es la sacarosa ($PAC=100$ o $1.0$).
+    $PAC_{relativo} = \sum (\text{g de cada azúcar} \times PAC_{unitario})$
+    $PAC_{total} = PAC_{relativo} + PAC_{sales}$ (Donde $PAC_{sales} = \text{g MSNF} \times 10\% \times 5$).
+
+*   **Ecuaciones empíricas para Temperatura de Servicio (TS):**
+    Para uso rápido en software sin cálculo termodinámico iterativo, se emplean dos aproximaciones directas:
+    1. Basada en PAC Relativo: $TS \approx \frac{PAC_{relativo}}{-20}$.
+    2. Basada en PAC Absoluto (concentración en agua): $PAC_{absoluto} = \frac{PAC_{total}}{W_{kg}}$, donde $TS \approx \frac{PAC_{absoluto}}{-37}$.
+    3. Regla diferencial: Por cada 20 puntos de aumento en PAC relativo, la TS disminuye 1 °C.
+
+*   **Limitaciones del modelo relativo:**
+    La teoría del PAC solo evalúa la influencia de solutos depresores. No contempla la retención de agua (y endurecimiento) causado por fibras (ej. inulina), grasas saturadas, pastas de frutos secos o cacao.
+
+**3. Peso Molecular y Factor de Van’t Hoff**
+
+El PAC unitario es una relación directa de masas molares: $PAC_{unitario} = \frac{PM_{Sacarosa}}{PM_{Soluto}}$.
+
+*   **Pesos moleculares explícitos ($PM$):**
+    *   **Sacarosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Lactosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Trehalosa / Maltosa:** 342 g/mol ($PAC = 1.0$)
+    *   **Dextrosa / Fructosa:** 180 g/mol ($PAC = 1.9$)
+    *   **Alcohol (Etanol):** 46 g/mol ($PAC_{teorico} = 7.4$)
+
+*   **Factor de Disociación:**
+    Las sales minerales de la leche (MSNF) tienen un peso molecular promedio asignado de 68 g/mol y un comportamiento disociativo (efecto Van't Hoff) que les otorga un PAC real empírico altísimo de **5.0**.
+
+**4. Modelo de Alcohol**
+
+*   **Fórmulas y PAC del Etanol:**
+    Aunque teóricamente el PAC del etanol es 7.4, su comportamiento real no es ideal.
+    *   **En Sorbetes (sin proteína):** El PAC real a usar es **5.0**.
+    *   **En Cremas (con lácteos):** El etanol desnaturaliza las proteínas (como la caseína) interactuando con ellas y abandonando la fase acuosa. Su PAC real desciende a **2.5 - 3.0**.
+    *   **Cálculo alternativo por volumetría (Grados):** Cada 1% de alcohol (grado) en 1 kg de mezcla equivale a **9 puntos de PAC**. $PAC_{licor} = \frac{\text{Gramos} \times \text{Grados}}{100} \times 9$.
+
+*   **Correcciones y Rangos de Estabilidad:**
+    *   Para evitar colapso proteico, se debe aumentar la proteína noble (caseinato sódico) en dosis de ~10 g/kg.
+    *   **Rangos máximos:** Se recomienda un máximo de 60-70 g/kg para licores de alta graduación (40% ABV) y 110-130 g/kg para licores de baja graduación. El límite funcional general es alrededor de un 2% de etanol puro en la receta (20g/kg).
+
+**5. Modelo Simplificado Utilizable en Software**
+
+Para un motor híbrido (Python), se propone el siguiente flujo que combina termodinámica (Smith) y heurística (PAC Absoluto):
+
+*   **Variables de Input necesarias:**
+    Masas de ingredientes ($m_i$), $\%$ Humedad, $\%$ Sólidos, $\%$ Azúcares desglosados, $\%$ MSNF, $\%$ Alcohol.
+
+*   **Paso 1: Agua Total ($W$)**
+    $W = \sum (m_i \times \% \text{Agua}_i)$
+
+*   **Paso 2: Depresión Crioscópica Teórica (Smith/Bradley)**
+    $SE = \text{Suma de equivalentes de sacarosa de la receta}$
+    $C = \frac{SE \times 100}{W}$
+    $FPD_{Azucares} = -0.00009 \cdot C^2 - 0.0612 \cdot C$
+    $FPD_{Sales} = \frac{MSNF \times 2.37}{W}$
+    $FPD_{Total} = FPD_{Azucares} + FPD_{Sales}$
+
+*   **Paso 3: Ajuste de Alcohol**
+    $PAC_{Alcohol} = (\text{Gramos Etanol} \times PAC_{efectivo}) / W$ (Usar 5.0 para agua, 2.75 para bases lácteas).
+
+*   **Paso 4: Predicción de Textura**
+    Se interpola el $\%$ de agua congelada a la temperatura $T_{servicio}$ (iterando $W$ hasta que $FPD_{Total} = T_{servicio}$). El ratio óptimo es **75% de agua congelada y 25% líquida**.
+
+**6. Vacíos Matemáticos Detectados**
+
+Para la arquitectura del software, se deberán calibrar empíricamente los siguientes factores, ya que carecen de formulación determinista en la literatura:
+
+1.  **Modelo de Fibras y Polímeros:** La inulina y las pastas de frutos secos (cacao, avellana) endurecen el helado alterando la movilidad del agua, pero no existen ecuaciones coligativas en el modelo FPD para predecir matemáticamente los Pascales de dureza aportados. Requiere un *factor empírico de endurecimiento* (ej. Cacao = -1.8 puntos por gramo en fórmulas de PAC empírico).
+2.  **Difusividad Térmica vs. Overrun:** Existe una ecuación de difusividad para el helado ($a = \frac{k}{\rho \cdot C_p}$) y perfiles polinómicos dependientes de temperatura ($T^3, T^2, T$), pero no está modelado cómo el porcentaje exacto de Overrun introducido afecta el parámetro $k$ (conductividad térmica).
+3.  **Poder Edulcorante (POD):** A diferencia del PAC, el POD no responde a ninguna ley termodinámica. Es una escala organoléptica fisiológica sin ecuación física subyacente. En software de formulación, esto debe implementarse como una matriz de constantes tabuladas puramente lineales.
+4.  **Matriz de Grasas Vegetales:** A diferencia de la grasa láctea y el cacao (que tienen factores estimativos), no existe un sistema predictivo general para calcular la capacidad de endurecimiento de aceites vegetales genéricos en el helado, tratándose como aproximaciones empíricas.
+
+El alcohol es un anticongelante extremadamente potente, por lo que su adición dispara el Poder Anticongelante (PAC) de la mezcla, dificultando que el helado se congele adecuadamente y provocando que quede demasiado blando o derretido. 
+
+Para ajustar el PAC en formulaciones con alcohol y lograr una textura óptima, debes aplicar las siguientes estrategias técnicas:
+
+**1. Calcular el PAC que aporta el alcohol**
+Debes conocer exactamente cuántos puntos de PAC está sumando el licor a tu receta. Las fuentes proponen un método empírico: cada grado de graduación alcohólica (1% ABV) equivale a **8 o 9 puntos de PAC**. 
+*   *Fórmula:* Por ejemplo, si usas un destilado de 40°, se multiplica su graduación por 9 (40 x 9 = 360). Es decir, 100 gramos de ese destilado puro aportan 360 puntos de PAC a tu mezcla.
+
+**2. Sustituir los azúcares por opciones de bajo PAC**
+Como el alcohol ya aporta un PAC muy elevado, debes reducir el PAC proveniente de los azúcares para compensar, manteniendo al mismo tiempo el dulzor (POD) y los sólidos necesarios para la estructura:
+*   **Evita azúcares de alto PAC:** Debes descartar totalmente el azúcar invertido y la dextrosa, ya que tienen un PAC altísimo de 190.
+*   **Usa sacarosa:** Utiliza azúcar común (sacarosa) como endulzante principal, ya que su PAC es de 100, significativamente más bajo.
+*   **Incorpora glucosa atomizada o maltodextrina:** Es prácticamente indispensable en estas mezclas el uso de glucosa atomizada 21 DE o maltodextrina 18 DE. Estos carbohidratos aportan el extracto seco necesario, tienen un PAC nulo (0), endulzan muy poco, y su alto contenido en almidón ayuda a "retener" el alcohol para que no se evapore su sabor.
+
+**3. Contabilizar el azúcar del propio licor**
+Si utilizas vinos dulces, licores de frutas o licores dulces (como el Amaretto), debes tener en cuenta que estos contienen entre un 10% y un 40% de azúcar en su peso. Al balancear la receta, este azúcar se debe sumar al cálculo del dulzor general y al PAC total, tratándolo con los mismos parámetros que la sacarosa.
+
+**4. Respetar los límites máximos de dosificación**
+No puedes usar el licor como base líquida principal porque la receta nunca congelaría. Se recomiendan los siguientes límites de uso partiendo del sabor:
+*   **Licores de alta graduación** (>20°, ej. ron, ginebra, mezcal, whisky): Usar entre **60 y 70 gramos por kilo** de mezcla.
+*   **Licores de baja graduación** (<20°, ej. cerveza, vino dulce): Usar entre **110 y 130 gramos por kilo** de mezcla.
+
+**5. Compensar el daño estructural a las proteínas**
+El alcohol tiende a desactivar y desnaturalizar las proteínas de la leche, lo que impide una correcta emulsión y provoca que el helado incorpore muy poco aire (bajo *overrun*). Para solucionar esto y estabilizar la mezcla, no debes añadir más leche en polvo (ya que su lactosa aportaría más PAC no deseado), sino que se recomienda añadir proteínas puras como la **caseína sódica**.
+
+El alcohol tiene un impacto dual en la formulación de helados, afectando negativamente al overrun pero favoreciendo la cremosidad siempre que se dosifique correctamente:
+
+**Impacto en el Overrun (Incorporación de aire)**
+*   **Dificulta la retención de aire:** La presencia de alcoholes y licores en la mezcla **impide la entrada de aire en el helado, provocando un mal overrun** o bajo aumento de volumen.
+*   **Desactiva las proteínas:** Esto ocurre principalmente porque el alcohol **tiende a desactivar las propiedades de las proteínas** presentes en la base. Las proteínas son emulsionantes naturales fundamentales para encapsular y estabilizar las burbujas de aire; al verse afectadas por el alcohol, la mezcla pierde su capacidad para retener ese aire.
+*   Para compensar esta pérdida de volumen, es necesario realizar un proceso de elaboración muy escrupuloso y **potenciar o aumentar la cantidad de ingredientes que favorecen la incorporación de aire**, como la adición de proteínas puras (por ejemplo, caseína) o estabilizantes adecuados.
+
+**Impacto en la Cremosidad (Textura y suavidad)**
+*   **Aporta extrema suavidad:** El alcohol es un potente anticongelante que reduce drásticamente el punto de congelación de la mezcla. Añadido en proporciones justas, **evita que el helado se endurezca excesivamente en el congelador, otorgándole la capacidad de mantenerse tierno, suave y muy cremoso** recién sacado del frío. Además, aporta riqueza y una sensación aterciopelada al paladar.
+*   **Riesgo de derretimiento o colapso:** Debido a que el alcohol en sí mismo no se congela, su dosificación es muy delicada. **Si se añade demasiada cantidad, el helado nunca cuajará ni tomará forma**, dando como resultado una textura granizada poco atractiva, un desastre descuidado o una "papilla cremosa" que se derrite rápidamente a temperatura ambiente.

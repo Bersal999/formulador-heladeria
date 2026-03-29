@@ -1,0 +1,43 @@
+Como investigador en nutrición metabólica aplicada a sistemas coloidales y productos congelados, presento el siguiente informe científico sobre el comportamiento glucémico de los edulcorantes en la formulación de helados. 
+
+Toda la información ha sido rigurosamente extraída y filtrada de literatura científica revisada por pares, bases de datos oficiales (FAO/WHO) y tratados técnicos de alto nivel, excluyendo material de divulgación o marketing.
+
+---
+
+### 1. Metodología Oficial de Medición (FAO/WHO)
+La medición oficial del Índice Glucémico (IG) se rige por el estándar **ISO 26642:2010**, el cual fue desarrollado en consonancia con las recomendaciones de la FAO/WHO.
+*   **Protocolo:** Se basa en medir el área incremental bajo la curva (iAUC) de la respuesta de glucosa en sangre capilar durante un período de 120 minutos tras la ingestión de una porción de alimento que contenga exactamente **50 g de carbohidratos disponibles** (o 25 g si el volumen del alimento es excesivo).
+*   **Referencia:** Se utiliza glucosa pura (cuyo valor se establece en 100) o pan blanco (que requiere un factor de conversión de 0.71 para ajustarlo a la escala de la glucosa).
+*   **Sujetos:** Las pruebas deben realizarse en un mínimo de 10 adultos sanos con tolerancia normal a la glucosa, descartando valores atípicos para obtener un error estándar de la media (SEM) aceptable.
+
+### 2. Tabla Estructurada: Valores de Índice Glucémico (IG)
+*Nota sobre la Carga Glucémica (CG):* La CG no es una constante del ingrediente, sino un valor dependiente de la formulación final. Se calcula como `CG = (IG × gramos de carbohidratos disponibles en la porción) / 100`. Por lo tanto, no se tabula un valor fijo, ya que dependerá del porcentaje de uso en la receta del helado.
+
+| Edulcorante | IG Promedio | Rango de Variabilidad (Mín - Máx) | Fuente Primaria (Año, Tipo) | Nivel de Confiabilidad |
+| :--- | :--- | :--- | :--- | :--- |
+| **Glucosa / Dextrosa** | 100 | 96 - 103 | Atkinson et al. (2021, Paper) / Tratado Interno (2026) | A |
+| **Maltodextrina** | 110 | 105 - 136 | Tratado Interno (2026, Manual Técnico) | B |
+| **Sacarosa** | 65 | 60 - 68 | Atkinson et al. (2021, Paper) / Shkembi (2023, Paper) | A |
+| **Lactosa** | 46 | 43 - 48 | Shkembi & Huppertz (2023, Paper) | A |
+| **Fructosa** | 19 | 11 - 25 | Shkembi (2023, Paper) / Tratado Interno | A |
+| **Maltitol** | 35 (cristalino) | 26 - 52 (hasta 52 en jarabe) | Saraiva et al. (2020, Paper) / Msomi (2021, Paper) | A |
+| **Xilitol** | 13 | 7 - 13 | Msomi et al. (2021, Paper) | A |
+| **Isomalt** | 9 | 2 - 9 | Msomi et al. (2021, Paper) | A |
+| **Eritritol** | 0 | 0 - 1 | Msomi et al. (2021, Paper) | A |
+| **Alulosa** | 0 | 0 - 0.4 | Tratado Interno (2026, Manual Técnico) | B |
+| **Stevia (Glicósidos)** | 0 | 0 | Tratado Interno (2026, Manual Técnico) | B |
+| **Sucralosa** | 0 | 0 | Tratado Interno (2026, Manual Técnico) | B |
+
+### 3. Efecto de la Matriz Láctea sobre la Respuesta Glucémica
+Al formular helados, el IG final del producto no es simplemente la suma matemática del IG de sus azúcares. La evidencia demuestra que la matriz láctea (rica en proteínas y grasas) reduce significativamente la respuesta glucémica postprandial. Los mecanismos metabólicos son:
+
+1.  **Retraso del Vaciado Gástrico:** La presencia de lípidos lácteos y la coagulación de las micelas de caseína en el entorno ácido del estómago forman una estructura que ralentiza drásticamente el flujo de azúcares hacia el intestino delgado (sitio de absorción).
+2.  **Efecto Insulinotrópico de las Proteínas:** Las proteínas del suero de leche (*whey*) son altamente insulinotrópicas. Estimulan la secreción de hormonas incretinas (como GLP-1 y GIP) en el intestino, lo que induce una rápida liberación de insulina que ayuda a extraer la glucosa del torrente sanguíneo, mitigando los picos de hiperglucemia incluso en presencia de carbohidratos de alto IG.
+3.  **Capacidad Amortiguadora (Buffering):** Las sales minerales y proteínas de la leche elevan el pH estomacal temporalmente. El cuerpo requiere segregar grandes volúmenes de fluidos gástricos para restaurar la acidez, lo que genera una dilución de los azúcares y reduce la carga glucémica concentrada que llega al intestino.
+
+Por estas razones, los helados y lácteos endulzados típicamente exhiben un IG real (ej. IG 30 - 51) sustancialmente menor al que cabría esperar analizando sus azúcares de forma aislada. 
+
+### 4. Advertencias sobre Variabilidad y Limitaciones del Modelado
+*   **Estado de los Polioles:** El IG del maltitol varía de forma dramática dependiendo de su estado de agregación. El maltitol cristalino puro tiene un IG cercano a 35, mientras que los jarabes de maltitol alcanzan un IG de 52 debido a la presencia de oligosacáridos hidrogenados de mayor digestibilidad.
+*   **Variabilidad Inter e Intra-individual:** Existe un alto grado de variación metabólica dependiente del microbioma colónico de cada persona, especialmente crítico para los polioles (xilitol, isomalt, maltitol), que al ser fermentados en el intestino grueso (no absorbidos en el intestino delgado) pueden causar desde respuestas glucémicas nulas hasta estrés gastrointestinal y efectos laxantes severos si se excede la dosis de tolerancia.
+*   **Conversión ISO de Referencia:** Cierta literatura expresa el IG utilizando pan blanco como base. Es vital asegurarse en la formulación que todos los valores ingresados al *software* estén en la escala "Glucosa = 100", ya que usar la escala "Pan = 100" inflaría los valores reales en un ~40%.
