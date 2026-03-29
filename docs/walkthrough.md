@@ -1,17 +1,4 @@
-# Walkthrough: Reparación de Costo Unitario Proyectado
-
-Se han completado las reparaciones para el cálculo y visualización del 'Costo unitario proyectado'.
-
-## Cambios Realizados
-
-### 1. Motor Financiero ([src/utils/financial_engine.py](file:///c:/Users/DUSTER/Documents/Calculadora%20de%20costos/GastroApp/src/utils/financial_engine.py))
-- **Protección de División por Cero**: Se implementaron validaciones atómicas para evitar errores cuando la cantidad de compra o el rendimiento son 0.
-- **Robustez en Fallback**: El motor legacy ahora maneja de forma inteligente casos con unidades discretas (`PAQUETE`, `PIEZA`) sin peso base.
-
-### 2. Interfaz de Usuario ([app.py](file:///c:/Users/DUSTER/Documents/Calculadora%20de%20costos/GastroApp/app.py))
-- **Formateo Premium**: La métrica ahora muestra 4 decimales y especifica la unidad de medida (ej. `$0.1200 / g`).
-- **Reactividad Real-Time**: Se optimizó la lectura de `st.session_state` para que el cálculo se actualice mientras el usuario interactúa con los widgets, sin necesidad de guardar.
-- **Validación UI**: Se añadió un "Tao Guard" en la interfaz para mostrar `$0.0000` preventivamente si la cantidad es inválida.
+# Nexus Formulation Engine: Historial de Evolución
 
 ### Fase 13: Catálogo Científico & Reactividad
 - [x] Expansión masiva de la DB con datos HPLC y PAC Negativo.
