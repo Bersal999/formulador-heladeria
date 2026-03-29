@@ -292,6 +292,6 @@ export class AdvisoryCenter {
         if (sugerenciasBase.length === 0) 
             return "La matriz molecular primaria (PAC/POD/Sólidos) parece balanceada según las guías estructurales base. Prueba iterar con la textura.";
         
-        return sugerenciasBase.map(s => `**${s.titulo}**: ${s.diagnostico} ${s.solucion}`).join('\\n\\n');
+        return sugerenciasBase.map(s => `**${s.titulo}**: ${s.diagnostico} ${s.solucion}`).join('\n\n');
     }
 }

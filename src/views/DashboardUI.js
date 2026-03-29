@@ -574,71 +574,86 @@ export default class DashboardUI {
      * ADVISOR PROACTIVO (v8.0): SOMMELIER / ALQUIMISTA
      * BLINDAJE: Verificación de nulos completa y fallback visual seguro.
      */
-    static renderizarAdvisor(sim) {
-        const adCont = document.getElementById('smartAdvisorContent');
-        if (!adCont) return;
+    static actualizarRecomendaciones(sim) {
+        const techCont = document.getElementById('technicalContent');
+        const aiCont = document.getElementById('smartAdvisorContent');
+        const aiStatusDot = document.getElementById('aiStatusDot');
+        const aiStatusLabel = document.getElementById('aiStatusLabel');
+        
+        if (!techCont || !aiCont) return;
         
         // Si no hay receta o el simulador está vacío
         if (!sim || !sim.recomendaciones || sim.recomendaciones.length === 0) {
-            adCont.innerHTML = `<p class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-500 animate-pulse"></span> Sistema en Reposo. Esperando formulación.</p>`;
+            techCont.innerHTML = `<p class="flex items-center gap-2 italic text-slate-600"><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span> Modo Reposo</p>`;
+            aiCont.innerHTML = `Esperando balance molecular para iniciar simulación...`;
+            if (aiStatusDot) aiStatusDot.className = "w-1.5 h-1.5 rounded-full bg-slate-500";
+            if (aiStatusLabel) aiStatusLabel.textContent = "Offline";
             return;
         }
 
         const score = this.controller.advisor.calcularScoring(sim);
         let colorClass = score > 85 ? 'text-emerald-400' : (score > 50 ? 'text-amber-400' : 'text-rose-400');
         
-        let headerSnippet = `<div class="mb-3 border-b border-white/5 pb-2">
-            <span class="text-[9px] uppercase tracking-widest text-slate-500 block mb-1">Diagnóstico Estructural</span>
-            <span class="font-black text-sm ${colorClass}">Índice de Calidad: ${score}/100</span>
+        // --- ZONA A: Análisis Técnico ---
+        let techHtml = `<div class="flex justify-between items-center mb-2">
+            <span class="font-black text-[12px] ${colorClass}">Índice de Calidad: ${score}/100</span>
         </div>`;
         
-        // Alertas Críticas (Instantáneas)
         if (sim.alertas && sim.alertas.length > 0) {
-            headerSnippet += `<div class="mb-3 space-y-1">`;
+            techHtml += `<div class="space-y-1">`;
             sim.alertas.forEach(a => {
-                headerSnippet += `<div class="flex items-start gap-2 text-rose-400 bg-rose-500/10 p-2 rounded-lg border border-rose-500/20 shadow-inner">
-                    <span class="mt-0.5">⚠️</span>
-                    <span class="text-[10px] font-bold leading-tight uppercase tracking-wide">${a.msg}</span>
+                techHtml += `<div class="flex items-start gap-2 text-rose-400 bg-rose-500/5 p-2 rounded-lg border border-rose-500/10">
+                    <span class="mt-0.5 text-[10px]">⚠️</span>
+                    <span class="text-[9px] font-bold leading-tight uppercase tracking-wide">${a.msg}</span>
                 </div>`;
             });
-            headerSnippet += `</div>`;
+            techHtml += `</div>`;
+        } else {
+            techHtml += `<p class="text-[10px] text-emerald-500/70 font-bold uppercase tracking-widest flex items-center gap-2">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(52,211,153,0.5)]"></span> 
+                Parámetros dentro de rango maestro
+            </p>`;
         }
-        
-        // UI Cargando para IA
-        adCont.innerHTML = headerSnippet + `<p class="flex items-center gap-2 text-sky-400 text-[11px] mt-2 font-bold animate-pulse"><span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span> El Alquimista analiza la red molecular...</p>`;
+        techCont.innerHTML = techHtml;
 
-        // Debounce (Protección contra Spamming a la IA cuando movemos sliders)
+        // --- ZONA B: Sommelier IA ---
+        aiCont.innerHTML = `<p class="flex items-center gap-2 text-sky-400 text-[10px] font-bold animate-pulse">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-ping"></span> 
+            Analizando red molecular...
+        </p>`;
+
         if (this.debounceTimer) clearTimeout(this.debounceTimer);
         
         this.debounceTimer = setTimeout(async () => {
             try {
-                // Consulta Asíncrona a Ollama + Caché
                 const aiAnalysis = await this.controller.advisor.analizarFormulaIA(sim, this.controller.baseDatos);
                 
-                // Markdown a HTML Básico
+                if (aiStatusDot) {
+                    aiStatusDot.className = "w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]";
+                    aiStatusLabel.textContent = "Nexus Activo";
+                    aiStatusLabel.className = "text-[7px] font-black uppercase tracking-widest text-emerald-500";
+                }
+
                 let aiHtml = aiAnalysis
-                    .replace(/\\*\\*(.*?)\\*\\*/g, '<strong class="text-sky-300">$1</strong>')
-                    .replace(/\\*(.*?)\\*/g, '<em class="text-emerald-300">$1</em>')
-                    .replace(/\\n\\n/g, '<br><br>')
-                    .replace(/\\n/g, '<br>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-sky-300">$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em class="text-emerald-300">$1</em>')
+                    .replace(/\n\n/g, '<br><br>')
+                    .replace(/\n/g, '<br>')
                     .replace(/- /g, '<span class="text-sky-500 mr-1">•</span> ');
 
-                // Transición Suave y Render final
-                adCont.innerHTML = headerSnippet + `<div class="text-[11px] leading-relaxed text-slate-200 tracking-wide font-jakarta mt-2 p-3 bg-black/20 rounded-xl border border-white/5 shadow-inner animate-fade-in">
-                    <div class="text-[9px] font-bold text-sky-400 mb-2 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-1"><span class="text-sm shadow-[0_0_10px_rgba(14,165,233,0.5)] rounded-full bg-sky-500/20 px-1.5 py-0.5">🧠</span> Nexus AI Activo</div>
-                    ${aiHtml}
-                    <button id="btnAutoMagic" 
-                            onclick="if(window.AlquimiaModal) window.AlquimiaModal.abrir()" 
-                            class="mt-4 w-full p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg hover:shadow-indigo-500/40 border border-indigo-400/30 flex items-center justify-center gap-2 group">
-                        <span class="text-sm group-hover:rotate-12 transition-transform">🔮</span>
-                        Aplicar Transmutación Alquímica
-                    </button>
-                </div>`;
+                aiCont.innerHTML = `<div class="animate-fade-in">${aiHtml}</div>`;
             } catch (err) {
                 console.error("Fallo IA:", err);
-                adCont.innerHTML = headerSnippet + `<div class="text-xs text-rose-400 p-2 italic">Error 500: Falla en la red sináptica con Base de Datos de Alquimia.</div>`;
+                if (aiStatusDot) {
+                    aiStatusDot.className = "w-1.5 h-1.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.5)]";
+                    aiStatusLabel.textContent = "Modo Offline";
+                    aiStatusLabel.className = "text-[7px] font-black uppercase tracking-widest text-rose-500";
+                }
+                aiCont.innerHTML = `<div class="text-[10px] text-rose-400/70 italic p-2 bg-rose-500/5 rounded-lg border border-rose-500/10 leading-relaxed">
+                    Falla en la red sináptica. El Sommelier IA se encuentra procesando en modo local (Legacy Fallback).
+                </div>`;
             }
-        }, 1200); // Trigger después de 1.2s del último movimiento
+        }, 1200);
     }
 
     /**
@@ -721,7 +736,8 @@ export default class DashboardUI {
     }
 
     static renderizarCategorias() {
-        const cats = ["TODOS", ...new Set(this.controller.baseDatos.map(i => (i.categoria || "").trim().toUpperCase()))].sort();
+        const normalize = s => (s || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const cats = ["TODOS", ...new Set(this.controller.baseDatos.map(i => normalize(i.categoria)))].sort();
         this.dom.explorerCategories.innerHTML = cats.map(c => `
             <button onclick="DashboardUI.setCategoria('${c}')" 
                     class="cat-link text-left p-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${this.catActiva === c ? 'bg-sky-500 text-white' : 'hover:bg-white/5 text-slate-500'}">
@@ -1070,6 +1086,8 @@ export default class DashboardUI {
     }
 
     static async borrarBoveda(nombre) {
+        this.cerrarBoveda();
+        await new Promise(r => setTimeout(r, 350));
         if (await this.confirmar("Borrar de la Bóveda", `¿Estás seguro de que deseas eliminar permanentemente la receta '${nombre}' de la Bóveda?`, "🗑️")) {
             if (this.controller.eliminarRecetaDeBoveda(nombre)) {
                 this.renderizarBoveda();

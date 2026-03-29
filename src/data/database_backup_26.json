@@ -1,0 +1,526 @@
+[
+  {
+    "id": "custom_1774069399415",
+    "nombre": "Pistacho Alquimista",
+    "categoria": "Frutos Secos",
+    "esPersonalizado": true,
+    "parametros": {
+      "pac_positivo": 0,
+      "pod": 0,
+      "solidos": 98,
+      "grasa": 70,
+      "proteina": 0
+    }
+  },
+  {
+    "id": "custom_1774075799416",
+    "nombre": "Ron",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 60,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 200,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0
+    }
+  },
+  {
+    "id": "custom_1774128336942",
+    "nombre": "Stevia",
+    "categoria": "GRASAS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 300,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 300,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774128880135",
+    "nombre": "stevia",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774129183253",
+    "nombre": "stevia",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774559455933",
+    "nombre": "DULCE DE LECHE",
+    "categoria": "COMPLEMENTOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 30,
+      "grasa": 6,
+      "azucares": 45,
+      "sngl": 15,
+      "proteina": 4,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 45,
+      "pac_negativo": 0,
+      "pod": 45,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774560121993",
+    "nombre": "JARABE DE AZUCAR (50%)",
+    "categoria": "AZUCARES CLASICOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 50,
+      "grasa": 0,
+      "azucares": 50,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 50,
+      "pac_negativo": 0,
+      "pod": 50,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774639127166",
+    "nombre": "FRESA PREMIUM",
+    "categoria": "FRUTAS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 90,
+      "grasa": 0.5,
+      "azucares": 12.2,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 15.5,
+      "pac_negativo": 0,
+      "pod": 12.2,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774639306060",
+    "nombre": "VERIFICACION V8.2",
+    "categoria": "PRODUCTOS ESPECIALES",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 15,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 25,
+      "pac_negativo": 0,
+      "pod": 15,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774648629511",
+    "nombre": "LECHE ENTERA LALA",
+    "categoria": "LECHES Y LACTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 88,
+      "grasa": 3.1,
+      "azucares": 0,
+      "sngl": 8.5,
+      "proteina": 3.1,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 1,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 30,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774648717180",
+    "nombre": "CREMA DE MANI ALADINO",
+    "categoria": "PASTA DE FRUTOS SECOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 1.5,
+      "grasa": 46.5,
+      "azucares": 10,
+      "sngl": 0,
+      "proteina": 22,
+      "fibra": 6,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 12,
+      "pac_negativo": 0,
+      "pod": 10,
+      "indice_glucemico": 25,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "sacarosa",
+    "nombre": "Sacarosa",
+    "categoria": "Azúcares",
+    "agua": 0,
+    "grasa": 0,
+    "pod": 100,
+    "slng": 0,
+    "pac": 100,
+    "proteina": 0,
+    "fibra": 0,
+    "indice_glucemico": 100,
+    "graduacion": 0
+  },
+  {
+    "id": "leche_entera",
+    "nombre": "Leche Entera",
+    "categoria": "Lácteos",
+    "agua": 88,
+    "grasa": 3.5,
+    "pod": 4.8,
+    "slng": 8.5,
+    "pac": 12,
+    "proteina": 3.2,
+    "fibra": 0,
+    "indice_glucemico": 30,
+    "graduacion": 0
+  },
+  {
+    "id": "leche_en_polvo_desnatada",
+    "nombre": "Leche Desnatada Polvo",
+    "categoria": "Lácteos",
+    "agua": 3,
+    "grasa": 0.8,
+    "pod": 52,
+    "slng": 94,
+    "pac": 70,
+    "proteina": 36,
+    "fibra": 0,
+    "indice_glucemico": 30,
+    "graduacion": 0
+  },
+  {
+    "id": "custom_1774069399415",
+    "nombre": "Pistacho Alquimista",
+    "categoria": "Frutos Secos",
+    "esPersonalizado": true,
+    "parametros": {
+      "pac_positivo": 0,
+      "pod": 0,
+      "solidos": 98,
+      "grasa": 70,
+      "proteina": 0
+    }
+  },
+  {
+    "id": "custom_1774075799416",
+    "nombre": "Ron",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 60,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 200,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0
+    }
+  },
+  {
+    "id": "custom_1774128336942",
+    "nombre": "Stevia",
+    "categoria": "GRASAS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 300,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 300,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774128880135",
+    "nombre": "stevia",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774129183253",
+    "nombre": "stevia",
+    "categoria": "LECHES Y LÁCTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 0,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 0,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774559455933",
+    "nombre": "DULCE DE LECHE",
+    "categoria": "COMPLEMENTOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 30,
+      "grasa": 6,
+      "azucares": 45,
+      "sngl": 15,
+      "proteina": 4,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 45,
+      "pac_negativo": 0,
+      "pod": 45,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774560121993",
+    "nombre": "JARABE DE AZUCAR (50%)",
+    "categoria": "AZUCARES CLASICOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 50,
+      "grasa": 0,
+      "azucares": 50,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 50,
+      "pac_negativo": 0,
+      "pod": 50,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774590946343",
+    "nombre": "QA_TEST_EDITED",
+    "categoria": "TEST",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 10,
+      "grasa": 10,
+      "azucares": 10,
+      "sngl": 10,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 20,
+      "pac_negativo": 0,
+      "pod": 10,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774639127166",
+    "nombre": "FRESA PREMIUM",
+    "categoria": "FRUTAS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 90,
+      "grasa": 0.5,
+      "azucares": 12.2,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 15.5,
+      "pac_negativo": 0,
+      "pod": 12.2,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774639306060",
+    "nombre": "VERIFICACION V8.2",
+    "categoria": "PRODUCTOS ESPECIALES",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 0,
+      "grasa": 0,
+      "azucares": 15,
+      "sngl": 0,
+      "proteina": 0,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 25,
+      "pac_negativo": 0,
+      "pod": 15,
+      "indice_glucemico": 0,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774648629511",
+    "nombre": "LECHE ENTERA LALA",
+    "categoria": "LECHES Y LACTEOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 88,
+      "grasa": 3.1,
+      "azucares": 0,
+      "sngl": 8.5,
+      "proteina": 3.1,
+      "fibra": 0,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 1,
+      "pac_negativo": 0,
+      "pod": 0,
+      "indice_glucemico": 30,
+      "graduacion": 0
+    }
+  },
+  {
+    "id": "custom_1774648717180",
+    "nombre": "CREMA DE MANI ALADINO",
+    "categoria": "PASTA DE FRUTOS SECOS",
+    "esPersonalizado": true,
+    "composicion": {
+      "agua": 1.5,
+      "grasa": 46.5,
+      "azucares": 10,
+      "sngl": 0,
+      "proteina": 22,
+      "fibra": 6,
+      "otros": 0
+    },
+    "parametros": {
+      "pac_positivo": 12,
+      "pac_negativo": 0,
+      "pod": 10,
+      "indice_glucemico": 25,
+      "graduacion": 0
+    }
+  }
+]
