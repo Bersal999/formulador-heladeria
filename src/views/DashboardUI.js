@@ -476,7 +476,7 @@ export default class DashboardUI {
         if (this.dom.pacNegativo) this.dom.pacNegativo.textContent = (sim.pacNegativo || 0).toFixed(1);
 
         // 3. Renderizar Advisor Proactivo
-        this.renderizarAdvisor(sim);
+        this.actualizarRecomendaciones(sim);
 
         // 4. Actualizar Sello de Calidad (v6.3)
         this.actualizarSello(sim);
