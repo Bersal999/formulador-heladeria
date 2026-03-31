@@ -1255,11 +1255,18 @@ export default class DashboardUI {
         if (this.dom.glosarioTitulo) this.dom.glosarioTitulo.textContent = data.titulo;
         if (this.dom.glosarioContenido) this.dom.glosarioContenido.innerHTML = data.descripcion;
         
+        if (!this.dom.modalGlosario) {
+            console.error('❌ modalGlosario no encontrado en el DOM');
+            return;
+        }
         this.dom.modalGlosario.classList.remove('opacity-0', 'pointer-events-none');
+
     }
 
     static cerrarGlosario() {
+        if (!this.dom.modalGlosario) return;
         this.dom.modalGlosario.classList.add('opacity-0', 'pointer-events-none');
+
     }
 
     /**
