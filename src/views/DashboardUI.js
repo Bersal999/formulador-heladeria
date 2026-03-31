@@ -556,17 +556,17 @@ export default class DashboardUI {
      */
     static abrirAlquimia() {
         if (!this.controller || this.controller.recetaActiva.length < 2) {
-            if (window.AlquimiaModal) window.AlquimiaModal.showToast("Agrega al menos 2 ingredientes para Transmutar.");
+            if (AlquimiaModal) AlquimiaModal.showToast("Agrega al menos 2 ingredientes para Transmutar.");
             return;
         }
 
         const data = this.controller.autoBalance();
         if (data && data.propuesta && data.propuesta.length > 0) {
-            window.AlquimiaModal.abrir(data.propuesta, data.justificaciones || []);
+            AlquimiaModal.abrir(data.propuesta, data.justificaciones || []);
         } else if (Array.isArray(data) && data.length > 0) {
-            window.AlquimiaModal.abrir(data, []);
+            AlquimiaModal.abrir(data, []);
         } else {
-            if (window.AlquimiaModal) window.AlquimiaModal.showToast("💎 La receta parece balanceada o faltan insumos base.");
+            if (AlquimiaModal) AlquimiaModal.showToast("💎 La receta parece balanceada o faltan insumos base.");
         }
     }
 
