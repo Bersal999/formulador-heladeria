@@ -1,6 +1,6 @@
 export class NexusOllamaBrain {
     constructor(model = 'gemma3:27b') {
-        this.apiUrl = 'http://127.0.0.1:11434/api/generate';
+        this.apiUrl = 'http://localhost:3000/api/ollama';
         this.model = model;
     }
 

@@ -106,6 +106,45 @@ const server = http.createServer((req, res) => {
         }
     }
 
+    // --- PROXY OLLAMA (evita CORS del navegador) ---
+    if (parsedUrl === '/api/ollama' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            const ollamaReq = http.request({
+                hostname: '127.0.0.1',
+                port: 11434,
+                path: '/api/generate',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            }, (ollamaRes) => {
+                res.writeHead(200, {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                ollamaRes.pipe(res);
+            });
+            ollamaReq.on('error', () => {
+                res.writeHead(503);
+                res.end(JSON.stringify({ error: 'Ollama offline' }));
+            });
+            ollamaReq.write(body);
+            ollamaReq.end();
+        });
+        return;
+    }
+
+    // OPTIONS preflight (CORS)
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        });
+        res.end();
+        return;
+    }
+
     // --- SERVIDOR DE ARCHIVOS ESTÁTICOS ---
     let filePath = path.join(__dirname, parsedUrl === '/' ? 'index.html' : parsedUrl);
     const extname = String(path.extname(filePath)).toLowerCase();
