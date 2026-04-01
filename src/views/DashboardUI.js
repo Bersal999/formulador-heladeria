@@ -301,6 +301,21 @@ export default class DashboardUI {
             this.dom.inputOverrun.value = e.target.value;
             this.manejarCambioProduccion();
         });
+
+        // 11. Delegación Global de Eventos para botones ⓘ (Glosario) — v9.6
+        // Captura clicks en CUALQUIER botón que invoque abrirGlosario,
+        // sin importar si fue renderizado dinámicamente o antes del init.
+        document.addEventListener('click', (e) => {
+            // Busca el elemento clicado o su ancestro con onclick que contenga abrirGlosario
+            const el = e.target.closest('[onclick*="abrirGlosario"]');
+            if (el) {
+                e.preventDefault();
+                e.stopPropagation();
+                const match = (el.getAttribute('onclick') || '').match(/abrirGlosario\(['"](.+?)['"]\)/);
+                const tipo = match?.[1] || el.dataset.tipo;
+                if (tipo) DashboardUI.abrirGlosario(tipo);
+            }
+        });
     }
 
     static manejarCambioProduccion() {
