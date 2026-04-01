@@ -36,11 +36,36 @@ export default class MotorTermodinamico {
             if (!ingrediente) return;
 
             const factor = item.peso / 100;
-            const comp = ingrediente.composicion || {};
-            const param = ingrediente.parametros || {};
-            
-            totales.agua += (comp.agua || 0) * factor;
-            const g = (comp.grasa || 0) * factor;
+
+            // ──────────────────────────────────────────────────────────────────
+            // ADAPTADOR DUAL-SCHEMA v9.6 🔧
+            // Lee el esquema plano (Pastrypedia DB) y el anidado (custom legacy)
+            // Plano:   ingrediente.campo       (database.json actual)
+            // Anidado: ingrediente.obj.campo   (formato legacy custom)
+            // ──────────────────────────────────────────────────────────────────
+            const leer = (ing, plano, anidadoObj, anidadoCampo) => {
+                if (ing[plano] !== undefined && ing[plano] !== null)
+                    return Number(ing[plano]) || 0;
+                if (anidadoObj && ing[anidadoObj]?.[anidadoCampo] !== undefined)
+                    return Number(ing[anidadoObj][anidadoCampo]) || 0;
+                return 0;
+            };
+
+            const agua    = leer(ingrediente, 'agua',        'composicion', 'agua');
+            const grasa   = leer(ingrediente, 'grasa',       'composicion', 'grasa');
+            const slng    = leer(ingrediente, 'slng',        'composicion', 'sngl');
+            const azucar  = leer(ingrediente, 'azucares',    'composicion', 'azucares');
+            const otros   = leer(ingrediente, 'otros',       'composicion', 'otros');
+            const pod     = leer(ingrediente, 'pod',         'parametros',  'pod');
+            const pac     = leer(ingrediente, 'pac',         'parametros',  'pac_positivo');
+            const pacNeg  = leer(ingrediente, 'pacNegativo', 'parametros',  'pac_negativo');
+            const sales   = leer(ingrediente, 'sales',       'parametros',  'sales');
+            const fibra   = leer(ingrediente, 'fibra',       'parametros',  'fibra');
+            const alcohol = leer(ingrediente, 'alcohol',     'parametros',  'alcohol');
+            const ig      = leer(ingrediente, 'ig',          'parametros',  'indice_glucemico');
+
+            totales.agua += agua * factor;
+            const g = grasa * factor;
             totales.grasa += g;
             
             // Perfilación de Grasas
@@ -54,19 +79,19 @@ export default class MotorTermodinamico {
                 }
             }
 
-            totales.azucares += (comp.azucares || 0) * factor;
-            totales.sngl += (comp.sngl || 0) * factor;
-            totales.otros += (comp.otros || 0) * factor;
+            totales.azucares += azucar * factor;
+            totales.sngl += slng * factor;
+            totales.otros += otros * factor;
             totales.pesoTotal += Number(item.peso);
 
             // Nuevos parámetros técnicos
-            totales.sales += (param.sales || 0) * factor;
+            totales.sales += sales * factor;
             // WS (Water Soluble) suele ser el azúcar total
-            totales.ws += (comp.azucares || 0) * factor;
+            totales.ws += azucar * factor;
 
-            totales.podTotal += (param.pod || 0) * factor;
-            totales.pacPositivo += (param.pac_positivo || 0) * factor;
-            totales.pacNegativo += Math.abs(param.pac_negativo || 0) * factor;
+            totales.podTotal += pod * factor;
+            totales.pacPositivo += pac * factor;
+            totales.pacNegativo += Math.abs(pacNeg) * factor;
 
             // Rastreo Quirúrgico de Fibras y Edulcorantes Técnicos
             const idLower = ingrediente.id.toLowerCase();
@@ -75,8 +100,8 @@ export default class MotorTermodinamico {
             if (idLower.includes('isomalt')) totales.isomalt += Number(item.peso);
             if (idLower.includes('stevia')) totales.stevia += Number(item.peso);
             
-            totales.fibra += (param.fibra || 0) * factor;
-            totales.alcohol += (param.alcohol || 0) * factor;
+            totales.fibra += fibra * factor;
+            totales.alcohol += alcohol * factor;
         });
 
         // ---------------------------------------------------------
