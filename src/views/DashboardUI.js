@@ -217,7 +217,7 @@ export default class DashboardUI {
         this.dom.btnInyectarCarrito?.addEventListener('click', () => this.inyectarCarrito());
 
         // 4. Interfaz de Alquimia (Bola de Cristal v7.1) 🔮
-        this.dom.btnAutoMagic?.addEventListener('click', () => this.abrirAlchemy());
+        this.dom.btnAutoMagic?.addEventListener('click', () => this.abrirAlquimia());
         // El resto se maneja en AlquimiaModal.js
 
         // 5. Wizard / Proceso
@@ -569,17 +569,21 @@ export default class DashboardUI {
      */
     static abrirAlquimia() {
         if (!this.controller || this.controller.recetaActiva.length < 2) {
-            if (AlquimiaModal) AlquimiaModal.showToast("Agrega al menos 2 ingredientes para Transmutar.");
+            AlquimiaModal.showToast("Agrega al menos 2 ingredientes para Transmutar.");
             return;
         }
+        const stats = this.controller.ejecutarSimulacion();
+        const propuesta = this.controller.autoBalance();
+        const carencias = this.controller.advisor
+            .identificarCarenciasEstructurales(stats, this.controller.baseDatos);
+        const justificaciones = carencias.map(c => c.justificacion);
 
-        const data = this.controller.autoBalance();
-        if (data && data.propuesta && data.propuesta.length > 0) {
-            AlquimiaModal.abrir(data.propuesta, data.justificaciones || []);
-        } else if (Array.isArray(data) && data.length > 0) {
-            AlquimiaModal.abrir(data, []);
+        if (propuesta && Array.isArray(propuesta) && propuesta.length > 0) {
+            AlquimiaModal.abrir(propuesta, justificaciones);
+        } else if (propuesta && propuesta.propuesta && propuesta.propuesta.length > 0) {
+            AlquimiaModal.abrir(propuesta.propuesta, justificaciones);
         } else {
-            if (AlquimiaModal) AlquimiaModal.showToast("💎 La receta parece balanceada o faltan insumos base.");
+            AlquimiaModal.showToast("💎 La receta está balanceada o faltan insumos base.");
         }
     }
 
@@ -1625,18 +1629,6 @@ Mi producto es: ${producto} ${marca ? 'de la marca ' + marca : ''}.`;
                 this.dom.selectPerfil.parentElement.classList.remove('ring-2', 'ring-sky-500', 'animate-pulse');
             }, 3000);
         }
-    }
-
-    /**
-     * INTERFAZ DE ALQUIMIA (v8.0) 🔮🧙‍♂️
-     */
-    static abrirAlchemy() {
-        const stats = this.controller.ejecutarSimulacion();
-        const propuesta = this.controller.autoBalance();
-        const carencias = this.controller.advisor.identificarCarenciasEstructurales(stats, this.controller.baseDatos);
-        
-        const justificaciones = carencias.map(c => c.justificacion);
-        AlquimiaModal.abrir(propuesta, justificaciones);
     }
 
     static ofrecerDeshacerAlquimia() {
