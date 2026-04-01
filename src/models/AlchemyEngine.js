@@ -45,7 +45,7 @@ export class AlchemyEngine {
             solidos: 'leche_en_polvo_desnatada',
             pac: 'dextrosa',
             pod: 'sacarosa',
-            grasa: 'nata_35_m.g.',
+            grasa: 'nata_35_m_g',
             base: profileId.includes('agua') || profileId.includes('sorbete') ? 'agua' : 'leche_entera'
         };
 
