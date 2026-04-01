@@ -10,7 +10,7 @@ import { IntelligenceCache } from '../services/IntelligenceCache.js';
 export class AdvisoryCenter {
     constructor() {
         this.contextoActual = 'gelato_leche';
-        this.brain = new NexusOllamaBrain('llama3');
+        this.brain = new NexusOllamaBrain('gemma3:27b');
     }
 
     /**
