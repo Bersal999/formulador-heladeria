@@ -16,7 +16,12 @@ start /b cmd /c "node NexusServer.js"
 timeout /t 3 >nul
 
 echo [2/2] Lanzando Ventana Standalone sin cache...
-start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" --app=http://localhost:3000?v=%RANDOM%
+start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" ^
+  --app=http://localhost:3000 ^
+  --disable-application-cache ^
+  --disable-cache ^
+  --disk-cache-size=0 ^
+  --aggressive-cache-discard
 
 echo.
 echo ------------------------------------------
