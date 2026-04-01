@@ -302,20 +302,18 @@ export default class DashboardUI {
             this.manejarCambioProduccion();
         });
 
-        // 11. Delegación Global de Eventos para botones ⓘ (Glosario) — v9.6
-        // Captura clicks en CUALQUIER botón que invoque abrirGlosario,
-        // sin importar si fue renderizado dinámicamente o antes del init.
+        // 11. Delegación Global de Eventos para botones ⓘ (Glosario) — v9.7
+        // Capture phase (true): intercepta antes que el bubbling.
+        // SIN stopPropagation ni preventDefault — no mata el onclick inline.
         document.addEventListener('click', (e) => {
-            // Busca el elemento clicado o su ancestro con onclick que contenga abrirGlosario
-            const el = e.target.closest('[onclick*="abrirGlosario"]');
-            if (el) {
-                e.preventDefault();
-                e.stopPropagation();
-                const match = (el.getAttribute('onclick') || '').match(/abrirGlosario\(['"](.+?)['"]\)/);
-                const tipo = match?.[1] || el.dataset.tipo;
-                if (tipo) DashboardUI.abrirGlosario(tipo);
+            const el = e.target.closest('button');
+            if (!el) return;
+            const onclickAttr = el.getAttribute('onclick') || '';
+            const match = onclickAttr.match(/abrirGlosario\(['"](.+?)['"]\)/);
+            if (match?.[1]) {
+                DashboardUI.abrirGlosario(match[1]);
             }
-        });
+        }, true); // capture phase
     }
 
     static manejarCambioProduccion() {
