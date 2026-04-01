@@ -21,11 +21,11 @@ export const PROFILES = {
         },
         plantilla: [
             { id: 'leche_entera', pct: 65.0 },
-            { id: 'nata_35_m.g.', pct: 10.0 },
+            { id: 'nata_35_m_g', pct: 10.0 },
             { id: 'leche_en_polvo_desnatada', pct: 4.0 },
             { id: 'sacarosa', pct: 14.0 },
             { id: 'dextrosa', pct: 3.0 },
-            { id: 'jarabe_de_glucosa_42_de', pct: 4.0 }
+            { id: 'jarabe_de_glucosa', pct: 4.0 }
         ]
     },
     gelato_agua: {
@@ -123,11 +123,11 @@ export const PROFILES = {
         },
         plantilla: [
             { id: 'leche_entera', pct: 58.5 },
-            { id: 'nata_35_m.g.', pct: 15.0 },
+            { id: 'nata_35_m_g', pct: 15.0 },
             { id: 'yema_de_huevo', pct: 6.0 },
             { id: 'sacarosa', pct: 15.0 },
             { id: 'dextrosa', pct: 4.0 },
-            { id: 'jarabe_de_glucosa_42_de', pct: 1.5 }
+            { id: 'jarabe_de_glucosa', pct: 1.5 }
         ]
     },
     keto: {
